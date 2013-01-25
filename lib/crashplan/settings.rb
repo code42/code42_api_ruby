@@ -29,5 +29,9 @@ module Crashplan
     def base_url
       "#{scheme}://#{host}:#{port}#{api_root}"
     end
+
+    def valid?
+      host && port && api_root
+    end
   end
 end

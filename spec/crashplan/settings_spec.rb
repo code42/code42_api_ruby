@@ -20,6 +20,21 @@ describe Crashplan::Settings do
     end
   end
 
+  describe "#valid?" do
+    it "should return true if required properties are defined" do
+      settings.host = 'example.com'
+      settings.port = 123
+      settings.api_root = '/api'
+      settings.should be_valid
+    end
+
+    it "should return false if required properties aren't defined" do
+      settings.host = 'example.com'
+      settings.api_root = '/api'
+      settings.should_not be_valid
+    end
+  end
+
   describe "#scheme" do
     it "should be http if https is false" do
       settings.https = false

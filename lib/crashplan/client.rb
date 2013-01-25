@@ -3,7 +3,7 @@ module Crashplan
     attr_accessor :settings
 
     def initialize(options = {})
-      @settings = Crashplan::Settings.new(options)
+      @settings = Settings.new(options)
     end
 
     def user

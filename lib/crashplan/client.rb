@@ -7,14 +7,23 @@ module Crashplan
       @port = options[:port]
     end
 
+    def settings
+      settings = {}
+      settings[:host] = host
+      settings[:port] = port
+      settings
+    end
+
     def user
       check_settings
       "my user"
     end
+
     def org
       check_settings
       "my org"
     end
+
     def check_settings
       raise "Host is not set" if host.nil?
       raise "Port is not set" if port.nil?

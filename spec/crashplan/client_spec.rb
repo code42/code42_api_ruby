@@ -13,8 +13,10 @@ describe Crashplan::Client do
       host: 'example.com',
       port: 1234
     )
-    client.host.should == 'example.com'
-    client.port.should == 1234
+    client.settings.should == {
+      :host => 'example.com',
+      :port => 1234
+    }
   end
 
   describe "#host" do

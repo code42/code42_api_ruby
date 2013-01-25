@@ -1,22 +1,9 @@
 module Crashplan
   class Client
-    attr_accessor :host, :port, :https, :api_root
-    attr_reader :settings
+    attr_accessor :settings
 
     def initialize(options = {})
-      @host     = options[:host]
-      @port     = options[:port]
-      @https    = !!options[:https]
-      @api_root = options[:api_root] || '/api'
-    end
-
-    def settings
-      settings = {}
-      settings[:host]     = host
-      settings[:port]     = port
-      settings[:https]    = https
-      settings[:api_root] = api_root
-      settings
+      @settings = Crashplan::Settings.new(options)
     end
 
     def user
@@ -40,8 +27,8 @@ module Crashplan
     end
 
     def check_settings
-      raise "Host is not set" if host.nil?
-      raise "Port is not set" if port.nil?
+      raise "Host is not set" if settings.host.nil?
+      raise "Port is not set" if settings.port.nil?
     end
   end
 end

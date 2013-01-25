@@ -8,6 +8,15 @@ describe Crashplan::Client do
     client.port = 1234
   end
 
+  it "should accept configuration options as parameters to new" do
+    client = Crashplan::Client.new(
+      host: 'example.com',
+      port: 1234
+    )
+    client.host.should == 'example.com'
+    client.port.should == 1234
+  end
+
   it "should return configured host" do
     client.host.should == "example.com"
   end

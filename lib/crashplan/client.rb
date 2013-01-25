@@ -1,6 +1,12 @@
 module Crashplan
   class Client
     attr_accessor :host, :port
+
+    def initialize(options = {})
+      @host = options[:host]
+      @port = options[:port]
+    end
+
     def user
       check_settings
       "my user"

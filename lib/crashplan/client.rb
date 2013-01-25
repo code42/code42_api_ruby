@@ -6,7 +6,7 @@ module Crashplan
     def initialize(options = {})
       @host     = options[:host]
       @port     = options[:port]
-      @https    = options.has_key?(:https) ? options[:https] : true
+      @https    = !!options[:https]
       @api_root = options[:api_root] || '/api'
     end
 

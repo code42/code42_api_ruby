@@ -24,9 +24,9 @@ describe Crashplan::Client do
       client.https.should == false
     end
 
-    it "should default to true" do
+    it "should default to false" do
       client = Crashplan::Client.new
-      client.https.should == true
+      client.https.should == false
     end
 
     it "should set the https boolean" do

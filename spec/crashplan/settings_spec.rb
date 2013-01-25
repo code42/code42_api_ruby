@@ -10,6 +10,28 @@ describe Crashplan::Settings do
     end
   end
 
+  describe "#base_url" do
+    it "should build base_url properly" do
+      settings.https = true
+      settings.host = 'example.com'
+      settings.port = 123
+      settings.api_root = '/api'
+      settings.base_url.should == 'https://example.com:123/api'
+    end
+  end
+
+  describe "#scheme" do
+    it "should be http if https is false" do
+      settings.https = false
+      settings.scheme.should == 'http'
+    end
+
+    it "should be https if https is true" do
+      settings.https = true
+      settings.scheme.should == 'https'
+    end
+  end
+
   describe "#port" do
     it "should return configured port" do
       settings.port = 123

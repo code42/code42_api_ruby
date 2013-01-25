@@ -21,5 +21,13 @@ module Crashplan
       settings[:password] = password
       settings
     end
+
+    def scheme
+      https ? 'https' : 'http'
+    end
+
+    def base_url
+      "#{scheme}://#{host}:#{port}#{api_root}"
+    end
   end
 end

@@ -5,7 +5,8 @@ describe Crashplan::Client do
     Crashplan::Client.new(
       host: 'example.com',
       port: 1234,
-      https: false
+      https: false,
+      api_root: '/api/v2'
     )
   end
 
@@ -13,7 +14,8 @@ describe Crashplan::Client do
     client.settings.should == {
       host:  'example.com',
       port:  1234,
-      https: false
+      https: false,
+      api_root: '/api/v2'
     }
   end
 
@@ -33,12 +35,29 @@ describe Crashplan::Client do
     end
   end
 
+  describe "#api_root" do
+    it "should return api root" do
+      client.api_root == '/api/v2'
+    end
+
+    it "should set the api root" do
+      client.api_root = '/api/v3'
+      client.api_root.should == '/api/v3'
+    end
+
+    it "should default to /api" do
+      client = Crashplan::Client.new
+      client.api_root.should == '/api'
+    end
+  end
+
   describe "#settings" do
     it "should return a hash of client settings" do
       client.settings.should == {
         host:  'example.com',
         port:  1234,
-        https: false
+        https: false,
+        api_root: '/api/v2'
       }
     end
   end

@@ -27,6 +27,7 @@ module Crashplan
     end
 
     def base_url
+      raise Error unless valid?
       "#{scheme}://#{host}:#{port}#{api_root}"
     end
 

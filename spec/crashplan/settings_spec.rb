@@ -18,6 +18,12 @@ describe Crashplan::Settings do
       settings.api_root = '/api'
       settings.base_url.should == 'https://example.com:123/api'
     end
+
+    it "should raise an exception if settings invalid" do
+      settings.host = 'example.com'
+      settings.port = 123
+      expect { settings.base_url }.to raise_error(Crashplan::Error)
+    end
   end
 
   describe "#valid?" do

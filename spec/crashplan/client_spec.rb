@@ -17,15 +17,19 @@ describe Crashplan::Client do
     client.port.should == 1234
   end
 
-  it "should return configured host" do
-    client.host.should == "example.com"
+  describe "#host" do
+    it "should return configured host" do
+      client.host.should == "example.com"
+    end
   end
 
-  it "should return configured port" do
-    client.port.should == 1234
+  describe "#port" do
+    it "should return configured port" do
+      client.port.should == 1234
+    end
   end
 
-  describe "user" do
+  describe "#user" do
     it "should return my user" do
       client.user.should == "my user"
     end
@@ -41,7 +45,7 @@ describe Crashplan::Client do
     end
   end
     
-  describe "org" do
+  describe "#org" do
     it "should return my org" do
       client.org.should == "my org"
     end

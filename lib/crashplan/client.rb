@@ -1,17 +1,20 @@
 module Crashplan
   class Client
-    attr_accessor :host, :port
+    attr_accessor :host, :port, :https
+    attr_reader :settings
 
     def initialize(options = {})
-      @host = options[:host]
-      @port = options[:port]
+      @host     = options[:host]
+      @port     = options[:port]
+      @https    = options.has_key?(:https) ? options[:https] : true
     end
 
     def settings
-      settings = {}
-      settings[:host] = host
-      settings[:port] = port
-      settings
+      data = {}
+      data[:host]  = host
+      data[:port]  = port
+      data[:https] = https
+      data
     end
 
     def user

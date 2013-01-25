@@ -1,0 +1,36 @@
+{
+  "metadata":   {
+    "timestamp": "2013-01-25T15:36:11.875-06:00",
+    "params": {}
+  },
+  "data":   {
+    "orgId": 1,
+    "orgUid": "ADMIN",
+    "orgName": "ADMIN",
+    "status": "Active",
+    "active": true,
+    "blocked": false,
+    "parentOrgId": null,
+    "type": "ENTERPRISE",
+    "externalId": "ADMIN",
+    "hierarchyCounts": {},
+    "configInheritanceCounts": {},
+    "creationDate": "2006-05-23T15:11:39.159-05:00",
+    "modificationDate": "2010-03-09T15:06:37.724-06:00",
+    "registrationKey": "9P4U-MTKU-4C2C-J9KH",
+    "reporting": {},
+    "customConfig": true,
+    "settings":     {
+      "maxSeats": -1,
+      "maxBytes": -1
+    },
+    "settingsInherited":     {
+      "maxSeats": "",
+      "maxBytes": ""
+    },
+    "settingsSummary":     {
+      "maxSeats": -1,
+      "maxBytes": -1
+    }
+  }
+}

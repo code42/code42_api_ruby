@@ -4,26 +4,41 @@ describe Crashplan::Client do
   subject(:client) { Crashplan::Client.new }
 
   before do
-    client.host = 'example.com'
-    client.port = 1234
+    client.host  = 'example.com'
+    client.port  = 1234
+    client.https = false
   end
 
   it "should accept configuration options as parameters to new" do
     client = Crashplan::Client.new(
-      host: 'somewhere.com',
-      port: 24
+      host:  'somewhere.com',
+      port:  24,
+      https: false
     )
     client.settings.should == {
-      host: 'somewhere.com',
-      port: 24
+      host:  'somewhere.com',
+      port:  24,
+      https: false
     }
+  end
+
+  describe "#https" do
+    it "should return https boolean" do
+      client.https.should == false
+    end
+
+    it "should default to true" do
+      client = Crashplan::Client.new
+      client.https.should == true
+    end
   end
 
   describe "#settings" do
     it "should return a hash of client settings" do
       client.settings.should == {
-        host: 'example.com',
-        port: 1234
+        host:  'example.com',
+        port:  1234,
+        https: false
       }
     end
   end

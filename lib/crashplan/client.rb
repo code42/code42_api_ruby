@@ -16,12 +16,22 @@ module Crashplan
 
     def user
       check_settings
-      "my user"
+      get '/api/user/my'
     end
 
     def org
       check_settings
-      "my org"
+      get '/api/org/my'
+    end
+
+    private
+
+    def get(path)
+      if path =~ /user/
+        'my user'
+      else
+        'my org'
+      end
     end
 
     def check_settings

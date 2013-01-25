@@ -32,6 +32,11 @@ describe Crashplan::Client do
   end
 
   describe "#user" do
+    it "should make request to correct url" do
+      client.should_receive(:get).with('/api/user/my')
+      client.user
+    end
+
     it "should return my user" do
       client.user.should == "my user"
     end
@@ -46,8 +51,13 @@ describe Crashplan::Client do
       expect { client.user }.to raise_error
     end
   end
-    
+
   describe "#org" do
+    it "should make request to correct path" do
+      client.should_receive(:get).with('/api/org/my')
+      client.org
+    end
+
     it "should return my org" do
       client.org.should == "my org"
     end

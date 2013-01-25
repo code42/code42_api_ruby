@@ -10,13 +10,22 @@ describe Crashplan::Client do
 
   it "should accept configuration options as parameters to new" do
     client = Crashplan::Client.new(
-      host: 'example.com',
-      port: 1234
+      host: 'somewhere.com',
+      port: 24
     )
     client.settings.should == {
-      :host => 'example.com',
-      :port => 1234
+      host: 'somewhere.com',
+      port: 24
     }
+  end
+
+  describe "#settings" do
+    it "should return a hash of client settings" do
+      client.settings.should == {
+        host: 'example.com',
+        port: 1234
+      }
+    end
   end
 
   describe "#host" do

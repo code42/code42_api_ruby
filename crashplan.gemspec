@@ -6,11 +6,14 @@ require 'crashplan/version'
 Gem::Specification.new do |gem|
   gem.name          = "crashplan"
   gem.version       = Crashplan::VERSION
-  gem.authors       = ["Allan Tokuda"]
-  gem.email         = ["allan.tokuda@code42.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.authors       = ["Code 42"]
+  gem.email         = ["dev-ruby@code42.com"]
+  gem.description   = %q{Provides a Ruby interface to the Crashplan API}
+  gem.summary       = %q{...}
   gem.homepage      = ""
+
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'vcr'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

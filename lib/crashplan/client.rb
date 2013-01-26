@@ -8,12 +8,12 @@ module Crashplan
 
     def user
       check_settings
-      get '/api/user/my'
+      get '/user/my'
     end
 
     def org
       check_settings
-      get '/api/org/my'
+      get '/org/my'
     end
 
     def connection

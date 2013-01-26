@@ -18,7 +18,7 @@ module Crashplan
     end
 
     private
-    
+
     def method_missing(method_name, *args, &block)
       return super unless adapter.respond_to?(method_name)
       adapter.send(method_name, *args, &block)

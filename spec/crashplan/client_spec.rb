@@ -12,7 +12,7 @@ describe Crashplan::Client do
 
   describe "#user" do
     it "should make request to correct url" do
-      client.should_receive(:get).with('/api/user/my')
+      client.should_receive(:get).with('/user/my')
       client.user
     end
 
@@ -23,7 +23,7 @@ describe Crashplan::Client do
 
   describe "#org" do
     it "should make request to correct path" do
-      client.should_receive(:get).with('/api/org/my')
+      client.should_receive(:get).with('/org/my')
       client.org
     end
 

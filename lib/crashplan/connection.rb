@@ -17,6 +17,14 @@ module Crashplan
       end
     end
 
+    def respond_to?(method_name, include_private = false)
+      adapter.respond_to?(method_name, include_private) || super
+    end if RUBY_VERSION < "1.9"
+
+    def rspond_to_missing?(method_name, include_private = false)
+      adapter.respond_to?(method_name, include_private) || super
+    end if RUBY_VERSION >= "1.9"
+
     private
 
     def method_missing(method_name, *args, &block)

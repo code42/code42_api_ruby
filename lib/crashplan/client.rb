@@ -17,13 +17,14 @@ module Crashplan
     end
 
     def connection
-      Faraday.new do |f|
-        f.host        = settings.host
-        f.port        = settings.port
-        f.scheme      = settings.scheme
-        f.path_prefix = settings.api_root
-        f.basic_auth(settings.username, settings.password)
-      end
+      Connection.new(
+        host: settings.host,
+        port: settings.port,
+        scheme: settings.scheme,
+        path_prefix: settings.api_root,
+        username: settings.username,
+        password: settings.password
+      )
     end
 
     private

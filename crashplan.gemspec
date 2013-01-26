@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = ""
 
   gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'vcr'
+  gem.add_development_dependency 'webmock'
   gem.add_dependency 'faraday'
 
   gem.files         = `git ls-files`.split($/)

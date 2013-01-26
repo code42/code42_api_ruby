@@ -16,6 +16,16 @@ module Crashplan
       get '/api/org/my'
     end
 
+    def connection
+      Faraday.new do |f|
+        f.host        = settings.host
+        f.port        = settings.port
+        f.scheme      = settings.scheme
+        f.path_prefix = settings.api_root
+        f.basic_auth(settings.username, settings.password)
+      end
+    end
+
     private
 
     def get(path)

@@ -16,5 +16,12 @@ module Crashplan
         f.basic_auth(@username, @password)
       end
     end
+
+    private
+    
+    def method_missing(method_name, *args, &block)
+      return super unless adapter.respond_to?(method_name)
+      adapter.send(method_name, *args, &block)
+    end
   end
 end

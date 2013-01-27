@@ -1,3 +1,5 @@
+require 'faraday'
+
 module Crashplan
   class Connection
     attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter
@@ -9,12 +11,16 @@ module Crashplan
       @path_prefix = options[:path_prefix]
       @username    = options[:username]
       @password    = options[:password]
-      @adapter     = Faraday.new do |f|
-        f.host = @host
-        f.port = @port
-        f.path_prefix = @path_prefix
-        f.basic_auth(@username, @password)
-      end
+      @adapter     = Faraday.new
+
+      @adapter.host = @host
+      @adapter.port = @port
+      @adapter.basic_auth(@username, @password)
+    end
+
+    def get(path)
+      response = adapter.get(path)
+      response.body
     end
 
     def respond_to?(method_name, include_private = false)

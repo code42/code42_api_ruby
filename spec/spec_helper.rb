@@ -1,5 +1,6 @@
 require 'crashplan'
 require 'webmock/rspec'
+require 'rspec/autorun'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

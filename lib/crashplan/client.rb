@@ -1,3 +1,5 @@
+require 'json'
+
 module Crashplan
   class Client
     attr_accessor :settings
@@ -8,12 +10,13 @@ module Crashplan
 
     def user
       check_settings
-      get '/user/my'
+      response = get '/user/my'
     end
 
     def org
       check_settings
-      get '/org/my'
+      response = get '/org/my'
+      response["data"]["orgName"]
     end
 
     def connection
@@ -33,7 +36,8 @@ module Crashplan
       if path =~ /user/
         'my user'
       else
-        'my org'
+        response = connection.get(path)
+        JSON.parse(response)
       end
     end
 

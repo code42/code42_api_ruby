@@ -16,8 +16,10 @@ describe Crashplan::Client do
 
   describe "#get" do
     it "should make a request" do
-      stub = stub_request(:get, %r(/org/my$))
-      client.get '/org/my'
+      path = '/org/my'
+      stub = stub_get(%r(#{path}$))
+      client.get path
+      stub.should have_been_made
     end
   end
 
@@ -34,7 +36,7 @@ describe Crashplan::Client do
 
   describe "#org" do
     before do
-      stub_request(:any, /example.com/).to_return(body: File.new('spec/fixtures/org.my.json'), status: 200)
+      stub_get(/example.com/).to_return(body: fixture('org.my.json'))
     end
 
     it "should return my org" do

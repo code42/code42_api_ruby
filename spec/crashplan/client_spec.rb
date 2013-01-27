@@ -14,6 +14,13 @@ describe Crashplan::Client do
     Faraday.default_adapter = :net_http
   end
 
+  describe "#get" do
+    it "should make a request" do
+      stub = stub_request(:get, %r(/org/my$))
+      client.get '/org/my'
+    end
+  end
+
   describe "#user" do
     it "should make request to correct url" do
       client.should_receive(:get).with('/user/my')
@@ -30,13 +37,8 @@ describe Crashplan::Client do
       stub_request(:any, /example.com/).to_return(body: File.new('spec/fixtures/org.my.json'), status: 200)
     end
 
-    it "should make request to correct path" do
-      client.should_receive(:get).with('/org/my')
-      client.org
-    end
-
     it "should return my org" do
-      client.org.should == "ADMIN"
+      client.org.should be_a(Crashplan::Org)
     end
   end
 end

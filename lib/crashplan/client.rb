@@ -16,7 +16,7 @@ module Crashplan
     def org
       check_settings
       response = get '/org/my'
-      response["data"]["orgName"]
+      Org.new(response["data"])
     end
 
     def connection
@@ -30,16 +30,16 @@ module Crashplan
       )
     end
 
-    private
-
     def get(path)
       if path =~ /user/
         'my user'
       else
         response = connection.get(path)
-        JSON.parse(response)
+        response ? JSON.parse(response) : {}
       end
     end
+
+    private
 
     def check_settings
       raise "Host is not set" if settings.host.nil?

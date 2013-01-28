@@ -16,7 +16,7 @@ describe Crashplan::Client do
 
   describe "#get" do
     it "should make a request" do
-      path = '/org/my'
+      path = 'org/my'
       stub = stub_get(%r(#{path}$))
       client.get path
       stub.should have_been_made
@@ -25,12 +25,12 @@ describe Crashplan::Client do
 
   describe "#user" do
     it "should make request to correct url" do
-      client.should_receive(:get).with('/user/my')
+      client.should_receive(:get).with('user/my')
       client.user
     end
 
     it "should return my user" do
-      client.user.should == "my user"
+      client.org.should be_a(Crashplan::User)
     end
   end
 

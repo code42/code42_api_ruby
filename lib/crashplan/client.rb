@@ -10,12 +10,12 @@ module Crashplan
 
     def user
       check_settings
-      response = get '/user/my'
+      response = get 'user/my'
     end
 
     def org
       check_settings
-      response = get '/org/my'
+      response = get 'org/my'
       Org.new(response["data"])
     end
 

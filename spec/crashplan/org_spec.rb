@@ -20,6 +20,12 @@ describe Crashplan::Org do
     Crashplan::Org.new(valid_attributes)
   end
 
+  describe "#id" do
+    it "should return correct id" do
+      org.id.should == 123
+    end
+  end
+
   describe "#created_at" do
     it "should be a DateTime" do
       org.created_at.should be_a(DateTime)

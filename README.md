@@ -16,14 +16,45 @@ Or install it yourself as:
 
     $ gem install crashplan
 
+## Configuration
+
+```
+client = Crashplan::Client.new(
+  host: 'staging.crashplan.com',
+  port: 1234,
+  https: true,
+  api_root: '/api/'
+)
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+### Ping a host
 
-## Contributing
+```
+success = client.ping().success?
+```
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+### Fetch the currently authorized API user
+
+```
+user = client.user()
+```
+
+### Get the get a user by ID
+
+```
+user = client.user(42)
+```
+
+### Fetch the Org for the currently authorized API user
+
+```
+org = client.org()
+```
+
+### Fetch a specific Org by ID
+
+```
+org = client.org(42)
+```

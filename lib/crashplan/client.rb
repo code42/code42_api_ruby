@@ -20,6 +20,12 @@ module Crashplan
       Org.new(response["data"])
     end
 
+    def ping
+      check_settings
+      response = get 'ping'
+      Ping.new(response["data"])
+    end
+
     def connection
       Connection.new(
         host: settings.host,

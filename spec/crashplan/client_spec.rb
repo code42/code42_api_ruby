@@ -42,4 +42,14 @@ describe Crashplan::Client do
       client.org.should be_a(Crashplan::Org)
     end
   end
+
+  describe "#ping" do
+    before do
+      stub_get(/example.com/).to_return(body: fixture('ping.json'))
+    end
+
+    it "should return a ping" do
+      client.ping.should be_a(Crashplan::Ping)
+    end
+  end
 end

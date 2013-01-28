@@ -11,6 +11,7 @@ module Crashplan
     def user
       check_settings
       response = get 'user/my'
+      User.new(response["data"])
     end
 
     def org
@@ -31,12 +32,8 @@ module Crashplan
     end
 
     def get(path)
-      if path =~ /user/
-        'my user'
-      else
-        response = connection.get(path)
-        response ? JSON.parse(response) : {}
-      end
+      response = connection.get(path)
+      response ? JSON.parse(response) : {}
     end
 
     private

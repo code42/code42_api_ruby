@@ -24,9 +24,8 @@ describe Crashplan::Client do
   end
 
   describe "#user" do
-    it "should make request to correct url" do
-      client.should_receive(:get).with('user/my')
-      client.user
+    before do
+      stub_get(/example.com/).to_return(body: fixture('user.my.json'))
     end
 
     it "should return my user" do

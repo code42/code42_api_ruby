@@ -4,6 +4,7 @@ require "crashplan/settings"
 require "crashplan/error"
 require "crashplan/connection"
 require "crashplan/org"
+require "crashplan/user"
 
 module Crashplan
   # Your code goes here...

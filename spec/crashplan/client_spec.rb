@@ -30,7 +30,7 @@ describe Crashplan::Client do
     end
 
     it "should return my user" do
-      client.org.should be_a(Crashplan::User)
+      client.user.should be_a(Crashplan::User)
     end
   end
 

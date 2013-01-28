@@ -9,6 +9,6 @@ describe Crashplan::Ping do
     Crashplan::Ping.new(valid_attributes)
   end
 
-  it { ping.success.should be_true }
+  it { should be_success }
 
 end

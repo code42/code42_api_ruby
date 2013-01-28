@@ -13,9 +13,8 @@ module Crashplan
       User.new(response["data"])
     end
 
-    def org
-      check_settings
-      response = get 'org/my'
+    def org(id = "my")
+      response = get "org/#{id}"
       Org.new(response["data"])
     end
 

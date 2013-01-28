@@ -24,16 +24,18 @@ describe Crashplan::Client do
   end
 
   describe "#user" do
-    it "should return my user" do
-      stub_get(/example.com/).to_return(body: fixture('user.my.json'))
-      client.user.should be_a(Crashplan::User)
+    context "when ID is not passed" do
+      it "should return my user" do
+        stub_get(/example.com/).to_return(body: fixture('user.my.json'))
+        client.user.should be_a(Crashplan::User)
+      end
     end
 
     context "when ID is passed in" do
-      it "should return specific user when passed an id" do
-        stub = stub_get(%r(/user/1)).to_return(body: fixture('user.1.json'))
+      it "should return specific user" do
+        request = stub_get(%r(/user/1)).to_return(body: fixture('user.1.json'))
         client.user(1)
-        stub.should have_been_made
+        request.should have_been_made
       end
     end
   end
@@ -43,8 +45,18 @@ describe Crashplan::Client do
       stub_get(/example.com/).to_return(body: fixture('org.my.json'))
     end
 
-    it "should return my org" do
-      client.org.should be_a(Crashplan::Org)
+    context "when ID is not passed" do
+      it "should return my org" do
+        client.org.should be_a(Crashplan::Org)
+      end
+    end
+
+    context "when ID is passed in" do
+      it "should return specific org" do
+        request = stub_get(%r(/org/1)).to_return(body: fixture("org.1.json"))
+        client.org(1)
+        request.should have_been_made
+      end
     end
   end
 

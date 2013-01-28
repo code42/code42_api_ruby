@@ -38,9 +38,9 @@ describe Crashplan::Org do
     end
 
     it "should return correct date" do
-      org.updated_at.day.should == 23
-      org.updated_at.month.should == 5
-      org.updated_at.year.should == 2006
+      org.updated_at.day.should == 9
+      org.updated_at.month.should == 3
+      org.updated_at.year.should == 2010
     end
   end
 end

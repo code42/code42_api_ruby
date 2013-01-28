@@ -15,6 +15,7 @@ module Crashplan
 
       @adapter.host = @host
       @adapter.port = @port
+      @adapter.path_prefix = @path_prefix
       @adapter.basic_auth(@username, @password)
     end
 

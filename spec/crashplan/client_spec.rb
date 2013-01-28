@@ -24,12 +24,17 @@ describe Crashplan::Client do
   end
 
   describe "#user" do
-    before do
+    it "should return my user" do
       stub_get(/example.com/).to_return(body: fixture('user.my.json'))
+      client.user.should be_a(Crashplan::User)
     end
 
-    it "should return my user" do
-      client.user.should be_a(Crashplan::User)
+    context "when ID is passed in" do
+      it "should return specific user when passed an id" do
+        stub = stub_get(%r(/user/1)).to_return(body: fixture('user.1.json'))
+        client.user(1)
+        stub.should have_been_made
+      end
     end
   end
 

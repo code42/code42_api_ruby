@@ -8,9 +8,8 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
-    def user
-      check_settings
-      response = get 'user/my'
+    def user(id = "my")
+      response = get "/user/#{id}"
       User.new(response["data"])
     end
 

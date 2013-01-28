@@ -1,0 +1,27 @@
+{
+  "metadata":   {
+    "timestamp": "2013-01-28T13:57:00.888-06:00",
+    "params": {}
+  },
+  "data":   {
+    "userId": 1,
+    "userUid": "thwlhuOyiq2svbdcqfmm2demndi",
+    "status": "Active",
+    "username": "admin",
+    "email": null,
+    "firstName": "Admin",
+    "lastName": "Admin",
+    "quotaInBytes": -1,
+    "orgId": 1,
+    "orgUid": "ADMIN",
+    "orgName": "ADMIN",
+    "active": true,
+    "blocked": false,
+    "emailPromo": true,
+    "invited": false,
+    "orgType": "ENTERPRISE",
+    "usernameIsAnEmail": true,
+    "creationDate": "2007-01-06T15:39:46.472-06:00",
+    "modificationDate": "2012-12-11T16:22:26.075-06:00"
+  }
+}

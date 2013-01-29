@@ -22,31 +22,31 @@ describe Crashplan::Org do
 
   describe "#id" do
     it "should return correct id" do
-      org.id.should == 123
+      expect(org.id).to eq 123
     end
   end
 
   describe "#created_at" do
     it "should be a DateTime" do
-      org.created_at.should be_a(DateTime)
+      expect(org.created_at).to be_a DateTime
     end
 
     it "should return correct date" do
-      org.created_at.day.should == 23
-      org.created_at.month.should == 5
-      org.created_at.year.should == 2006
+      expect(org.created_at.day).to eq 23
+      expect(org.created_at.month).to eq 5
+      expect(org.created_at.year).to eq 2006
     end
   end
 
   describe "#updated_at" do
     it "should be a DateTime" do
-      org.updated_at.should be_a(DateTime)
+      expect(org.updated_at).to be_a DateTime
     end
 
     it "should return correct date" do
-      org.updated_at.day.should == 9
-      org.updated_at.month.should == 3
-      org.updated_at.year.should == 2010
+      expect(org.updated_at.day).to eq 9
+      expect(org.updated_at.month).to eq 3
+      expect(org.updated_at.year).to eq 2010
     end
   end
 end

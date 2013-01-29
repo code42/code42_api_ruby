@@ -13,26 +13,26 @@ describe Crashplan::Connection do
   end
 
   it "should set host to example.com" do
-    connection.host.should == 'example.com'
+    expect(connection.host).to eq 'example.com'
   end
 
   it "should set port to 1234" do
-    connection.port.should == 1234
+    expect(connection.port).to eq 1234
   end
 
   it "should set scheme to http" do
-    connection.scheme.should == 'http'
+    expect(connection.scheme).to eq 'http'
   end
 
   it "should set api_root to /api/v2" do
-    connection.path_prefix.should == '/api/v2'
+    expect(connection.path_prefix).to eq '/api/v2'
   end
 
   it "should set username to fred" do
-    connection.username.should == 'fred'
+    expect(connection.username).to eq 'fred'
   end
 
   it "should set password to letmein" do
-    connection.password.should == 'letmein'
+    expect(connection.password).to eq 'letmein'
   end
 end

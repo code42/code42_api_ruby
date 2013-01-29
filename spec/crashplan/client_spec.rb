@@ -17,9 +17,9 @@ describe Crashplan::Client do
   describe "#get" do
     it "should make a request" do
       path = 'org/my'
-      stub = stub_get(%r(#{path}$))
+      request = stub_get(%r(#{path}$))
       client.get path
-      stub.should have_been_made
+      expect(request).to have_been_made
     end
   end
 
@@ -27,7 +27,7 @@ describe Crashplan::Client do
     context "when ID is not passed" do
       it "should return my user" do
         stub_get(/example.com/).to_return(body: fixture('user.my.json'))
-        client.user.should be_a(Crashplan::User)
+        expect(client.user).to be_a Crashplan::User
       end
     end
 
@@ -35,7 +35,7 @@ describe Crashplan::Client do
       it "should return specific user" do
         request = stub_get(%r(/user/1)).to_return(body: fixture('user.1.json'))
         client.user(1)
-        request.should have_been_made
+        expect(request).to have_been_made
       end
     end
   end
@@ -47,7 +47,7 @@ describe Crashplan::Client do
 
     context "when ID is not passed" do
       it "should return my org" do
-        client.org.should be_a(Crashplan::Org)
+        expect(client.org).to be_a Crashplan::Org
       end
     end
 
@@ -55,7 +55,7 @@ describe Crashplan::Client do
       it "should return specific org" do
         request = stub_get(%r(/org/1)).to_return(body: fixture("org.1.json"))
         client.org(1)
-        request.should have_been_made
+        expect(request).to have_been_made
       end
     end
   end
@@ -66,7 +66,7 @@ describe Crashplan::Client do
     end
 
     it "should return a ping" do
-      client.ping.should be_a(Crashplan::Ping)
+      expect(client.ping).to be_a Crashplan::Ping
     end
   end
 end

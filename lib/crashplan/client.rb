@@ -9,7 +9,7 @@ module Crashplan
     end
 
     def user(id = "my")
-      response = get "/user/#{id}"
+      response = get "user/#{id}"
       User.new(response["data"])
     end
 

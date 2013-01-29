@@ -10,10 +10,6 @@ describe Crashplan::Client do
     )
   end
 
-  before do
-    Faraday.default_adapter = :net_http
-  end
-
   describe "#get" do
     it "should make a request" do
       path = 'org/my'

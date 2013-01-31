@@ -25,6 +25,15 @@ module Crashplan
       response.body
     end
 
+    def post(path, data)
+      response = adapter.post do |r|
+        r.path = path
+        r.headers['Content-Type'] = "application/json"
+        r.body = data.to_json
+      end
+      response.body
+    end
+
     def respond_to?(method_name, include_private = false)
       adapter.respond_to?(method_name, include_private) || super
     end if RUBY_VERSION < "1.9"

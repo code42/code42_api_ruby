@@ -19,6 +19,17 @@ describe Crashplan::Client do
     end
   end
 
+  describe "#create_user" do
+    it "makes a POST request to /user" do
+      request = stub_post(%r{/user$})
+      client.create_user({
+        :orgId => 2,
+        :username => 'testuser'
+      })
+      expect(request).to have_been_made
+    end
+  end
+
   describe "#user" do
     context "when ID is not passed" do
       it "should return my user" do

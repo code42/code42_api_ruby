@@ -24,6 +24,13 @@ module Crashplan
       Ping.new(response["data"])
     end
 
+    def create_org(data = {})
+    end
+
+    def create_user(data = {})
+      response = post "user", data
+    end
+
     def connection
       Connection.new(
         host: settings.host,
@@ -37,6 +44,11 @@ module Crashplan
 
     def get(path)
       response = connection.get(path)
+      response ? JSON.parse(response) : {}
+    end
+
+    def post(path, data = {})
+      response = connection.post(path, data)
       response ? JSON.parse(response) : {}
     end
 

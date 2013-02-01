@@ -17,7 +17,7 @@ module Crashplan
       @adapter.port = @port
       @adapter.scheme = @scheme
       @adapter.path_prefix = @path_prefix
-      @adapter.basic_auth(@username, @password)
+      @adapter.basic_auth(@username, @password) if @username && @password
     end
 
     def get(path)

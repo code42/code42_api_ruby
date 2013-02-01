@@ -49,7 +49,7 @@ module Crashplan
       )
       if settings.username && settings.password
         @connection.username = settings.username
-        @conneciton.password = settings.password
+        @connection.password = settings.password
       end
       @connection
     end

@@ -3,12 +3,12 @@ module Crashplan
     attr_accessor :host, :port, :https, :api_root, :username, :password
 
     def initialize(options = {})
-      @host     = options[:host]
-      @port     = options[:port]
-      @https    = !!options[:https]
-      @api_root = options[:api_root]
-      @username = options[:username]
-      @password = options[:password]
+      self.host     = options[:host]
+      self.port     = options[:port]
+      self.https    = !!options[:https]
+      self.api_root = options[:api_root]
+      self.username = options[:username]
+      self.password = options[:password]
     end
 
     def all

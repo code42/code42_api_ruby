@@ -21,17 +21,17 @@ describe Crashplan::Org do
   end
 
   describe "#id" do
-    it "should return correct id" do
+    it "returns the correct id" do
       expect(org.id).to eq 123
     end
   end
 
   describe "#created_at" do
-    it "should be a DateTime" do
+    it "returns a DateTime object" do
       expect(org.created_at).to be_a DateTime
     end
 
-    it "should return correct date" do
+    it "returns the correct date" do
       expect(org.created_at.day).to eq 23
       expect(org.created_at.month).to eq 5
       expect(org.created_at.year).to eq 2006
@@ -39,11 +39,11 @@ describe Crashplan::Org do
   end
 
   describe "#updated_at" do
-    it "should be a DateTime" do
+    it "returns a DateTime object" do
       expect(org.updated_at).to be_a DateTime
     end
 
-    it "should return correct date" do
+    it "returns the correct date" do
       expect(org.updated_at.day).to eq 9
       expect(org.updated_at.month).to eq 3
       expect(org.updated_at.year).to eq 2010

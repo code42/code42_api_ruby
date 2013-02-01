@@ -18,6 +18,28 @@ describe Crashplan::Client do
       expect(request).to have_been_made
     end
   end
+  
+  describe "#create_org" do
+    let(:org_attributes) do
+      {
+        :orgName => 'Google'
+      }
+    end
+
+    it "makes a POST request to /org" do
+      request = stub_post(%r{/org$})
+      client.create_org(org_attributes)
+      expect(request).to have_been_made
+    end
+
+    it "returns created org" do
+      request = stub_post(%r{/org$}).to_return(body: fixture('org.create.json'))
+      org = client.create_org(org_attributes)
+      expect(org.name).to eq 'Google'
+      expect(org.id).to eq 8
+    end
+
+  end
 
   describe "#create_user" do
     let(:user_attributes) do

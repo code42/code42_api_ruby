@@ -19,12 +19,13 @@ module Crashplan
     end
 
     def ping
-      check_settings
       response = get 'ping'
       Ping.new(response["data"])
     end
 
     def create_org(data = {})
+      response = post "org", data
+      Org.from_response(response)
     end
 
     def create_user(data = {})
@@ -60,11 +61,6 @@ module Crashplan
 
     def response_body(response)
       response ? JSON.parse(response) : {}
-    end
-
-    def check_settings
-      raise "Host is not set" if settings.host.nil?
-      raise "Port is not set" if settings.port.nil?
     end
   end
 end

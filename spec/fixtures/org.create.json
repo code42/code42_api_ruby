@@ -1,0 +1,36 @@
+{
+  "metadata":   {
+    "timestamp": "2013-02-01T10:54:46.040-06:00",
+    "params": {}
+  },
+  "data":   {
+    "orgId": 8,
+    "orgUid": "568730989110015845",
+    "orgName": "Google",
+    "status": "Active",
+    "active": true,
+    "blocked": false,
+    "parentOrgId": null,
+    "type": "ENTERPRISE",
+    "externalId": "568730989110015845",
+    "hierarchyCounts": {},
+    "configInheritanceCounts": {},
+    "creationDate": "2013-02-01T10:54:45.920-06:00",
+    "modificationDate": "2013-02-01T10:54:46.000-06:00",
+    "registrationKey": "UKSH-WK9J-SURC-49J4",
+    "reporting": {},
+    "customConfig": false,
+    "settings":     {
+      "maxSeats": null,
+      "maxBytes": null
+    },
+    "settingsInherited":     {
+      "maxSeats": "",
+      "maxBytes": ""
+    },
+    "settingsSummary":     {
+      "maxSeats": "",
+      "maxBytes": ""
+    }
+  }
+}

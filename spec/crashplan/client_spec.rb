@@ -10,6 +10,21 @@ describe Crashplan::Client do
     )
   end
 
+  describe "#auth" do
+    it "makes a POST request to /authToken" do
+      request = stub_post(%r{/authToken$})
+      client.auth
+      expect(request).to have_been_made
+    end
+
+    it "returns valid tokens" do
+      stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
+      auth = client.auth
+      expect(auth.cookie_token).to eq "0jdeqya6xroz713tn1hxp6d8p1"
+      expect(auth.url_token).to eq "1t5839d7lwfxr0g84jf1nqp2vi"
+    end
+  end
+
   describe "#get" do
     it "makes a GET request" do
       path = 'org/my'

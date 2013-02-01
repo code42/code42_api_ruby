@@ -1,11 +1,18 @@
 require 'json'
 
 module Crashplan
+  APP_CODE = 'CPP'
+
   class Client
     attr_accessor :settings
 
     def initialize(options = {})
       @settings = Settings.new(options)
+    end
+
+    def auth(app_code = APP_CODE)
+      response = post "authToken", { appCode: app_code }
+      AuthResource.from_response(response)
     end
 
     def user(id = "my")
@@ -34,14 +41,17 @@ module Crashplan
     end
 
     def connection
-      Connection.new(
+      @connection = Connection.new(
         host: settings.host,
         port: settings.port,
         scheme: settings.scheme,
-        path_prefix: settings.api_root,
-        username: settings.username,
-        password: settings.password
+        path_prefix: settings.api_root
       )
+      if settings.username && settings.password
+        @connection.username = settings.username
+        @conneciton.password = settings.password
+      end
+      @connection
     end
 
     def get(path)

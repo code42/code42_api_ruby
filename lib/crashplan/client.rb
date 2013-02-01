@@ -44,16 +44,23 @@ module Crashplan
     end
 
     def get(path)
-      response = connection.get(path)
-      response ? JSON.parse(response) : {}
+      make_request(:get, path)
     end
 
     def post(path, data = {})
-      response = connection.post(path, data)
-      response ? JSON.parse(response) : {}
+      make_request(:post, path, data)
+    end
+
+    def make_request(method, *args)
+      response = connection.send(method, *args)
+      response_body(response)
     end
 
     private
+
+    def response_body(response)
+      response ? JSON.parse(response) : {}
+    end
 
     def check_settings
       raise "Host is not set" if settings.host.nil?

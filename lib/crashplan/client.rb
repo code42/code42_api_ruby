@@ -10,12 +10,12 @@ module Crashplan
 
     def user(id = "my")
       response = get "user/#{id}"
-      User.new(response["data"])
+      User.from_response(response)
     end
 
     def org(id = "my")
       response = get "org/#{id}"
-      Org.new(response["data"])
+      Org.from_response(response)
     end
 
     def ping
@@ -29,7 +29,7 @@ module Crashplan
 
     def create_user(data = {})
       response = post "user", data
-      User.new response["data"]
+      User.from_response(response)
     end
 
     def connection

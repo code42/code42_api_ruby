@@ -16,6 +16,14 @@ module Crashplan
       self.updated_at = attrs["modificationDate"]
     end
 
+    class << self
+      def from_response(response)
+        if response.has_key?('data')
+          self.new(response['data'])
+        end
+      end
+    end
+
     def created_at=(date)
       return if date.nil?
       @created_at = DateTime.parse(date)

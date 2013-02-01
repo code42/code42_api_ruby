@@ -29,6 +29,7 @@ module Crashplan
 
     def create_user(data = {})
       response = post "user", data
+      User.new response["data"]
     end
 
     def connection

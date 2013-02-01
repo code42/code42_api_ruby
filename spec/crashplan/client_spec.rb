@@ -20,13 +20,24 @@ describe Crashplan::Client do
   end
 
   describe "#create_user" do
-    it "makes a POST request to /user" do
-      request = stub_post(%r{/user$})
-      client.create_user({
+    let(:user_attributes) do
+      {
         :orgId => 2,
         :username => 'testuser'
-      })
+      }
+    end
+
+    it "makes a POST request to /user" do
+      request = stub_post(%r{/user$})
+      client.create_user(user_attributes)
       expect(request).to have_been_made
+    end
+
+    it "returns created user" do
+      stub_post(%r{/user$}).to_return(body: fixture('user.create.json'))
+      user = client.create_user(user_attributes)
+      expect(user.username).to eq 'testuser'
+      expect(user.id).to eq 2
     end
   end
 

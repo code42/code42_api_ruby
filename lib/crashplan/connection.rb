@@ -5,19 +5,32 @@ module Crashplan
     attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter
 
     def initialize(options = {})
-      @host        = options[:host]
-      @port        = options[:port]
-      @scheme      = options[:scheme]
-      @path_prefix = options[:path_prefix]
-      @username    = options[:username]
-      @password    = options[:password]
-      @adapter     = Faraday.new
+      self.host        = options[:host]
+      self.port        = options[:port]
+      self.scheme      = options[:scheme]
+      self.path_prefix = options[:path_prefix]
+      self.username    = options[:username]
+      self.password    = options[:password]
+      self.adapter     = Faraday.new
 
-      @adapter.host = @host
-      @adapter.port = @port
-      @adapter.scheme = @scheme
-      @adapter.path_prefix = @path_prefix
-      @adapter.basic_auth(@username, @password) if @username && @password
+      adapter.host        = host
+      adapter.port        = port
+      adapter.scheme      = scheme
+      adapter.path_prefix = path_prefix
+    end
+
+    def has_valid_credentials?
+      username && password
+    end
+
+    def username=(username)
+      @username = username
+      adapter.basic_auth(username, password) if has_valid_credentials?
+    end
+
+    def password=(password)
+      @password = password
+      adapter.basic_auth(username, password) if has_valid_credentials?
     end
 
     def get(path)
@@ -26,11 +39,8 @@ module Crashplan
     end
 
     def post(path, data)
-      response = adapter.post do |r|
-        r.path = path
-        r.headers['Content-Type'] = "application/json"
-        r.body = data.to_json
-      end
+      adapter.headers['Content-Type'] = 'application/json'
+      response = adapter.post path, data.to_json
       response.body
     end
 

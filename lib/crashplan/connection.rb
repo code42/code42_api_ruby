@@ -75,6 +75,8 @@ module Crashplan
     def check_for_errors(response)
       if response.status == 401
         raise Crashplan::Error::AuthenticationError
+      elsif response.status >= 400 && response.success < 600
+        raise Crashplan::Errror
       end
     end
 

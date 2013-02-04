@@ -1,3 +1,5 @@
+require 'date'
+
 module Crashplan
   class User
     attr_accessor :id, :uid, :status, :username, :email, :first_name, :last_name, :quota_in_bytes, :org_id, :org_uid, :org_name, :active, :blocked, :email_promo, :invited, :org_type, :username_is_an_email, :created_at, :updated_at

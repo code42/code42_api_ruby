@@ -27,12 +27,8 @@ module Crashplan
     def token=(token)
       @token = token
       adapter.headers['Authorization-Challenge'] = "false"
-      adapter.headers['Authorization'] = "TOKEN #{encoded_token}"
+      adapter.headers['Authorization'] = "TOKEN #{token}"
       @token
-    end
-
-    def encoded_token
-      Base64.strict_encode64(token) if token
     end
 
     def username=(username)

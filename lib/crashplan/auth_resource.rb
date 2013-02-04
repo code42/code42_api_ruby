@@ -25,5 +25,9 @@ module Crashplan
         result
       end
     end
+
+    def token_string
+      [cookie_token, url_token].join('-')
+    end
   end
 end

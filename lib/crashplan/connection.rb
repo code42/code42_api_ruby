@@ -2,16 +2,17 @@ require 'faraday'
 
 module Crashplan
   class Connection
-    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter
+    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token
 
     def initialize(options = {})
+      self.adapter     = Faraday.new
       self.host        = options[:host]
       self.port        = options[:port]
       self.scheme      = options[:scheme]
       self.path_prefix = options[:path_prefix]
       self.username    = options[:username]
       self.password    = options[:password]
-      self.adapter     = Faraday.new
+      self.token       = options[:token]
 
       adapter.host        = host
       adapter.port        = port
@@ -21,6 +22,17 @@ module Crashplan
 
     def has_valid_credentials?
       username && password
+    end
+
+    def token=(token)
+      @token = token
+      adapter.headers['Authorization-Challenge'] = "false"
+      adapter.headers['Authorization'] = "TOKEN #{encoded_token}"
+      @token
+    end
+
+    def encoded_token
+      Base64.strict_encode64(token) if token
     end
 
     def username=(username)

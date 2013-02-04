@@ -12,6 +12,13 @@ describe Crashplan::Connection do
     )
   end
 
+  describe "#token" do
+    it "sets authorization headers" do
+      connection.token = "0jdeqya6xroz713tn1hxp6d8p1-1t5839d7lwfxr0g84jf1nqp2vi"
+      expect(connection.headers['Authorization']).to eq "TOKEN MGpkZXF5YTZ4cm96NzEzdG4xaHhwNmQ4cDEtMXQ1ODM5ZDdsd2Z4cjBnODRqZjFucXAydmk="
+    end
+  end
+
   it "should set host to example.com" do
     expect(connection.host).to eq 'example.com'
   end

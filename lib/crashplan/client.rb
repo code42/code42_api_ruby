@@ -51,6 +51,9 @@ module Crashplan
         @connection.username = settings.username
         @connection.password = settings.password
       end
+      if settings.token
+        @connection.token = settings.token
+      end
       @connection
     end
 

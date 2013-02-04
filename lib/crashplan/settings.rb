@@ -1,6 +1,6 @@
 module Crashplan
   class Settings
-    attr_accessor :host, :port, :https, :api_root, :username, :password
+    attr_accessor :host, :port, :https, :api_root, :username, :password, :token
 
     def initialize(options = {})
       self.host     = options[:host]
@@ -9,6 +9,7 @@ module Crashplan
       self.api_root = options[:api_root]
       self.username = options[:username]
       self.password = options[:password]
+      self.token    = options[:token]
     end
 
     def all

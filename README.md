@@ -23,9 +23,29 @@ client = Crashplan::Client.new(
   host: 'staging.crashplan.com',
   port: 1234,
   https: true,
-  api_root: '/api/'
+  api_root: '/api/',
+  username: 'testuser',
+  password: 'letmein'
 )
 ```
+
+## Authentication
+
+```
+auth = client.auth
+```
+
+Then you can pass this token for further requests:
+
+```
+client = Crashplan::Client.new(
+  host: 'staging.crashplan.com',
+  port: 1234,
+  https: true,
+  api_root: '/api/',
+  token: auth.token_string
+)
+
 
 ## Usage
 

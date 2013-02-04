@@ -29,8 +29,10 @@ module Crashplan
 
     class << self
       def from_response(response)
-        if response.has_key? 'data'
+        if response.is_a?(Hash) && response.has_key?('data')
           self.new response['data']
+        else
+          raise Crashplan::Error
         end
       end
     end

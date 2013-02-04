@@ -66,14 +66,7 @@ module Crashplan
     end
 
     def make_request(method, *args)
-      response = connection.make_request(method, *args)
-      response_body(response)
-    end
-
-    private
-
-    def response_body(response)
-      response ? JSON.parse(response) : {}
+      connection.make_request(method, *args)
     end
   end
 end

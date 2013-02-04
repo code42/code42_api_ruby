@@ -24,6 +24,8 @@ module Crashplan
 
     def adapter
       @adapter ||= Faraday.new
+      @adapter.response :json
+      @adapter
     end
 
     def has_valid_credentials?

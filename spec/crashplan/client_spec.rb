@@ -52,7 +52,7 @@ describe Crashplan::Client do
     end
 
     it "makes a POST request to /org" do
-      request = stub_post(%r{/org$})
+      request = stub_post(%r{/org$}).to_return(body: fixture('org.my.json'))
       client.create_org(org_attributes)
       expect(request).to have_been_made
     end
@@ -75,7 +75,7 @@ describe Crashplan::Client do
     end
 
     it "makes a POST request to /user" do
-      request = stub_post(%r{/user$})
+      request = stub_post(%r{/user$}).to_return(body: fixture('user.create.json'))
       client.create_user(user_attributes)
       expect(request).to have_been_made
     end

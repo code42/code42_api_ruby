@@ -66,7 +66,7 @@ module Crashplan
     end
 
     def make_request(method, *args)
-      response = connection.send(method, *args)
+      response = connection.make_request(method, *args)
       response_body(response)
     end
 

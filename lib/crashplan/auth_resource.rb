@@ -12,7 +12,7 @@ module Crashplan
         elsif response.is_a? Array
           response.each do |r|
             if r.has_key?('name') && r.has_key?('description')
-              raise "#{r['name']}: #{r['description']}"
+              raise CrashPlan::Error::AuthorizationError, r['description']
             end
           end
         end

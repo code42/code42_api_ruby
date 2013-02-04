@@ -6,7 +6,9 @@ describe Crashplan::Client do
       host: 'example.com',
       port: 1234,
       https: false,
-      api_root: '/api/v2'
+      api_root: '/api/v2',
+      username: 'admin',
+      password: 'admin'
     )
   end
 
@@ -22,6 +24,14 @@ describe Crashplan::Client do
       auth = client.auth
       expect(auth.cookie_token).to eq "0jdeqya6xroz713tn1hxp6d8p1"
       expect(auth.url_token).to eq "1t5839d7lwfxr0g84jf1nqp2vi"
+    end
+
+    context "when providing invalid credentials" do
+      it "should raise an exception" do
+        stub_post(%r{/authToken$}).to_return(body: fixture('auth/bad_password.json'), status: 401)
+        client.settings.password = 'badpassword'
+        expect{client.auth}.to raise_error Crashplan::Error::AuthenticationError
+      end
     end
   end
 

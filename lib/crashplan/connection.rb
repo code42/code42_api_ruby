@@ -1,23 +1,29 @@
 require 'faraday'
+require 'faraday_middleware'
+require 'logger'
+require 'crashplan/error'
 
 module Crashplan
   class Connection
     attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token
 
     def initialize(options = {})
-      self.adapter     = Faraday.new
       self.host        = options[:host]
       self.port        = options[:port]
       self.scheme      = options[:scheme]
       self.path_prefix = options[:path_prefix]
       self.username    = options[:username]
       self.password    = options[:password]
-      self.token       = options[:token]
+      self.token       = options[:token] if options[:token]
 
       adapter.host        = host
       adapter.port        = port
       adapter.scheme      = scheme
       adapter.path_prefix = path_prefix
+    end
+
+    def adapter
+      @adapter ||= Faraday.new
     end
 
     def has_valid_credentials?
@@ -41,15 +47,19 @@ module Crashplan
       adapter.basic_auth(username, password) if has_valid_credentials?
     end
 
-    def get(path)
-      response = adapter.get(path)
+    def make_request(method, *args)
+      response = self.send(method, *args)
+      check_for_errors(response)
       response.body
+    end
+
+    def get(path)
+      adapter.get(path)
     end
 
     def post(path, data)
       adapter.headers['Content-Type'] = 'application/json'
-      response = adapter.post path, data.to_json
-      response.body
+      adapter.post path, data.to_json
     end
 
     def respond_to?(method_name, include_private = false)
@@ -61,6 +71,12 @@ module Crashplan
     end if RUBY_VERSION >= "1.9"
 
     private
+
+    def check_for_errors(response)
+      if response.status == 401
+        raise Crashplan::Error::AuthenticationError
+      end
+    end
 
     def method_missing(method_name, *args, &block)
       return super unless adapter.respond_to?(method_name)

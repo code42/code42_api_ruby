@@ -40,6 +40,8 @@ module Crashplan
       end
     end
 
+    attr_reader :attributes
+
     def initialize(data = {})
       @attributes = []
       data.each do |key, value|

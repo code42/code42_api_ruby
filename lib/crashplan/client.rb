@@ -31,7 +31,7 @@ module Crashplan
     end
 
     def create_org(data = {})
-      response = post "org", data
+      response = post "org", Org.serialize(data)
       Org.from_response(response)
     end
 

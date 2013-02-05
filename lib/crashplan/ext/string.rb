@@ -6,4 +6,9 @@ class String
     tr("-", "_").
     downcase
   end
+
+  def camelize
+    words = self.split('_')
+    [words.first, words[1..-1].map(&:capitalize).join].join
+  end
 end

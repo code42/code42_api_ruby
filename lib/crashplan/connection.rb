@@ -80,7 +80,7 @@ module Crashplan
       if response.status == 401
         raise Crashplan::Error::AuthenticationError
       elsif response.status >= 400 && response.status < 600
-        raise Crashplan::Errror
+        raise Crashplan::Error
       end
     end
 

@@ -13,6 +13,14 @@ describe Crashplan::AuthResource do
     end
   end
 
+  describe "#from_string" do
+    it "returns an AuthResource" do
+      auth = Crashplan::AuthResource.from_string '06zavyo44u0bv00dpqvrba2mkh-0a3xef19j13kr0xgtehwba1b3w'
+      expect(auth.cookie_token).to eq '06zavyo44u0bv00dpqvrba2mkh'
+      expect(auth.url_token).to eq '0a3xef19j13kr0xgtehwba1b3w'
+    end
+  end
+
   describe "#token_string" do
     it "returns concatenated token string" do
       auth = Crashplan::AuthResource.new(

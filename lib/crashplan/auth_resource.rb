@@ -20,6 +20,12 @@ module Crashplan
         end
       end
 
+      def from_string(token_string)
+        tokens = token_string.split('-')
+        new(cookie_token: tokens[0],
+            url_token: tokens[1])
+      end
+
       def deserialize(data)
         result = {}
         result[:cookie_token] = data[0]

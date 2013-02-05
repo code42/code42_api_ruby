@@ -36,7 +36,7 @@ module Crashplan
     end
 
     def create_user(data = {})
-      response = post "user", data
+      response = post "user", User.serialize(data)
       User.from_response(response)
     end
 

@@ -2,22 +2,24 @@ require 'spec_helper'
 
 describe Crashplan::Org do
   let(:valid_attributes) do
-    {
-      "orgId"            => 123,
-      "orgUid"           => "ADMIN",
-      "orgName"          => "ADMIN",
-      "status"           => "Active",
-      "active"           => true,
-      "blocked"          => false,
-      "parentOrgId"      => nil,
-      "type"             => "ENTERPRISE",
-      "creationDate"     => "2006-05-23T15:11:39.159-05:00",
-      "modificationDate" => "2010-03-09T15:06:37.724-06:00"
+    { "data" =>
+      {
+        "orgId"            => 123,
+        "orgUid"           => "ADMIN",
+        "orgName"          => "ADMIN",
+        "status"           => "Active",
+        "active"           => true,
+        "blocked"          => false,
+        "parentOrgId"      => nil,
+        "type"             => "ENTERPRISE",
+        "creationDate"     => "2006-05-23T15:11:39.159-05:00",
+        "modificationDate" => "2010-03-09T15:06:37.724-06:00"
+      }
     }
   end
 
   subject(:org) do
-    Crashplan::Org.new(valid_attributes)
+    Crashplan::Org.from_response(valid_attributes)
   end
 
   describe "#id" do

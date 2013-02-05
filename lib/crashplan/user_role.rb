@@ -1,5 +1,7 @@
 module Crashplan
-  class UserRole < Resource
+  class UserRole
+    include Resource
+
     class << self
       def from_response(response)
         if response.is_a?(Hash) && response.has_key('data')

@@ -1,7 +1,9 @@
 require 'crashplan/resource'
 
 module Crashplan
-  class AuthResource < Resource
+  class AuthResource
+    include Resource
+
     class << self
       def from_response(response)
         if response.is_a? Hash

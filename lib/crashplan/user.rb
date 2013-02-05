@@ -1,7 +1,9 @@
 require 'date'
 
 module Crashplan
-  class User < Resource
+  class User
+    include Resource
+
     translate_attribute 'userId', :id
     translate_attribute 'userUid', :uid
     translate_attribute 'userName', :name

@@ -2,34 +2,24 @@ require "crashplan/ext/string"
 require "crashplan/ext/hash"
 
 module Crashplan
-  class Resource
-    @@attribute_translations = {}
-
-    def initialize(data = {})
-      @attributes = []
-      data.each do |key, value|
-        @attributes << key.to_sym
-        unless self.respond_to?("#{key}=".to_sym)
-          self.class.send :define_method, "#{key}=".to_sym do |v|
-            instance_variable_set("@" + key.to_s, v)
-          end
-        end
-        unless self.respond_to?("key".to_sym)
-          self.class.send :define_method, key.to_sym do
-            instance_variable_get("@" + key.to_s)
-          end
-        end
-        self.send("#{key}=", value)
+  module Resource
+    class << self
+      def included(base)
+        base.extend ClassMethods
       end
     end
 
-    class << self
+    module ClassMethods
+      def attribute_translations
+        @attribute_translations ||= {}
+      end
+
       def serialize(data)
-        translate_attributes(data, @@attribute_translations.invert, true)
+        translate_attributes(data, attribute_translations.invert, true)
       end
 
       def deserialize(data)
-        translate_attributes(data, @@attribute_translations, false)
+        translate_attributes(data, attribute_translations, false)
       end
 
       def translate_attributes(data, translations, serialize = false)
@@ -46,7 +36,25 @@ module Crashplan
       end
 
       def translate_attribute(serialized, deserialized)
-        @@attribute_translations[serialized.to_s] = deserialized
+        attribute_translations[serialized.to_s] = deserialized
+      end
+    end
+
+    def initialize(data = {})
+      @attributes = []
+      data.each do |key, value|
+        @attributes << key.to_sym
+        unless self.respond_to?("#{key}=".to_sym)
+          self.class.send :define_method, "#{key}=".to_sym do |v|
+            instance_variable_set("@" + key.to_s, v)
+          end
+        end
+        unless self.respond_to?("key".to_sym)
+          self.class.send :define_method, key.to_sym do
+            instance_variable_get("@" + key.to_s)
+          end
+        end
+        self.send("#{key}=", value)
       end
     end
   end

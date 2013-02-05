@@ -1,25 +1,18 @@
 module Crashplan
   class Org
-    attr_accessor :id, :uid, :name, :status, :active, :blocked, :parent_id, :type, :created_at, :updated_at
+    include Resource
 
-    def initialize(attrs = {})
-      attrs ||= {}
-      self.id         = attrs["orgId"]
-      self.uid        = attrs["orgUid"]
-      self.name       = attrs["orgName"]
-      self.status     = attrs["status"]
-      self.active     = attrs["active"]
-      self.blocked    = attrs["blocked"]
-      self.parent_id  = attrs["parentOrgId"]
-      self.type       = attrs["type"]
-      self.created_at = attrs["creationDate"]
-      self.updated_at = attrs["modificationDate"]
-    end
+    translate_attribute "orgId", :id
+    translate_attribute "orgUid", :uid
+    translate_attribute "orgName", :name
+    translate_attribute "parentOrgId", :parent_id
+    translate_attribute "creationDate", :created_at
+    translate_attribute "modificationDate", :updated_at
 
     class << self
       def from_response(response)
         if response.has_key?('data')
-          self.new(response['data'])
+          self.new deserialize(response['data'])
         end
       end
     end

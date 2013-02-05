@@ -44,6 +44,11 @@ module Crashplan
       User.from_response(response)
     end
 
+    def validate_token(token)
+      response = get "authToken/#{token.token_string}"
+      TokenValidation.from_response response
+    end
+
     def user_role(id = 'my')
       response = get "UserRole", id
       UserRole.from_response response

@@ -11,6 +11,7 @@ require "crashplan/user"
 require "crashplan/ping"
 require "crashplan/auth_resource"
 require "crashplan/user_role"
+require "crashplan/token_validation"
 
 module Crashplan
   # Your code goes here...

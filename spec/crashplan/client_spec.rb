@@ -102,6 +102,8 @@ describe Crashplan::Client do
         stub_get(%r{/user/1}).to_return(body: fixture('user.1.json'))
         user = client.user(1)
         expect(user.id).to eq 1
+        expect(user.uid).to eq "thwlhuOyiq2svbdcqfmm2demndi"
+        expect(user.created_at).to be_a DateTime
       end
     end
   end

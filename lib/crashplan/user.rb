@@ -2,11 +2,11 @@ require 'date'
 
 module Crashplan
   class User < Resource
-    attribute 'userId', :id
-    attribute 'userUid', :uid
-    attribute 'userName', :name
-    attribute 'creationDate', :created_at
-    attribute 'modificationDate', :updated_at
+    translate_attribute 'userId', :id
+    translate_attribute 'userUid', :uid
+    translate_attribute 'userName', :name
+    translate_attribute 'creationDate', :created_at
+    translate_attribute 'modificationDate', :updated_at
 
     class << self
       def from_response(response)

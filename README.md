@@ -49,6 +49,8 @@ client = Crashplan::Client.new(
 ## User
 
 attributes:
+
+```
 [:id,
  :uid,
  :status,
@@ -68,10 +70,13 @@ attributes:
  :username_is_an_email,
  :created_at,
  :updated_at]
+```
 
 ## Org
 
 attributes:
+
+```
 [:id,
  :uid,
  :name,
@@ -91,6 +96,7 @@ attributes:
  :settings,
  :settings_inherited,
  :settings_summary]
+```
 
 ## Usage
 

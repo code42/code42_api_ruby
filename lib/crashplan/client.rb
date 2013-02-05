@@ -40,6 +40,11 @@ module Crashplan
       User.from_response(response)
     end
 
+    def user_role(id = 'my')
+      response = get "UserRole", id
+      UserRole.from_response response
+    end
+
     def connection
       @connection = Connection.new(
         host: settings.host,

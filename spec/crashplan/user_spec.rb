@@ -3,9 +3,9 @@ require 'spec_helper.rb'
 describe Crashplan::User do
   let(:valid_attributes) do
     {
-      "userId" => 1,
-      "userUid" => "thwlhuOyiq2svbdcqfmm2demndi",
-      "status" => "Active"
+      :id => 1,
+      :uid => "thwlhuOyiq2svbdcqfmm2demndi",
+      :status => "Active"
     }
   end
 

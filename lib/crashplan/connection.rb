@@ -66,6 +66,10 @@ module Crashplan
       adapter.post path, data.to_json
     end
 
+    def delete(path)
+      adapter.delete(path)
+    end
+
     def respond_to?(method_name, include_private = false)
       adapter.respond_to?(method_name, include_private) || super
     end if RUBY_VERSION < "1.9"

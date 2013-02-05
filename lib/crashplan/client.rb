@@ -30,6 +30,10 @@ module Crashplan
       Ping.new(response["data"])
     end
 
+    def delete_token(token)
+      response = delete "authToken/#{token.cookie_token}"
+    end
+
     def create_org(data = {})
       response = post "org", Org.serialize(data)
       Org.from_response(response)
@@ -80,6 +84,10 @@ module Crashplan
 
     def post(path, data = {})
       make_request(:post, path, data)
+    end
+
+    def delete(path)
+      make_request(:delete, path)
     end
 
     def make_request(method, *args)

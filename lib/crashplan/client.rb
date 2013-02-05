@@ -45,6 +45,18 @@ module Crashplan
       UserRole.from_response response
     end
 
+    def username=(username)
+      settings.username = username
+    end
+
+    def password=(password)
+      settings.password = password
+    end
+
+    def token=(token)
+      settings.token = token
+    end
+
     def connection
       @connection = Connection.new(
         host: settings.host,

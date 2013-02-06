@@ -1,5 +1,4 @@
 require "crashplan/ext/string"
-require "crashplan/ext/hash"
 require "crashplan/version"
 require "crashplan/client"
 require "crashplan/settings"

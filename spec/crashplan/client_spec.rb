@@ -49,15 +49,6 @@ describe Crashplan::Client do
     end
   end
 
-  describe "#get" do
-    it "makes a GET request" do
-      path = 'org/my'
-      request = stub_get(%r(#{path}$))
-      client.get path
-      expect(request).to have_been_made
-    end
-  end
-
   describe "#create_org" do
     let(:org_attributes) do
       {

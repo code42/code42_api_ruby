@@ -19,6 +19,8 @@ module Crashplan
       end
     end
 
+    alias inspect to_s
+
     def to_s
       token_string
     end

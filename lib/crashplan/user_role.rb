@@ -2,10 +2,10 @@ module Crashplan
   class UserRole
     include Resource
 
-    translate_attribute 'roleId', :id
-    translate_attribute 'roleName', :name
-    translate_attribute 'creationDate', :created_at
-    translate_attribute 'modificationDate', :updated_at
+    attribute :role_id, :as => :id
+    attribute :role_name, :as => :name
+    attribute :creation_date, :as => :created_at
+    attribute :modification_date, :as => :updated_at
 
     def created_at=(date)
       @created_at = DateTime.parse(date)

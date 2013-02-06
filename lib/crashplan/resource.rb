@@ -22,28 +22,48 @@ module Crashplan
       end
 
       def serialize(data)
-        translate_attributes(data, attribute_translations.invert, true)
+        translate_attributes(data, true)
       end
 
       def deserialize(data)
-        translate_attributes(data, attribute_translations, false)
+        translate_attributes(data, false)
       end
 
-      def translate_attributes(data, translations, serialize = false)
+      def translate_attributes(data, serialize = false)
+        translations = attribute_translations
+        translations = translations.invert if serialize
         new_hash = {}
+
+        # Iterate over hash elements
         data.each do |k,v|
-          if translations.has_key?(k)
-            new_key = translations[k]
-          else
-            new_key = serialize ? k.to_s.camelize : k.underscore.to_sym
+          new_key = serialize ? k.to_s.camelize : k.underscore.to_sym
+          if attributes.include?(new_key.to_sym)
+            if translations.has_key?(new_key.to_sym)
+              new_key = translations[new_key.to_sym]
+            end
+            new_hash[new_key] = v
           end
-          new_hash[new_key] = v
         end
         new_hash
       end
 
       def translate_attribute(serialized, deserialized)
         attribute_translations[serialized.to_s] = deserialized
+      end
+
+      def attributes
+        @attributes ||= []
+      end
+
+      def attribute(*args)
+        options = args.extract_options!
+        if options.has_key?(:as)
+          name = args.first
+          attributes << name
+          attribute_translations[name] = options[:as]
+        else
+          attributes.push(*args)
+        end
       end
     end
 

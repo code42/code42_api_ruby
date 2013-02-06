@@ -2,12 +2,12 @@ module Crashplan
   class Org
     include Resource
 
-    translate_attribute "orgId", :id
-    translate_attribute "orgUid", :uid
-    translate_attribute "orgName", :name
-    translate_attribute "parentOrgId", :parent_id
-    translate_attribute "creationDate", :created_at
-    translate_attribute "modificationDate", :updated_at
+    attribute :org_id, :as => :id
+    attribute :org_uid, :as => :uid
+    attribute :org_name, :as => :name
+    attribute :parent_org_id, :as => :parent_id
+    attribute :creation_date, :as => :created_at
+    attribute :modification_date, :as => :updated_at
 
     def created_at=(date)
       return if date.nil?

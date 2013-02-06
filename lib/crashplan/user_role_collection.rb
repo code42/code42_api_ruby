@@ -16,6 +16,10 @@ module Crashplan
       end
     end
 
+    def attributes
+      map(&:attributes)
+    end
+
     def includes_id?(id)
       map(&:id).include? id
     end

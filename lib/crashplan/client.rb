@@ -55,7 +55,8 @@ module Crashplan
       Ping.new(response["data"])
     end
 
-    def delete_token(token)
+    def delete_token(token = nil)
+      token = token || settings.token
       delete "authToken/#{token.to_s}"
     end
 

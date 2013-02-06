@@ -10,19 +10,21 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
+    def object_from_response(klass, request_method, path, options = {})
+      response = send(request_method.to_sym, path, options)
+      klass.from_response(response)
+    end
+
     def auth(app_code = APP_CODE)
-      response = post "authToken", { appCode: app_code }
-      AuthResource.from_response(response)
+      object_from_response(AuthResource, :post, "authToken", { appCode: app_code })
     end
 
     def user(id = "my")
-      response = get "user/#{id}"
-      User.from_response(response)
+      object_from_response(User, :get, "user/#{id}")
     end
 
     def org(id = "my")
-      response = get "org/#{id}"
-      Org.from_response(response)
+      object_from_response(Org, :get, "org/#{id}")
     end
 
     def ping
@@ -31,27 +33,23 @@ module Crashplan
     end
 
     def delete_token(token)
-      response = delete "authToken/#{token.cookie_token}"
+      object_from_response(AuthToken, :delete, "authToken/#{token.cookie_token}")
     end
 
     def create_org(data = {})
-      response = post "org", Org.serialize(data)
-      Org.from_response(response)
+      object_from_response(Org, :post, "org", Org.serialize(data))
     end
 
     def create_user(data = {})
-      response = post "user", User.serialize(data)
-      User.from_response(response)
+      object_from_response(User, :post, "user", User.serialize(data))
     end
 
     def validate_token(token)
-      response = get "authToken/#{token.token_string}"
-      TokenValidation.from_response response
+      object_from_response(TokenValidation, :get, "authToken/#{token.token_string}")
     end
 
     def user_role(id = 'my')
-      response = get "UserRole", id
-      UserRole.from_response response
+      object_from_response(UserRole, :get, "userRole", id)
     end
 
     def username=(username)
@@ -83,16 +81,16 @@ module Crashplan
       @connection
     end
 
-    def get(path)
-      make_request(:get, path)
+    def get(path, data = {})
+      make_request(:get, path, data)
     end
 
     def post(path, data = {})
       make_request(:post, path, data)
     end
 
-    def delete(path)
-      make_request(:delete, path)
+    def delete(path, data = {})
+      make_request(:delete, path, data)
     end
 
     def make_request(method, *args)

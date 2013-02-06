@@ -84,7 +84,6 @@ module Crashplan
       if response.status == 401
         raise Crashplan::Error::AuthenticationError
       elsif response.status >= 400 && response.status < 600
-        p response
         if response.body.is_a?(Array)
           messages = response.body.map { |b| b['description'] }.join(', ')
         end

@@ -46,6 +46,10 @@ module Crashplan
       objects_from_response(Org, :get, 'org', key: 'orgs')
     end
 
+    def users
+      objects_from_response(User, :get, 'user', key: 'users')
+    end
+
     def ping
       response = get 'ping'
       Ping.new(response["data"])

@@ -20,6 +20,10 @@ module Crashplan
       objects_from_array(klass, response)
     end
 
+    def collection_from_response(collection_klass, object_klass, request_method, path, options = {})
+      collection_klass.new objects_from_response(object_klass, request_method, path, options)
+    end
+
     def objects_from_array(klass, array)
       array.map { |element| klass.deserialize_and_initialize(element) }
     end
@@ -58,7 +62,7 @@ module Crashplan
     end
 
     def user_roles(id = 'my')
-      objects_from_response(UserRole, :get, "userRole/#{id}")
+      collection_from_response(UserRoleCollection, UserRole, :get, "userRole/#{id}")
     end
 
     def use_basic_auth(username, password)

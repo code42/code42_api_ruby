@@ -19,10 +19,10 @@ describe Crashplan::Client do
       expect(request).to have_been_made
     end
 
-    it "returns an Array" do
+    it "returns an enumerable" do
       stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))
       roles = client.user_roles
-      expect(roles).to be_a Array
+      expect(roles).to respond_to(:each)
     end
   end
 

@@ -14,5 +14,9 @@ module Crashplan
     def updated_at=(date)
       @updated_at = DateTime.parse(date)
     end
+
+    def permissions=(permissions = [])
+      @permissions = permissions.map { |p| p['permission'] }
+    end
   end
 end

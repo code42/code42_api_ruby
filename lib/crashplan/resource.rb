@@ -51,9 +51,9 @@ module Crashplan
     attr_reader :attributes
 
     def initialize(data = {})
-      @attributes = []
+      @attributes = {}
       data.each do |key, value|
-        @attributes << key.to_sym
+        @attributes[key.to_sym] = value
         unless self.respond_to?("#{key}=".to_sym)
           self.class.send :define_method, "#{key}=".to_sym do |v|
             instance_variable_set("@" + key.to_s, v)

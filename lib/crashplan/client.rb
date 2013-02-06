@@ -33,7 +33,7 @@ module Crashplan
     end
 
     def delete_token(token)
-      object_from_response(AuthToken, :delete, "authToken/#{token.cookie_token}")
+      delete "authToken/#{token.to_s}"
     end
 
     def create_org(data = {})

@@ -16,7 +16,9 @@ module Crashplan
     end
 
     def objects_from_response(klass, request_method, path, options = {})
+      key = options.delete(:key)
       response = send(request_method.to_sym, path, options)['data']
+      response = response[key] if key
       objects_from_array(klass, response)
     end
 
@@ -38,6 +40,10 @@ module Crashplan
 
     def org(id = "my")
       object_from_response(Org, :get, "org/#{id}")
+    end
+
+    def orgs
+      objects_from_response(Org, :get, 'org', key: 'orgs')
     end
 
     def ping

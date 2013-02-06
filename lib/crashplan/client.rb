@@ -48,6 +48,10 @@ module Crashplan
       object_from_response(User, :post, "user", User.serialize(data))
     end
 
+    def create_user_role(data = {})
+      object_from_response(UserRole, :post, 'UserRole', UserRole.serialize(data))
+    end
+
     def validate_token(token)
       object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
     end

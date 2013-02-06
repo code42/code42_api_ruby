@@ -87,7 +87,6 @@ module Crashplan
         p response
         if response.body.is_a?(Array)
           messages = response.body.map { |b| b['description'] }.join(', ')
-          binding.pry
         end
         raise Crashplan::Error, messages
       end

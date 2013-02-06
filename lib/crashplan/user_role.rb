@@ -2,17 +2,10 @@ module Crashplan
   class UserRole
     include Resource
 
-    class << self
-      def deserialize(data)
-        result = {}
-        result[:role_name] = data['roleName']
-        result[:locked] = data['locked']
-        result[:permissions] = data['permissions']
-        result[:created_at] = data['creationDate']
-        result[:updated_at] = data['modificationDate']
-        result
-      end
-    end
+    translate_attribute 'roleId', :id
+    translate_attribute 'roleName', :name
+    translate_attribute 'creationDate', :created_at
+    translate_attribute 'modificationDate', :updated_at
 
     def created_at=(date)
       @created_at = DateTime.parse(date)

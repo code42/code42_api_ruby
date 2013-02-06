@@ -1,0 +1,32 @@
+{
+  "metadata":   {
+    "timestamp": "2013-02-06T09:22:17.070-06:00",
+    "params": {}
+  },
+  "data":   [
+        {
+      "roleId": 3,
+      "roleName": "PROe User",
+      "locked": true,
+      "creationDate": "2013-01-31T15:51:07.810-06:00",
+      "modificationDate": "2013-01-31T15:51:07.810-06:00",
+      "permissions":       [
+        {"permission": "admin.cpp.login"},
+        {"permission": "admin.console.login"}
+      ]
+    },
+        {
+      "roleId": 16,
+      "roleName": "Desktop User",
+      "locked": true,
+      "creationDate": "2013-01-31T15:51:07.904-06:00",
+      "modificationDate": "2013-01-31T15:51:07.904-06:00",
+      "permissions":       [
+        {"permission": "admin.cps.login"},
+        {"permission": "admin.restore.personal"},
+        {"permission": "admin.select.personal"},
+        {"permission": "admin.cpd.login"}
+      ]
+    }
+  ]
+}

@@ -12,6 +12,20 @@ describe Crashplan::Client do
     )
   end
 
+  describe "#user_roles" do
+    it "makes a GET request to /userRole" do
+      request = stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))
+      client.user_roles
+      expect(request).to have_been_made
+    end
+
+    it "returns an Array" do
+      stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))
+      roles = client.user_roles
+      expect(roles).to be_a Array
+    end
+  end
+
   describe "#get_token" do
     it "makes a POST request to /authToken" do
       request = stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
@@ -43,7 +57,7 @@ describe Crashplan::Client do
       expect(request).to have_been_made
     end
   end
-  
+
   describe "#create_org" do
     let(:org_attributes) do
       {

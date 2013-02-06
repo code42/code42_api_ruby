@@ -15,6 +15,15 @@ module Crashplan
       klass.from_response(response)
     end
 
+    def objects_from_response(klass, request_method, path, options = {})
+      response = send(request_method.to_sym, path, options)['data']
+      objects_from_array(klass, response)
+    end
+
+    def objects_from_array(klass, array)
+      array.map { |element| klass.deserialize_and_initialize(element) }
+    end
+
     def get_token(app_code = APP_CODE)
       object_from_response(Token, :post, "authToken", { appCode: app_code })
     end
@@ -48,8 +57,8 @@ module Crashplan
       object_from_response(TokenValidation, :get, "authToken/#{token.token_string}")
     end
 
-    def user_role(id = 'my')
-      object_from_response(UserRole, :get, "userRole", id)
+    def user_roles(id = 'my')
+      objects_from_response(UserRole, :get, "userRole/#{id}")
     end
 
     def use_basic_auth(username, password)

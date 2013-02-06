@@ -15,7 +15,11 @@ module Crashplan
       end
 
       def from_response(response)
-        new deserialize(response['data'])
+        deserialize_and_initialize(response['data'])
+      end
+
+      def deserialize_and_initialize(data)
+        new deserialize(data)
       end
 
       def serialize(data)

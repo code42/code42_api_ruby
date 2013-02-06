@@ -1,5 +1,4 @@
 require "crashplan/ext/string"
-require "crashplan/ext/hash"
 
 module Crashplan
   module Resource

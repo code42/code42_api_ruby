@@ -3,13 +3,6 @@ module Crashplan
     include Resource
 
     class << self
-      def from_response(response)
-        if response.is_a?(Hash) && response.has_key('data')
-          data = response['data']
-          self.new deserialize(data)
-        end
-      end
-
       def deserialize(data)
         result = {}
         result[:role_name] = data['roleName']

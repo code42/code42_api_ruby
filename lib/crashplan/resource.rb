@@ -14,6 +14,10 @@ module Crashplan
         @attribute_translations ||= {}
       end
 
+      def from_response(response)
+        new deserialize(response['data'])
+      end
+
       def serialize(data)
         translate_attributes(data, attribute_translations.invert, true)
       end

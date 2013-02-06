@@ -14,7 +14,7 @@ describe Crashplan::Client do
 
   describe "#get_token" do
     it "makes a POST request to /authToken" do
-      request = stub_post(%r{/authToken$})
+      request = stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
       client.get_token
       expect(request).to have_been_made
     end

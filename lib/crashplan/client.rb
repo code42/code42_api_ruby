@@ -77,23 +77,12 @@ module Crashplan
     end
 
     def use_basic_auth(username, password)
+      settings.token = nil
       settings.username = username
       settings.password = password
     end
 
     def use_token_auth(token)
-      settings.token = token.to_s
-    end
-
-    def username=(username)
-      settings.username = username
-    end
-
-    def password=(password)
-      settings.password = password
-    end
-
-    def token=(token)
       settings.token = token.to_s
     end
 

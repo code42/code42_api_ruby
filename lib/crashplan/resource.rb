@@ -52,7 +52,6 @@ module Crashplan
     def initialize(data = {})
       @attributes = {}
       data.each do |key, value|
-        @attributes[key.to_sym] = value
         unless self.respond_to?("#{key}=".to_sym)
           self.class.send :define_method, "#{key}=".to_sym do |v|
             instance_variable_set("@" + key.to_s, v)
@@ -64,6 +63,7 @@ module Crashplan
           end
         end
         self.send("#{key}=", value)
+        @attributes[key.to_sym] = send(key.to_sym)
       end
     end
   end

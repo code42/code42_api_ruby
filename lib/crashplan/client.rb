@@ -49,7 +49,7 @@ module Crashplan
     end
 
     def validate_token(token)
-      object_from_response(TokenValidation, :get, "authToken/#{token.token_string}")
+      object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
     end
 
     def user_roles(id = 'my')

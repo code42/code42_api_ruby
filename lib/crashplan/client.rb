@@ -10,26 +10,6 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
-    def object_from_response(klass, request_method, path, options = {})
-      response = send(request_method.to_sym, path, options)
-      klass.from_response(response)
-    end
-
-    def objects_from_response(klass, request_method, path, options = {})
-      key = options.delete(:key)
-      response = send(request_method.to_sym, path, options)['data']
-      response = response[key] if key
-      objects_from_array(klass, response)
-    end
-
-    def collection_from_response(collection_klass, object_klass, request_method, path, options = {})
-      collection_klass.new objects_from_response(object_klass, request_method, path, options)
-    end
-
-    def objects_from_array(klass, array)
-      array.map { |element| klass.deserialize_and_initialize(element) }
-    end
-
     def get_token(app_code = APP_CODE)
       object_from_response(Token, :post, "authToken", { appCode: app_code })
     end
@@ -101,6 +81,28 @@ module Crashplan
         @connection.token = settings.token
       end
       @connection
+    end
+
+    private
+
+    def object_from_response(klass, request_method, path, options = {})
+      response = send(request_method.to_sym, path, options)
+      klass.from_response(response)
+    end
+
+    def objects_from_response(klass, request_method, path, options = {})
+      key = options.delete(:key)
+      response = send(request_method.to_sym, path, options)['data']
+      response = response[key] if key
+      objects_from_array(klass, response)
+    end
+
+    def collection_from_response(collection_klass, object_klass, request_method, path, options = {})
+      collection_klass.new objects_from_response(object_klass, request_method, path, options)
+    end
+
+    def objects_from_array(klass, array)
+      array.map { |element| klass.deserialize_and_initialize(element) }
     end
 
     def get(path, data = {})

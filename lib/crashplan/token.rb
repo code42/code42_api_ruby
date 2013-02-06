@@ -1,7 +1,7 @@
 require 'crashplan/resource'
 
 module Crashplan
-  class AuthResource
+  class Token
     include Resource
 
     class << self
@@ -32,6 +32,10 @@ module Crashplan
         result[:url_token]    = data[1]
         result
       end
+    end
+
+    def to_s
+      token_string
     end
 
     def token_string

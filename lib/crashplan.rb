@@ -9,7 +9,7 @@ require "crashplan/resource"
 require "crashplan/org"
 require "crashplan/user"
 require "crashplan/ping"
-require "crashplan/auth_resource"
+require "crashplan/token"
 require "crashplan/user_role"
 require "crashplan/token_validation"
 

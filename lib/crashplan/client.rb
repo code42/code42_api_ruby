@@ -15,8 +15,8 @@ module Crashplan
       klass.from_response(response)
     end
 
-    def auth(app_code = APP_CODE)
-      object_from_response(AuthResource, :post, "authToken", { appCode: app_code })
+    def get_token(app_code = APP_CODE)
+      object_from_response(Token, :post, "authToken", { appCode: app_code })
     end
 
     def user(id = "my")
@@ -52,6 +52,15 @@ module Crashplan
       object_from_response(UserRole, :get, "userRole", id)
     end
 
+    def use_basic_auth(username, password)
+      settings.username = username
+      settings.password = password
+    end
+
+    def use_token_auth(token)
+      settings.token = token.to_s
+    end
+
     def username=(username)
       settings.username = username
     end
@@ -61,7 +70,7 @@ module Crashplan
     end
 
     def token=(token)
-      settings.token = token
+      settings.token = token.to_s
     end
 
     def connection

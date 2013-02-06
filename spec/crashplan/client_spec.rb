@@ -12,16 +12,16 @@ describe Crashplan::Client do
     )
   end
 
-  describe "#auth" do
+  describe "#get_token" do
     it "makes a POST request to /authToken" do
       request = stub_post(%r{/authToken$})
-      client.auth
+      client.get_token
       expect(request).to have_been_made
     end
 
     it "returns valid tokens" do
       stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
-      auth = client.auth
+      auth = client.get_token
       expect(auth.cookie_token).to eq "0jdeqya6xroz713tn1hxp6d8p1"
       expect(auth.url_token).to eq "1t5839d7lwfxr0g84jf1nqp2vi"
     end
@@ -30,7 +30,7 @@ describe Crashplan::Client do
       it "should raise an exception" do
         stub_post(%r{/authToken$}).to_return(body: fixture('auth/bad_password.json'), status: 401)
         client.settings.password = 'badpassword'
-        expect{client.auth}.to raise_error Crashplan::Error::AuthenticationError
+        expect{client.get_token}.to raise_error Crashplan::Error::AuthenticationError
       end
     end
   end

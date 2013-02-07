@@ -25,7 +25,7 @@ module Crashplan
     end
 
     def includes_name?(name)
-      map(&:name).include? id
+      map(&:name).include? name
     end
   end
 end

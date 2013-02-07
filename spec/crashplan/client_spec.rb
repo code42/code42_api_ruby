@@ -12,6 +12,14 @@ describe Crashplan::Client do
     )
   end
 
+  describe "#validate_token" do
+    it "returns a valid response" do
+      stub_get(%r{/authToken/06zavyo44u0bv00dpqvrba2mkh-0a3xef19j13kr0xgtehwba1b3w$}).to_return(body: fixture('validate_token.json'))
+      validation = client.validate_token '06zavyo44u0bv00dpqvrba2mkh-0a3xef19j13kr0xgtehwba1b3w'
+      expect(validation).to be_valid
+    end
+  end
+
   describe "#user_roles" do
     it "makes a GET request to /userRole" do
       request = stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))

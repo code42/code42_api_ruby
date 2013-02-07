@@ -3,6 +3,7 @@ module Crashplan
     attr_accessor :host, :port, :https, :api_root, :username, :password, :token
 
     def initialize(options = {})
+      options.symbolize_keys!
       self.host     = options[:host]
       self.port     = options[:port]
       self.https    = !!options[:https]

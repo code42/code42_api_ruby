@@ -1,4 +1,5 @@
 require "crashplan/ext/array"
+require "crashplan/ext/hash"
 require "crashplan/ext/string"
 require "crashplan/version"
 require "crashplan/client"

@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://admin:admin@localhost:7280/api/org
+    body:
+      encoding: UTF-8
+      string: ! '{"orgName":"IBM"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-02-07T17:15:11.793-06:00\",\n
+        \   \"params\": {}\n  },\n  \"data\":   {\n    \"orgId\": 17,\n    \"orgUid\":
+        \"569639014995996375\",\n    \"orgName\": \"IBM\",\n    \"status\": \"Active\",\n
+        \   \"active\": true,\n    \"blocked\": false,\n    \"parentOrgId\": null,\n
+        \   \"type\": \"ENTERPRISE\",\n    \"externalId\": \"569639014995996375\",\n
+        \   \"hierarchyCounts\": {},\n    \"configInheritanceCounts\": {},\n    \"creationDate\":
+        \"2013-02-07T17:15:11.536-06:00\",\n    \"modificationDate\": \"2013-02-07T17:15:11.732-06:00\",\n
+        \   \"registrationKey\": \"WHRC-4JHW-9SC7-7JRR\",\n    \"reporting\": {},\n
+        \   \"customConfig\": false,\n    \"settings\":     {\n      \"maxSeats\":
+        null,\n      \"maxBytes\": null\n    },\n    \"settingsInherited\":     {\n
+        \     \"maxSeats\": \"\",\n      \"maxBytes\": \"\"\n    },\n    \"settingsSummary\":
+        \    {\n      \"maxSeats\": \"\",\n      \"maxBytes\": \"\"\n    }\n  }\n}"
+    http_version: 
+  recorded_at: Thu, 07 Feb 2013 23:15:11 GMT
+recorded_with: VCR 2.4.0

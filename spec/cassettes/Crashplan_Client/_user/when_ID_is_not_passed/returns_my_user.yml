@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost:7280/api/user/my
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tc3RvcmU=
+      !binary "UHJhZ21h":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "U2VydmVy":
+      - !binary |-
+        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAJWSTW7CMBCF95wi8pogJ7REyi4VWWRRiig9wBA7xWpsJ/aE
+        CiHuXruEkgZ10aW/NzNvfnyaBAGRHIEBAkmDIDg54hgKyS2CbBwkMY3mIY1D
+        mmyjJKVJGiWzOHHvRUopmV4yGjAgrQs/nR04e0rGVTvLTcEciaY38CY8Ibj/
+        rPfdy1G0sT3sWNlWUsaMS8XE1cI1hJ23IFmJ4sDJoIoCyb0CTAp1FbgEUd/R
+        ShiLqz4+Gyo1/CG0nUYo1NMRufcPr/1r8/5rHvfux8mWz8WK3PBP2SGHyxhp
+        gKbjPdvVuvzgvkYFteXDSdZGSz0ShDoIvAt3httj822Yr7b5Zr0pXvPxugqb
+        qbzf0DC5NBxQaLUE5Jfz00VIH8LInT9O59QdfUYpDenj4PxSM1GJ8h+J/pdM
+        zl/wwnoRggIAAA==
+    http_version: 
+  recorded_at: Thu, 07 Feb 2013 23:07:17 GMT
+recorded_with: VCR 2.4.0

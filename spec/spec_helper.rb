@@ -1,6 +1,7 @@
 require 'crashplan'
-require 'webmock/rspec'
 require 'rspec/autorun'
+require 'vcr'
+require 'net/http'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -12,6 +13,13 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.default_cassette_options = { :record => :new_episodes }
+  config.configure_rspec_metadata!
 end
 
 def a_get(path)

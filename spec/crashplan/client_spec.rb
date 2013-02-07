@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Crashplan::Client do
+describe Crashplan::Client, :vcr do
   subject(:client) do
     Crashplan::Client.new(
-      host: 'example.com',
-      port: 1234,
+      host: 'localhost',
+      port: 7280,
       https: false,
-      api_root: '/api/v2',
+      api_root: '/api',
       username: 'admin',
       password: 'admin'
     )
@@ -14,43 +14,28 @@ describe Crashplan::Client do
 
   describe "#validate_token" do
     it "returns a valid response" do
-      stub_get(%r{/authToken/06zavyo44u0bv00dpqvrba2mkh-0a3xef19j13kr0xgtehwba1b3w$}).to_return(body: fixture('validate_token.json'))
-      validation = client.validate_token '06zavyo44u0bv00dpqvrba2mkh-0a3xef19j13kr0xgtehwba1b3w'
+      token = client.get_token
+      validation = client.validate_token token
       expect(validation).to be_valid
     end
   end
 
   describe "#user_roles" do
-    it "makes a GET request to /userRole" do
-      request = stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))
-      client.user_roles
-      expect(request).to have_been_made
-    end
-
     it "returns an enumerable" do
-      stub_get(%r{/userRole/my$}).to_return(body: fixture('user_roles.json'))
       roles = client.user_roles
       expect(roles).to respond_to(:each)
     end
   end
 
   describe "#get_token" do
-    it "makes a POST request to /authToken" do
-      request = stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
-      client.get_token
-      expect(request).to have_been_made
-    end
-
     it "returns valid tokens" do
-      stub_post(%r{/authToken$}).to_return(body: fixture('authToken.json'))
       auth = client.get_token
-      expect(auth.cookie_token).to eq "0jdeqya6xroz713tn1hxp6d8p1"
-      expect(auth.url_token).to eq "1t5839d7lwfxr0g84jf1nqp2vi"
+      expect(auth.cookie_token).to have(26).characters
+      expect(auth.url_token).to have(26).characters
     end
 
     context "when providing invalid credentials" do
       it "should raise an exception" do
-        stub_post(%r{/authToken$}).to_return(body: fixture('auth/bad_password.json'), status: 401)
         client.settings.password = 'badpassword'
         expect{client.get_token}.to raise_error Crashplan::Error::AuthenticationError
       end
@@ -60,21 +45,13 @@ describe Crashplan::Client do
   describe "#create_org" do
     let(:org_attributes) do
       {
-        :orgName => 'Google'
+        :orgName => 'IBM'
       }
     end
 
-    it "makes a POST request to /org" do
-      request = stub_post(%r{/org$}).to_return(body: fixture('org.my.json'))
-      client.create_org(org_attributes)
-      expect(request).to have_been_made
-    end
-
     it "returns created org" do
-      request = stub_post(%r{/org$}).to_return(body: fixture('org.create.json'))
       org = client.create_org(org_attributes)
-      expect(org.name).to eq 'Google'
-      expect(org.id).to eq 8
+      expect(org.name).to eq 'IBM'
     end
 
   end
@@ -87,14 +64,7 @@ describe Crashplan::Client do
       }
     end
 
-    it "makes a POST request to /user" do
-      request = stub_post(%r{/user$}).to_return(body: fixture('user.create.json'))
-      client.create_user(user_attributes)
-      expect(request).to have_been_made
-    end
-
     it "returns created user" do
-      stub_post(%r{/user$}).to_return(body: fixture('user.create.json'))
       user = client.create_user(user_attributes)
       expect(user.username).to eq 'testuser'
       expect(user.id).to eq 2
@@ -104,7 +74,6 @@ describe Crashplan::Client do
   describe "#user" do
     context "when ID is not passed" do
       it "returns my user" do
-        stub_get(%r{/user/my}).to_return(body: fixture('user.my.json'))
         user = client.user
         expect(user.id).to eq 1
       end
@@ -112,7 +81,6 @@ describe Crashplan::Client do
 
     context "when ID is passed in" do
       it "returns a specific user" do
-        stub_get(%r{/user/1}).to_return(body: fixture('user.1.json'))
         user = client.user(1)
         expect(user.id).to eq 1
         expect(user.uid).to eq "thwlhuOyiq2svbdcqfmm2demndi"
@@ -124,7 +92,6 @@ describe Crashplan::Client do
   describe "#org" do
     context "when ID is not passed" do
       it "returns my org" do
-        stub_get(%r{/org/my}).to_return(body: fixture('org.my.json'))
         org = client.org
         expect(org.id).to eq 1
       end
@@ -132,7 +99,6 @@ describe Crashplan::Client do
 
     context "when ID is passed in" do
       it "returns a specific org" do
-        stub_get(%r{/org/1}).to_return(body: fixture("org.1.json"))
         org = client.org(1)
         expect(org.id).to eq 1
       end
@@ -140,10 +106,6 @@ describe Crashplan::Client do
   end
 
   describe "#ping" do
-    before do
-      stub_get(/example.com/).to_return(body: fixture('ping.json'))
-    end
-
     it "returns a ping" do
       expect(client.ping).to be_a Crashplan::Ping
     end

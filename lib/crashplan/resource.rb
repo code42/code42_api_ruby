@@ -21,28 +21,32 @@ module Crashplan
         new deserialize(data)
       end
 
+
+      # TODO: refactor these two methods
       def serialize(data)
-        translate_attributes(data, true)
+        translations = attribute_translations.invert
+        new_hash = {}
+
+        data.each do |k,v|
+          new_key = k.to_s.camelize
+          if translations.has_key?(k)
+            new_key = translations[k]
+          end
+          new_hash[new_key] = v
+        end
+        new_hash
       end
 
       def deserialize(data)
-        translate_attributes(data, false)
-      end
-
-      def translate_attributes(data, serialize = false)
         translations = attribute_translations
-        translations = translations.invert if serialize
         new_hash = {}
 
-        # Iterate over hash elements
         data.each do |k,v|
-          new_key = serialize ? k.to_s.camelize : k.underscore.to_sym
-          if attributes.include?(new_key.to_sym)
-            if translations.has_key?(new_key.to_sym)
-              new_key = translations[new_key.to_sym]
-            end
-            new_hash[new_key] = v
+          new_key = k.underscore.to_sym
+          if translations.has_key?(k)
+            new_key = translations[k]
           end
+          new_hash[new_key] = v
         end
         new_hash
       end
@@ -60,7 +64,7 @@ module Crashplan
         if options.has_key?(:as)
           name = args.first
           attributes << name
-          attribute_translations[name] = options[:as]
+          attribute_translations[name.to_s.camelize] = options[:as]
         else
           attributes.push(*args)
         end

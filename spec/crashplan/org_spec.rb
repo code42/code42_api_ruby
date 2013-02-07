@@ -22,6 +22,17 @@ describe Crashplan::Org do
     Crashplan::Org.from_response(valid_attributes)
   end
 
+  describe ".serialize" do
+    it "serializes data correctly" do
+      data = {
+        name: 'Target'
+      }
+      serialized = Crashplan::Org.serialize(data)
+      expect(serialized).to be_a(Hash)
+      expect(serialized['orgName']).to eq 'Target'
+    end
+  end
+
   describe "#id" do
     it "returns the correct id" do
       expect(org.id).to eq 123

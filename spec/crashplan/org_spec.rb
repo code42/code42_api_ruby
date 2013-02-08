@@ -18,8 +18,19 @@ describe Crashplan::Org do
     }
   end
 
+  let(:client) do
+    Crashplan::Client.new(
+      host: 'localhost',
+      port: 7280,
+      https: false,
+      api_root: '/api',
+      username: 'admin',
+      password: 'admin'
+    )
+  end
+
   subject(:org) do
-    Crashplan::Org.from_response(valid_attributes)
+    Crashplan::Org.from_response(valid_attributes, client)
   end
 
   describe ".serialize" do

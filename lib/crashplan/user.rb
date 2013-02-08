@@ -19,5 +19,13 @@ module Crashplan
       return if date.nil?
       @updated_at = DateTime.parse(date)
     end
+
+    def org
+      client.org(org_id)
+    end
+
+    def roles
+      client.user_roles(id)
+    end
   end
 end

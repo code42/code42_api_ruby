@@ -22,12 +22,16 @@ module Crashplan
       object_from_response(Org, :get, "org/#{id}")
     end
 
-    def orgs
-      objects_from_response(Org, :get, 'org', key: 'orgs')
+    def orgs(data = {})
+      options = Org.serialize(data)
+      options.merge!(key: 'orgs')
+      objects_from_response(Org, :get, 'org', options)
     end
 
-    def users
-      objects_from_response(User, :get, 'user', key: 'users')
+    def users(data = {})
+      options = User.serialize(data)
+      options.merge!(key: 'users')
+      objects_from_response(User, :get, 'user', options)
     end
 
     def ping
@@ -91,7 +95,7 @@ module Crashplan
 
     def object_from_response(klass, request_method, path, options = {})
       response = send(request_method.to_sym, path, options)
-      klass.from_response(response)
+      klass.from_response(response, self)
     end
 
     def objects_from_response(klass, request_method, path, options = {})
@@ -106,7 +110,7 @@ module Crashplan
     end
 
     def objects_from_array(klass, array)
-      array.map { |element| klass.deserialize_and_initialize(element) }
+      array.map { |element| klass.deserialize_and_initialize(element, self) }
     end
 
     def get(path, data = {})

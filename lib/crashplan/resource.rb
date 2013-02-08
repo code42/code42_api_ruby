@@ -13,12 +13,12 @@ module Crashplan
         @attribute_translations ||= {}
       end
 
-      def from_response(response)
-        deserialize_and_initialize(response['data'])
+      def from_response(response, client = nil)
+        deserialize_and_initialize(response['data'], client)
       end
 
-      def deserialize_and_initialize(data)
-        new deserialize(data)
+      def deserialize_and_initialize(data, client = nil)
+        new deserialize(data), client
       end
 
 
@@ -72,8 +72,10 @@ module Crashplan
     end
 
     attr_reader :attributes
+    attr_accessor :client
 
-    def initialize(data = {})
+    def initialize(data = {}, client = nil)
+      self.client = client
       @attributes = {}
       data.each do |key, value|
         unless self.respond_to?("#{key}=".to_sym)

@@ -9,6 +9,10 @@ module Crashplan
     attribute :creation_date, :as => :created_at
     attribute :modification_date, :as => :updated_at
 
+    def users
+      client.users(org_id: id)
+    end
+
     def created_at=(date)
       return if date.nil?
       @created_at = DateTime.parse(date)

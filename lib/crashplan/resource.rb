@@ -21,34 +21,43 @@ module Crashplan
         new deserialize(data), client
       end
 
+      def serialize_attribute(name, value)
+        new_name = serialize_attribute_key(name)
+        Hash[new_name, value]
+      end
+
+      def deserialize_attribute(name, value)
+        new_name = deserialize_attribute_key(name)
+        Hash[new_name, value]
+      end
+
+      def serialize_attribute_key(key)
+        reverse_attribute_translations[key] || key.to_s.camelize
+      end
+
+      def deserialize_attribute_key(key)
+        attribute_translations[key] || key.underscore.to_sym
+      end
+
+      def reverse_attribute_translations
+        attribute_translations.invert
+      end
 
       # TODO: refactor these two methods
       def serialize(data)
-        translations = attribute_translations.invert
-        new_hash = {}
-
+        serialized = {}
         data.each do |k,v|
-          new_key = k.to_s.camelize
-          if translations.has_key?(k)
-            new_key = translations[k]
-          end
-          new_hash[new_key] = v
+          serialized.merge! serialize_attribute(k,v)
         end
-        new_hash
+        serialized
       end
 
       def deserialize(data)
-        translations = attribute_translations
-        new_hash = {}
-
+        deserialized = {}
         data.each do |k,v|
-          new_key = k.underscore.to_sym
-          if translations.has_key?(k)
-            new_key = translations[k]
-          end
-          new_hash[new_key] = v
+          deserialized.merge! deserialize_attribute(k,v)
         end
-        new_hash
+        deserialized
       end
 
       def translate_attribute(serialized, deserialized)

@@ -11,9 +11,9 @@ require "crashplan/org"
 require "crashplan/user"
 require "crashplan/ping"
 require "crashplan/token"
-require "crashplan/user_role"
+require "crashplan/role"
+require "crashplan/role_collection"
 require "crashplan/token_validation"
-require "crashplan/user_role_collection"
 
 module Crashplan
   class << self

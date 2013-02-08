@@ -19,13 +19,14 @@ module Crashplan
       @updated_at = DateTime.parse(date)
     end
 
-    # Returns the org connected to this user
+    # Returns the org associated with this user
     # @return [Crashplan::User]
     def org
       client.org(org_id)
     end
 
-    # Returns
+    # Returns the roles associated with this user
+    # @return [Crashplan::RoleCollection]
     def roles
       client.user_roles(id)
     end

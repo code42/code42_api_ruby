@@ -82,12 +82,12 @@ module Crashplan
     end
 
     # Assigns a role to a user
-    # @return [Crashplan::UserRole] The assigned role
+    # @return [Crashplan::Role] The assigned role
     # @param attrs [Hash] A hash of attributes for assigning a user role
     # @example
     #   client.assign_user_role(:user_id => 2, :role_name => 'Admin')
-    def assign_user_role(attrs = {})
-      object_from_response(UserRole, :post, 'UserRole', attrs)
+    def assign_role(attrs = {})
+      object_from_response(Role, :post, 'UserRole', attrs)
     end
 
     # Validates an authorization token
@@ -98,10 +98,10 @@ module Crashplan
     end
 
     # Returns a list of roles for a given user
-    # @return [Crashplan::UserRoleCollection] A collection of matching user roles
+    # @return [Crashplan::RoleCollection] A collection of matching roles
     # @param id [String, Integer] The id of the user to return roles for
     def user_roles(id = 'my')
-      collection_from_response(UserRoleCollection, UserRole, :get, "userRole/#{id}")
+      collection_from_response(RoleCollection, Role, :get, "userRole/#{id}")
     end
 
     # Use basic authentication for future requests

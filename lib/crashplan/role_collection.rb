@@ -1,5 +1,5 @@
 module Crashplan
-  class UserRoleCollection
+  class RoleCollection
     include Enumerable
 
     def initialize(roles = [])

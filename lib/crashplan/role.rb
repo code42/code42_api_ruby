@@ -1,12 +1,12 @@
 module Crashplan
-  class UserRole < Resource
+  class Role < Resource
 
     # @!attribute [rw] id
     #   @return [Fixnum] The id of the role
     # @!attribute [rw] name
     #   @return [String] The name of the role
-    # @!attribute [rw] user_id
-    #   @return [Fixnum] The id of the user the role is assigned to
+    # @!attribute [rw] permissions
+    #   @return [Array] A list of permissions for this role
     # @!attribute [rw] created_at
     #   @return [DateTime] The timestamp for the time the role was assigned
     # @!attribute [rw] updated_at
@@ -17,6 +17,7 @@ module Crashplan
     attribute :role_name, :as => :name
     attribute :creation_date, :as => :created_at
     attribute :modification_date, :as => :updated_at
+    attribute :permissions
 
     def created_at=(date)
       @created_at = DateTime.parse(date)

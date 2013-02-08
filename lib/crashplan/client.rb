@@ -1,8 +1,6 @@
 require 'json'
 
 module Crashplan
-  APP_CODE = 'CPP'
-
   class Client
     attr_accessor :settings
 
@@ -11,7 +9,7 @@ module Crashplan
     end
 
     def get_token(app_code = APP_CODE)
-      object_from_response(Token, :post, "authToken", { appCode: app_code })
+      object_from_response(Token, :post, "authToken")
     end
 
     def user(id = "my")
@@ -22,15 +20,17 @@ module Crashplan
       object_from_response(Org, :get, "org/#{id}")
     end
 
+    def search_orgs(query)
+      orgs(q: query)
+    end
+
     def orgs(data = {})
-      options = Org.serialize(data)
-      options.merge!(key: 'orgs')
+      options = data.merge(key: 'orgs')
       objects_from_response(Org, :get, 'org', options)
     end
 
     def users(data = {})
-      options = User.serialize(data)
-      options.merge!(key: 'users')
+      options = data.merge(key: 'users')
       objects_from_response(User, :get, 'user', options)
     end
 
@@ -45,15 +45,15 @@ module Crashplan
     end
 
     def create_org(data = {})
-      object_from_response(Org, :post, "org", Org.serialize(data))
+      object_from_response(Org, :post, "org", data)
     end
 
     def create_user(data = {})
-      object_from_response(User, :post, "user", User.serialize(data))
+      object_from_response(User, :post, "user", data)
     end
 
     def create_user_role(data = {})
-      object_from_response(UserRole, :post, 'UserRole', UserRole.serialize(data))
+      object_from_response(UserRole, :post, 'UserRole', data)
     end
 
     def validate_token(token)
@@ -94,6 +94,7 @@ module Crashplan
     private
 
     def object_from_response(klass, request_method, path, options = {})
+      options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
       klass.from_response(response, self)
     end

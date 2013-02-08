@@ -22,6 +22,14 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 end
 
+Crashplan.configure do |config|
+  config.host     = "localhost"
+  config.port     = 7280
+  config.username = "admin"
+  config.password = "admin"
+  config.api_root = "/api"
+end
+
 def a_get(path)
   a_request(:get, path)
 end

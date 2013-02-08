@@ -84,7 +84,7 @@ module Crashplan
     attr_accessor :client
 
     def initialize(data = {}, client = nil)
-      self.client = client
+      self.client = client || Crashplan.client
       @attributes = {}
       data.each do |key, value|
         unless self.respond_to?("#{key}=".to_sym)

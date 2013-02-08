@@ -8,8 +8,8 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
-    def get_token(app_code = APP_CODE)
-      object_from_response(Token, :post, "authToken")
+    def get_token(data = {})
+      object_from_response(Token, :post, "authToken", data)
     end
 
     def user(id = "my")

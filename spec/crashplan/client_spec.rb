@@ -107,7 +107,7 @@ describe Crashplan::Client, :vcr do
 
   describe "#ping" do
     it "returns a ping" do
-      expect(client.ping).to be_a Crashplan::Ping
+      expect(client.ping).to be_true
     end
   end
 end

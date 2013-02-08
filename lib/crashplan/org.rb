@@ -1,6 +1,5 @@
 module Crashplan
-  class Org
-    include Resource
+  class Org < Resource
 
     attribute :org_id, :as => :id
     attribute :org_uid, :as => :uid

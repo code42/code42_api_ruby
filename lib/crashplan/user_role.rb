@@ -1,6 +1,5 @@
 module Crashplan
-  class UserRole
-    include Resource
+  class UserRole < Resource
 
     attribute :role_id, :as => :id
     attribute :role_name, :as => :name

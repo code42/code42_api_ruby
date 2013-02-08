@@ -1,12 +1,11 @@
 module Crashplan
-  class Ping
+  class Ping < Resource
 
-  	attr_accessor :success
+    attribute :success
 
-  	def initialize(attrs = {})
-  		attrs ||= {}
-  		self.success = attrs["success"]
-  	end
+    def to_s
+      success?
+    end
 
   	def success?
   		self.success

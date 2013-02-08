@@ -1,8 +1,7 @@
 require 'crashplan/resource'
 
 module Crashplan
-  class Token
-    include Resource
+  class Token < Resource
 
     class << self
       def from_string(token_string)

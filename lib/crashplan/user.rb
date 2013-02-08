@@ -1,8 +1,7 @@
 require 'date'
 
 module Crashplan
-  class User
-    include Resource
+  class User < Resource
 
     attribute :user_id, :as => :id
     attribute :user_uid, :as => :uid

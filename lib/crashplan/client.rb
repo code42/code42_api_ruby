@@ -35,8 +35,7 @@ module Crashplan
     end
 
     def ping
-      response = get 'ping'
-      Ping.new(response["data"])
+      object_from_response(Ping, :get, 'ping')
     end
 
     def delete_token(token = nil)

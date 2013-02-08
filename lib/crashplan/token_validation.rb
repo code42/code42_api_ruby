@@ -1,6 +1,5 @@
 module Crashplan
-  class TokenValidation
-    include Resource
+  class TokenValidation < Resource
 
     attribute :valid, :username
 

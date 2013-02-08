@@ -1,14 +1,8 @@
 require "crashplan/ext/string"
 
 module Crashplan
-  module Resource
+  class Resource
     class << self
-      def included(base)
-        base.extend ClassMethods
-      end
-    end
-
-    module ClassMethods
       def attribute_translations
         @attribute_translations ||= {}
       end

@@ -30,5 +30,12 @@ module Crashplan
     def roles
       client.user_roles(id)
     end
+
+    # Assigns a role to this user
+    # @return [Crashplan::Role]
+    def assign_role(attrs = {})
+      attrs.merge!(user_id: id)
+      client.assign_role(attrs)
+    end
   end
 end

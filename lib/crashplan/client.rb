@@ -85,7 +85,7 @@ module Crashplan
     # @return [Crashplan::Role] The assigned role
     # @param attrs [Hash] A hash of attributes for assigning a user role
     # @example
-    #   client.assign_user_role(:user_id => 2, :role_name => 'Admin')
+    #   client.assign_role(:user_id => 2, :role_name => 'Admin')
     def assign_role(attrs = {})
       object_from_response(Role, :post, 'UserRole', attrs)
     end

@@ -12,6 +12,11 @@ module Crashplan
       client.users(org_id: id)
     end
 
+    def create_user(attrs = {})
+      attrs.merge!(org_id: id)
+      client.create_user(attrs)
+    end
+
     def created_at=(date)
       return if date.nil?
       @created_at = DateTime.parse(date)

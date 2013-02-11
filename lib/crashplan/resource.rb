@@ -37,21 +37,12 @@ module Crashplan
         attribute_translations.invert
       end
 
-      # TODO: refactor these two methods
       def serialize(data)
-        serialized = {}
-        data.each do |k,v|
-          serialized.merge! serialize_attribute(k,v)
-        end
-        serialized
+        data.inject({}){ |o, ary| o.merge! serialize_attribute(*ary) }
       end
 
       def deserialize(data)
-        deserialized = {}
-        data.each do |k,v|
-          deserialized.merge! deserialize_attribute(k,v)
-        end
-        deserialized
+        data.inject({}){ |o, ary| o.merge! deserialize_attribute(*ary) }
       end
 
       def translate_attribute(serialized, deserialized)

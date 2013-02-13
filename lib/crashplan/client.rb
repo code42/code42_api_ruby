@@ -72,6 +72,10 @@ module Crashplan
       object_from_response(Org, :post, "org", attrs)
     end
 
+    def update_org(id = 'my', attrs = {})
+      object_from_response(Org, :put, "org/#{id}", attrs)
+    end
+
     # Creates a user
     # @return [Crashplan::User] The created user
     # @param attrs [Hash] A hash of attributes to assign to created user
@@ -165,6 +169,10 @@ module Crashplan
 
     def post(path, data = {})
       make_request(:post, path, data)
+    end
+
+    def put(path, data = {})
+      make_request(:put, path, data)
     end
 
     def delete(path, data = {})

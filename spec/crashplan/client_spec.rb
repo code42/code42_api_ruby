@@ -69,6 +69,13 @@ describe Crashplan::Client, :vcr do
       expect(user.username).to eq 'testuser'
       expect(user.id).to eq 2
     end
+
+    context "when sending an invalid email" do
+      it "raises an exception" do
+        user_attributes[:email] = 'testuser'
+        expect { client.create_user(user_attributes) }.to raise_error Crashplan::Error::EmailInvalid
+      end
+    end
   end
 
   describe "#user" do

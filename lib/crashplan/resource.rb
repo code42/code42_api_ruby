@@ -1,5 +1,3 @@
-require "crashplan/ext/string"
-
 module Crashplan
   class Resource
     class << self
@@ -26,7 +24,7 @@ module Crashplan
       end
 
       def serialize_attribute_key(key)
-        reverse_attribute_translations[key] || key.to_s.camelize
+        reverse_attribute_translations[key] || key.to_s.camelize(:lower)
       end
 
       def deserialize_attribute_key(key)
@@ -58,7 +56,7 @@ module Crashplan
         if options.has_key?(:as)
           name = args.first
           attributes << name
-          attribute_translations[name.to_s.camelize] = options[:as]
+          attribute_translations[name.to_s.camelize(:lower)] = options[:as]
         else
           attributes.push(*args)
         end

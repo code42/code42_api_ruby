@@ -61,6 +61,11 @@ module Crashplan
       adapter.get(path, data)
     end
 
+    def put(path, data)
+      adapter.headers['Content-Type'] = 'application/json'
+      adapter.put path, data.to_json
+    end
+
     def post(path, data)
       adapter.headers['Content-Type'] = 'application/json'
       adapter.post path, data.to_json
@@ -84,10 +89,18 @@ module Crashplan
       if response.status == 401
         raise Crashplan::Error::AuthenticationError
       elsif response.status >= 400 && response.status < 600
-        if response.body.is_a?(Array)
-          messages = response.body.map { |b| b['description'] }.join(', ')
-        end
-        raise Crashplan::Error, messages
+        body = response.body.is_a?(Array) ? response.body.first : response.body
+        raise exception_from_body(body), body['description']
+      end
+    end
+
+    def exception_from_body(body)
+      return Crashplan::Error unless body.has_key?('name')
+      exception_name = body['name'].downcase.camelize
+      if Crashplan::Error.const_defined?(exception_name)
+        Crashplan::Error.const_get(exception_name)
+      else
+        Crashplan::Error
       end
     end
 

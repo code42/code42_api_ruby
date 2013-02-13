@@ -16,6 +16,10 @@ module Crashplan
       client.update_org(id, attrs)
     end
 
+    def delete
+      client.delete_org(id)
+    end
+
     def create_user(attrs = {})
       attrs.merge!(org_id: id)
       client.create_user(attrs)

@@ -27,6 +27,10 @@ module Crashplan
       object_from_response(Org, :get, "org/#{id}")
     end
 
+    def delete_org(id = 'my')
+      delete("/org/#{id}")
+    end
+
     # Searches orgs for a query string
     # @return [Array] An array of matching orgs
     # @param query [String] A string to search for

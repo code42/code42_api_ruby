@@ -31,6 +31,10 @@ module Crashplan
       delete("/org/#{id}")
     end
 
+    def delete_user(id = 'my')
+      delete("/user/#{id}")
+    end
+
     # Searches orgs for a query string
     # @return [Array] An array of matching orgs
     # @param query [String] A string to search for

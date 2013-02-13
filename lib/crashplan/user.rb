@@ -19,6 +19,10 @@ module Crashplan
       @updated_at = DateTime.parse(date)
     end
 
+    def delete
+      client.delete_user(id)
+    end
+
     # Returns the org associated with this user
     # @return [Crashplan::User]
     def org

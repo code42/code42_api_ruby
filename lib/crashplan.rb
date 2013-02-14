@@ -1,6 +1,7 @@
 require "active_support/core_ext/array/extract_options"
 require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/string/inflections"
+require "active_support/core_ext/object/blank"
 require "crashplan/version"
 require "crashplan/client"
 require "crashplan/settings"

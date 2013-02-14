@@ -136,7 +136,8 @@ module Crashplan
         host: settings.host,
         port: settings.port,
         scheme: settings.scheme,
-        path_prefix: settings.api_root
+        path_prefix: settings.api_root,
+        verify_https: settings.verify_https
       )
       if settings.username && settings.password
         @connection.username = settings.username

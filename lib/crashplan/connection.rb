@@ -5,21 +5,23 @@ require 'crashplan/error'
 
 module Crashplan
   class Connection
-    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token
+    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https
 
     def initialize(options = {})
-      self.host        = options[:host]
-      self.port        = options[:port]
-      self.scheme      = options[:scheme]
-      self.path_prefix = options[:path_prefix]
-      self.username    = options[:username]
-      self.password    = options[:password]
-      self.token       = options[:token] if options[:token]
+      self.host         = options[:host]
+      self.port         = options[:port]
+      self.scheme       = options[:scheme]
+      self.path_prefix  = options[:path_prefix]
+      self.username     = options[:username]
+      self.password     = options[:password]
+      self.token        = options[:token] if options[:token]
+      self.verify_https = !options[:verify_https].nil? ? options[:verify_https] : true
 
       adapter.host        = host
       adapter.port        = port
       adapter.scheme      = scheme
       adapter.path_prefix = path_prefix
+      adapter.ssl[:verify] = verify_https
     end
 
     def adapter

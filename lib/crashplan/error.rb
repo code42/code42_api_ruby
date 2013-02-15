@@ -9,4 +9,5 @@ module Crashplan
   class Error::ParentOrgBlocked < Error; end
   class Error::ParentOrgNotActive < Error; end
   class Error::OrgNameTooShort < Error; end
+  class Error::ConnectionFailed < Error; end
 end

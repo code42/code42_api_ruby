@@ -54,7 +54,11 @@ module Crashplan
     end
 
     def make_request(method, *args)
-      response = self.send(method, *args)
+      begin
+        response = self.send(method, *args)
+      rescue Faraday::Error::ConnectionFailed
+        raise Crashplan::Error::ConnectionFailed
+      end
       check_for_errors(response)
       response.body
     end

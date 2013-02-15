@@ -59,7 +59,7 @@ module Crashplan
     end
 
     def user_exists?(username)
-      users(username: username).map(&:username).include? username
+      users(username: username).present?
     end
 
     # Pings the server

@@ -10,6 +10,7 @@ module Crashplan
       end
 
       def deserialize_and_initialize(data, client = nil)
+        p data
         new deserialize(data), client
       end
 

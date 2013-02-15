@@ -54,8 +54,12 @@ module Crashplan
     # @return [Array] An array of matching users
     # @param params [Hash] A hash of parameters to match results against
     def users(params = {})
-      params.merge(key: 'users')
+      params.merge!(key: 'users')
       objects_from_response(User, :get, 'user', params)
+    end
+
+    def user_exists?(username)
+      users(username: username).map(&:username).include? username
     end
 
     # Pings the server

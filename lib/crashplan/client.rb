@@ -5,11 +5,11 @@ module Crashplan
     attr_accessor :settings
 
     def initialize(options = {})
-      @settings = Settings.new(options)
+      self.settings = options
     end
 
-    def settings=(settings)
-      @settings = Settings.new(settings)
+    def settings=(options)
+      @settings = Settings.new(options)
     end
 
     # Gets a token for the currently authorized user

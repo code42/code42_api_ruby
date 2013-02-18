@@ -8,6 +8,10 @@ module Crashplan
     attribute :creation_date, :as => :created_at
     attribute :modification_date, :as => :updated_at
 
+    def self.create(attrs = {})
+      client.create_org(attrs)
+    end
+
     def users
       client.users(org_id: id)
     end

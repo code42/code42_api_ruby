@@ -8,6 +8,10 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
+    def settings=(settings)
+      @settings = Settings.new(settings)
+    end
+
     # Gets a token for the currently authorized user
     def get_token
       object_from_response(Token, :post, "authToken")

@@ -15,9 +15,21 @@ module Crashplan
 
     # Returns information for a given user
     # @return [Crashplan::User] The requested user
-    # @param id [String, Integer] A crashplan user ID
-    def user(id = "my")
+    # @param id_or_username [String, Integer] A crashplan user ID or username
+    def user(id_or_username = "my")
+      if id_or_username.is_a? Fixnum || id_or_username == 'my'
+        find_user_by_id id_or_username
+      else
+        find_user_by_username id_or_username
+      end
+    end
+
+    def find_user_by_id(id = 'my')
       object_from_response(User, :get, "user/#{id}")
+    end
+
+    def find_user_by_username(username)
+      users(username: username).first
     end
 
     # Returns information for a given org

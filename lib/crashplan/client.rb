@@ -21,7 +21,7 @@ module Crashplan
     # @return [Crashplan::User] The requested user
     # @param id_or_username [String, Integer] A crashplan user ID or username
     def user(id_or_username = "my")
-      if id_or_username.is_a? Fixnum || id_or_username == 'my'
+      if id_or_username.is_a?(Fixnum) || id_or_username == 'my'
         find_user_by_id id_or_username
       else
         find_user_by_username id_or_username

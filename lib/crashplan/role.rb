@@ -13,10 +13,10 @@ module Crashplan
     #   @return [DateTime] The timestamp for the time the role was updated
 
     attribute :user_id
-    attribute :role_id, :as => :id
-    attribute :role_name, :as => :name
-    attribute :creation_date, :as => :created_at
-    attribute :modification_date, :as => :updated_at
+    attribute :id, :from => :roleId
+    attribute :name, :from => :roleName
+    attribute :created_at, :from => :creationDate
+    attribute :updated_at, :from => :modificationDate
     attribute :permissions
 
     def created_at=(date)

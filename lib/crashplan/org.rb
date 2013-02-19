@@ -1,12 +1,12 @@
 module Crashplan
   class Org < Resource
 
-    attribute :org_id, :as => :id
-    attribute :org_uid, :as => :uid
-    attribute :org_name, :as => :name
-    attribute :parent_org_id, :as => :parent_id
-    attribute :creation_date, :as => :created_at
-    attribute :modification_date, :as => :updated_at
+    attribute :id, :from => 'orgId'
+    attribute :uid, :from => 'orgUid'
+    attribute :name, :from => 'orgName'
+    attribute :parent_id, :from => 'parentOrgId'
+    attribute :created_at, :from => 'creationDate'
+    attribute :updated_at, :from => 'modificationDate'
 
     def self.create(attrs = {})
       client.create_org(attrs)

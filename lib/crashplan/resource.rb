@@ -1,10 +1,6 @@
 module Crashplan
   class Resource
     class << self
-      def attribute_translations
-        @attribute_translations ||= {}
-      end
-
       def from_response(response, client = nil)
         deserialize_and_initialize(response['data'], client)
       end
@@ -13,38 +9,16 @@ module Crashplan
         new deserialize(data), client
       end
 
-      def serialize_attribute(name, value)
-        new_name = serialize_attribute_key(name)
-        Hash[new_name, value]
-      end
-
-      def deserialize_attribute(name, value)
-        new_name = deserialize_attribute_key(name)
-        Hash[new_name, value]
-      end
-
-      def serialize_attribute_key(key)
-        reverse_attribute_translations[key] || key.to_s.camelize(:lower)
-      end
-
-      def deserialize_attribute_key(key)
-        attribute_translations[key] || key.underscore.to_sym
-      end
-
-      def reverse_attribute_translations
-        attribute_translations.invert
-      end
-
       def serialize(data)
-        data.inject({}){ |o, ary| o.merge! serialize_attribute(*ary) }
+        data.inject({}) { |o, ary| o.merge! serializer.serialize(*ary) }
       end
 
       def deserialize(data)
-        data.inject({}){ |o, ary| o.merge! deserialize_attribute(*ary) }
+        data.inject({}) { |o, ary| o.merge! serializer.deserialize(*ary) }
       end
 
-      def translate_attribute(serialized, deserialized)
-        attribute_translations[serialized.to_s] = deserialized
+      def serializer
+        @serializer ||= Crashplan::AttributeSerializer.new
       end
 
       def attributes
@@ -53,35 +27,31 @@ module Crashplan
 
       def attribute(*args)
         options = args.extract_options!
-        if options.has_key?(:as)
-          name = args.first
-          attributes << name
-          attribute_translations[name.to_s.camelize(:lower)] = options[:as]
+        if options.has_key?(:from)
+          from = options[:from].to_s
+          to = args.first
+          serializer.add_exception(from, to)
+          attributes << to
         else
-          attributes.push(*args)
+          attributes.push *args
         end
       end
     end
 
-    attr_reader :attributes
-    attr_accessor :client
+    attr_accessor :client, :attributes
 
     def initialize(data = {}, client = nil)
       self.client = client || Crashplan.client
-      @attributes = {}
+      self.attributes = {}
       data.each do |key, value|
         unless self.respond_to?("#{key}=".to_sym)
-          self.class.send :define_method, "#{key}=".to_sym do |v|
-            instance_variable_set("@" + key.to_s, v)
-          end
+          self.class.instance_eval { attr_writer key.to_sym }
         end
         unless self.respond_to?("key".to_sym)
-          self.class.send :define_method, key.to_sym do
-            instance_variable_get("@" + key.to_s)
-          end
+          self.class.instance_eval { attr_reader key.to_sym }
         end
         self.send("#{key}=", value)
-        @attributes[key.to_sym] = send(key.to_sym)
+        attributes[key.to_sym] = send(key.to_sym)
       end
     end
   end

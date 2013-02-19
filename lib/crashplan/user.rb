@@ -3,10 +3,10 @@ require 'date'
 module Crashplan
   class User < Resource
 
-    attribute :user_id, :as => :id
-    attribute :user_uid, :as => :uid
-    attribute :modification_date, :as => :updated_at
-    attribute :creation_date, :as => :created_at
+    attribute :id, :from => 'userId'
+    attribute :uid, :from => 'userUid'
+    attribute :updated_at, :from => 'modificationDate'
+    attribute :created_at, :from => 'creationDate'
     attribute :status, :username, :email, :first_name, :last_name, :quota_in_bytes, :org_id, :org_uid, :org_name, :active, :blocked, :email_promo, :invited, :org_type, :username_is_an_email
 
     def self.create(attributes)

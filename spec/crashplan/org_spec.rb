@@ -22,13 +22,6 @@ describe Crashplan::Org do
     Crashplan::Org.from_response(valid_attributes)
   end
 
-  describe ".serialize_attribute" do
-    it "serializes data correctly" do
-      serialized = Crashplan::Org.serialize_attribute(:name, 'Target')
-      expect(serialized).to eq('orgName' => 'Target')
-    end
-  end
-
   describe ".serialize" do
     it "serializes data correctly" do
       data = {

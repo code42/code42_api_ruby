@@ -1,8 +1,10 @@
 module Crashplan
   class Resource
+    alias_method :inspect, :to_s
+
     class << self
       def from_response(response, client = nil)
-        deserialize_and_initialize(response['data'], client)
+        deserialize_and_initialize(response, client)
       end
 
       def deserialize_and_initialize(data, client = nil)
@@ -21,19 +23,10 @@ module Crashplan
         @serializer ||= Crashplan::AttributeSerializer.new
       end
 
-      def attributes
-        @attributes ||= []
-      end
-
       def attribute(*args)
         options = args.extract_options!
-        if options.has_key?(:from)
-          from = options[:from].to_s
-          to = args.first
-          serializer.add_exception(from, to)
-          attributes << to
-        else
-          attributes.push *args
+        args.each do |name|
+          serializer << Attribute.new(name, options)
         end
       end
     end

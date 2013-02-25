@@ -4,32 +4,72 @@ module Crashplan
       exceptions << AttributeSerializerException.new(from, to)
     end
 
+    def attributes
+      @attributes ||= []
+    end
+
+    def <<(attribute)
+      add_exception attribute.from, attribute.to
+      attributes << attribute
+    end
+
     def exceptions
       @exceptions ||= AttributeSerializerExceptions.new
     end
 
     def serialize(key, value)
-      Hash[serialize_key(key), value]
+      Hash[serialize_key(key), serialize_value(key,value)]
     end
 
     def deserialize(key, value)
-      Hash[deserialize_key(key), value]
+      Hash[deserialize_key(key), deserialize_value(key, value)]
     end
 
-    def deserialize_key(attribute_key)
-      if exceptions.contains_exception_from?(attribute_key)
-        exceptions.from(attribute_key).to
+    def deserialize_key(key)
+      if exception = exception_from(key)
+        exception.to
       else
-        attribute_key.underscore.to_sym
+        key.underscore.to_sym
       end
     end
 
-    def serialize_key(attribute_key)
-      if exceptions.contains_exception_to?(attribute_key)
-        exceptions.to(attribute_key).from
+    def serialize_value(key, value)
+      value
+    end
+
+    def deserialize_value(key, value)
+      if klass = attribute_for(key).try(:as)
+        if klass.respond_to?(:from_response)
+          klass.from_response(value)
+        elsif klass.respond_to?(:parse)
+          klass.parse(value)
+        else
+          value
+        end
       else
-        attribute_key.to_s.camelize(:lower)
+        value
       end
+    end
+
+    def serialize_key(key)
+      if exception = exception_to(key)
+        exception.from
+      else
+        key.to_s.camelize(:lower)
+      end
+    end
+
+    def attribute_for(key)
+      key = key.to_s
+      attributes.detect { |a| a.to.to_s == key.to_s || a.from.to_s == key.to_s }
+    end
+
+    def exception_to(key)
+      exceptions.to(key)
+    end
+
+    def exception_from(key)
+      exceptions.from(key)
     end
   end
 
@@ -42,14 +82,6 @@ module Crashplan
 
     def <<(exception)
       @exceptions << exception
-    end
-
-    def contains_exception_from?(value)
-      !!from(value)
-    end
-
-    def contains_exception_to?(value)
-      !!to(value)
     end
 
     def from(value)

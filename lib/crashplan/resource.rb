@@ -47,7 +47,7 @@ module Crashplan
         unless self.respond_to?("#{key}=".to_sym)
           self.class.instance_eval { attr_writer key.to_sym }
         end
-        unless self.respond_to?("key".to_sym)
+        unless self.respond_to?("#{key}".to_sym)
           self.class.instance_eval { attr_reader key.to_sym }
         end
         self.send("#{key}=", value)

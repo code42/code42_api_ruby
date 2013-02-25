@@ -91,6 +91,15 @@ module Crashplan
       delete "authToken/#{token.to_s}"
     end
 
+    # Creates blue org as well as user for the org
+    # @return [Crashplan::Org] The created org
+    # @param attrs [Hash] A hash of attributes to assign to created org
+    # @example
+    #   client.create_org(:company => "test", :email => "test@test.com", :firstname => "test", :lastname => "test")
+    def create_pro_org(attrs = {})
+      object_from_response(Org, :post, "proorgchannel", attrs)
+    end
+
     # Creates an org
     # @return [Crashplan::Org] The created org
     # @param attrs [Hash] A hash of attributes to assign to created org

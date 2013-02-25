@@ -1,6 +1,6 @@
 module Crashplan
   class Settings
-    attr_accessor :host, :port, :https, :api_root, :username, :password, :token, :verify_https
+    attr_accessor :host, :port, :https, :api_root, :username, :password, :token, :verify_https, :debug
 
     def initialize(options = {})
       options.symbolize_keys!
@@ -12,6 +12,7 @@ module Crashplan
       self.username = options[:username]
       self.password = options[:password]
       self.token    = options[:token]
+      self.debug    = options[:debug]
     end
 
     def all

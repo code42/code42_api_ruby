@@ -10,4 +10,5 @@ module Crashplan
   class Error::ParentOrgNotActive < Error; end
   class Error::OrgNameTooShort < Error; end
   class Error::ConnectionFailed < Error; end
+  class Error::ResourceNotFound < Error; end
 end

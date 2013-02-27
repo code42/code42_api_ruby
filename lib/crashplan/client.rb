@@ -166,8 +166,11 @@ module Crashplan
         port: settings.port,
         scheme: settings.scheme,
         path_prefix: settings.api_root,
-        verify_https: settings.verify_https
+        verify_https: settings.verify_https,
       )
+      if settings.debug
+        @connection.use Faraday::Response::Logger
+      end
       if settings.username && settings.password
         @connection.username = settings.username
         @connection.password = settings.password
@@ -183,7 +186,7 @@ module Crashplan
     def object_from_response(klass, request_method, path, options = {})
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
-      klass.from_response(response, self)
+      klass.from_response(response['data'], self)
     end
 
     def objects_from_response(klass, request_method, path, options = {})

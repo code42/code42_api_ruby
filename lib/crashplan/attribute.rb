@@ -5,7 +5,7 @@ module Crashplan
 
     def initialize(name, options = {})
       @name = name.to_sym
-      @from = options[:from].to_s
+      @from = (options[:from] || name.to_s.camelize(:lower)).to_s
       @as   = options[:as]
     end
   end

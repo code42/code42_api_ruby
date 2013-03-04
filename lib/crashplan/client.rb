@@ -102,7 +102,7 @@ module Crashplan
     # @example
     #   client.create_org(:company => "test", :email => "test@test.com", :firstname => "test", :lastname => "test")
     def create_pro_org(attrs = {})
-      object_from_response(Org, :post, "proorgchannel", attrs)
+      object_from_response(Org, :post, "proOrgChannel", attrs)
     end
 
     # Creates an org

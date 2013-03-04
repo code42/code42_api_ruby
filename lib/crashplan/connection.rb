@@ -5,8 +5,7 @@ require 'crashplan/error'
 
 module Crashplan
   class Connection
-    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https
-
+    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger
     def initialize(options = {})
       self.host         = options[:host]
       self.port         = options[:port]
@@ -22,6 +21,10 @@ module Crashplan
       adapter.scheme      = scheme
       adapter.path_prefix = path_prefix
       adapter.ssl[:verify] = verify_https
+    end
+
+    def logger
+      @logger ||= Logger.new(STDOUT)
     end
 
     def adapter

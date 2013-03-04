@@ -36,6 +36,11 @@ module Crashplan
       users(username: username).first
     end
 
+    # Returns a user for a given channel id
+    def find_user_by_channel_id(channel_id = 1)
+      object_from_response(User, :get, "userChannel?channelCustomerId=#{channel_id}")
+    end
+
     # Returns information for a given org
     # @return [Crashplan::Org] The requested org
     # @param id [String, Integer] A crashplan user ID
@@ -166,8 +171,11 @@ module Crashplan
         port: settings.port,
         scheme: settings.scheme,
         path_prefix: settings.api_root,
-        verify_https: settings.verify_https
+        verify_https: settings.verify_https,
       )
+      if settings.debug
+        @connection.use Faraday::Response::Logger
+      end
       if settings.username && settings.password
         @connection.username = settings.username
         @connection.password = settings.password

@@ -191,7 +191,7 @@ module Crashplan
     def object_from_response(klass, request_method, path, options = {})
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
-      return nil if response.nil?
+      return nil if response['data'].nil?
       klass.from_response(response['data'], self)
     end
 

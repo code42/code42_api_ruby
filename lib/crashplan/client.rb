@@ -191,14 +191,20 @@ module Crashplan
     def object_from_response(klass, request_method, path, options = {})
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
+      return nil unless response_has_data?(response)
       klass.from_response(response['data'], self)
     end
 
     def objects_from_response(klass, request_method, path, options = {})
       key = options.delete(:key)
       response = send(request_method.to_sym, path, options)['data']
+      return nil unless response_has_data?(response)
       response = response[key] if key
       objects_from_array(klass, response)
+    end
+
+    def response_has_data?(response)
+      !response['data'].nil?
     end
 
     def collection_from_response(collection_klass, object_klass, request_method, path, options = {})

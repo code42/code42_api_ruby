@@ -15,17 +15,9 @@ module Crashplan
     attribute :user_id
     attribute :id, :from => :roleId
     attribute :name, :from => :roleName
-    attribute :created_at, :from => :creationDate
-    attribute :updated_at, :from => :modificationDate
+    attribute :created_at, :from => :creationDate, :as => DateTime
+    attribute :updated_at, :from => :modificationDate, :as => DateTime
     attribute :permissions
-
-    def created_at=(date)
-      @created_at = DateTime.parse(date)
-    end
-
-    def updated_at=(date)
-      @updated_at = DateTime.parse(date)
-    end
 
     def permissions=(permissions = [])
       @permissions = permissions.map { |p| p['permission'] }

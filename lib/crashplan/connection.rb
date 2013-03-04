@@ -97,20 +97,23 @@ module Crashplan
     def check_for_errors(response)
       if response.status == 401
         raise Crashplan::Error::AuthenticationError
+      elsif response.status == 404
+        raise Crashplan::Error::ResourceNotFound
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
-        raise exception_from_body(body), body['description']
+        raise exception_from_body(body)
       end
     end
 
     def exception_from_body(body)
-      return Crashplan::Error unless body.has_key?('name')
+      return Crashplan::Error if body.nil? || !body.has_key?('name')
       exception_name = body['name'].downcase.camelize
       if Crashplan::Error.const_defined?(exception_name)
-        Crashplan::Error.const_get(exception_name)
+        klass = Crashplan::Error.const_get(exception_name)
       else
-        Crashplan::Error
+        klass = Crashplan::Error
       end
+      klass.new(body['description'])
     end
 
     def method_missing(method_name, *args, &block)

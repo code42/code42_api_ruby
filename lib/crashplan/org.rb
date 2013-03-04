@@ -7,6 +7,7 @@ module Crashplan
     attribute :parent_id, :from => 'parentOrgId'
     attribute :created_at, :from => 'creationDate', :as => DateTime
     attribute :updated_at, :from => 'modificationDate', :as => DateTime
+    attribute :customer_id
 
     def self.create(attrs = {})
       client.create_org(attrs)

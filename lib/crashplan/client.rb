@@ -56,6 +56,10 @@ module Crashplan
       delete("/user/#{id}")
     end
 
+    def find_org_by_name(name)
+      search_orgs(name).select { |o| o.name == name }
+    end
+
     # Searches orgs for a query string
     # @return [Array] An array of matching orgs
     # @param query [String] A string to search for

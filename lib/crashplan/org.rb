@@ -13,6 +13,10 @@ module Crashplan
       client.create_org(attrs)
     end
 
+    def self.find_by_name(name)
+      client.find_org_by_name(name)
+    end
+
     def users
       client.users(org_id: id)
     end

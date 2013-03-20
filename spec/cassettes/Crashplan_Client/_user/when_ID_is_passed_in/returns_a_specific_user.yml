@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/user/1
+    uri: http://admin:admin@localhost:7280/api/user/2
     body:
       encoding: US-ASCII
       string: ''
@@ -40,14 +40,14 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAAJWSQW7CMBBF95wi8pogJ2mJlF0qssiiKaL0AEPsFKuxTewJ
-        FULcvXYJJQV10aXfn5nv8fdxEgREcgQGCCQLguDoiGMoJLcIcucgiWmUhDQO
-        abqO0oymWZTOkoSGdJ5RSqbnjh0YkNaVH08OnDwlt1N7y03JHImmV/AmPCG4
-        /Wy3/ctBdLHdb1jdNVLGjEvFxMXCXQh7b0HyGsWek9EUBZJ7BZgU6iJwCaK9
-        o40wFquhPh8rLfwhdL1GKNXTAbn3Dy/31+b91z7uPKyTL57Lilzxz9gxh/Ma
-        WYCm5wPbtLr+4H5GA63l402WRkt9Iwi1F3hX7gzXh923YVGti9VyVb4Wt89V
-        2lwVwwuNm2vDAYVWC0B+jp/OQ/oQRi7+OEuoC31GqYv/cRS/1Ew0ov5Ho/8l
-        k9MX3tW6JIICAAA=
+        H4sIAAAAAAAAAIWSXW+CMBSG7/0VpNdiypcu3LnBFpJNDcK1OUJZmrXUlWJi
+        jP997awRncnu2ue87/lqjyPHQZwoqEEBih3HOWqimaKcdAr4TkPkYy9wceD6
+        uPBmMY7iKJiE05mrTxij8dmxAwm80/LjSYOToeg+a98RmdWa+OMrKKkhCEf1
+        09T3ahxNYRuE1SWv7kL1Ji+aV4ruCRpYW+DERMz5wgkHyjRse8Ysaqjs1OKs
+        HWAGj+h3LxRk7fNBEVPV9SwX8vOmdX23nSfp67x8LzYv5bpYfqT5Zpm/bbIE
+        XYW2CkpIAz1TlwicB4odJXti2ZaJ6ouYvA2wjgyHWknBxa2atnuq/qh1xeKw
+        +62YLoo0X+XZOr3fW9bN29TuamiuJAFFRZuAIg8eP4yDaBKGd4/PRU0bWv1v
+        jAJrNH9kdPoBpMgiQ4ACAAA=
     http_version: 
-  recorded_at: Thu, 07 Feb 2013 23:07:17 GMT
+  recorded_at: Wed, 20 Mar 2013 22:05:53 GMT
 recorded_with: VCR 2.4.0

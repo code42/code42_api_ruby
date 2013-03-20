@@ -15,7 +15,7 @@ describe Crashplan::User do
 
   describe "#id" do
     it "should return correct id" do
-      expect(user.id).to eq 1
+      user.id.should == 1
     end
   end
 end

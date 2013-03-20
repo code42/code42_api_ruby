@@ -112,6 +112,13 @@ describe Crashplan::Client, :vcr do
     end
   end
 
+  describe "#find_org_by_name" do
+    it "returns the org with the specified name" do
+      org = client.find_org_by_name 'Default'
+      org.name.should == 'Default'
+    end
+  end
+
   describe "#ping" do
     it "returns a ping" do
       expect(client.ping).to be_true

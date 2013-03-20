@@ -201,8 +201,9 @@ module Crashplan
 
     def objects_from_response(klass, request_method, path, options = {})
       key = options.delete(:key)
-      response = send(request_method.to_sym, path, options)['data']
+      response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
+      response = response['data']
       response = response[key] if key
       objects_from_array(klass, response)
     end

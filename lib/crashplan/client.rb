@@ -57,7 +57,7 @@ module Crashplan
     end
 
     def find_org_by_name(name)
-      search_orgs(name).select { |o| o.name == name }
+      search_orgs(name).select { |o| o.name == name }.first
     end
 
     # Searches orgs for a query string

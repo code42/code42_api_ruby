@@ -204,7 +204,7 @@ module Crashplan
     end
 
     def response_has_data?(response)
-      !response['data'].nil?
+      !response.nil? || !response['data'].nil?
     end
 
     def collection_from_response(collection_klass, object_klass, request_method, path, options = {})

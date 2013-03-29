@@ -18,7 +18,15 @@ module Crashplan
     end
 
     def serialize(key, value)
-      Hash[serialize_key(key), serialize_value(key,value)]
+      if value.class == Hash
+        values = {}
+        value.each do |k,v|
+          p.merge! serialize(k,v)
+        end
+        Hash[serialize_key(key), values]
+      else
+        Hash[serialize_key(key), value]
+      end
     end
 
     def deserialize(key, value)
@@ -31,10 +39,6 @@ module Crashplan
       else
         key.underscore.to_sym
       end
-    end
-
-    def serialize_value(key, value)
-      value
     end
 
     def deserialize_value(key, value)

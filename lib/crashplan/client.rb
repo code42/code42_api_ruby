@@ -17,6 +17,12 @@ module Crashplan
       object_from_response(Token, :post, "authToken")
     end
 
+    # Returns LoginToken and ServerUrl
+    # @return [CrashPlan::Token] Token to pass to ServerUrl's AuthToken resource
+    def get_login_token
+      object_from_response(Token, :post, "loginToken")
+    end
+
     # Returns information for a given user
     # @return [Crashplan::User] The requested user
     # @param id_or_username [String, Integer] A crashplan user ID or username
@@ -48,12 +54,22 @@ module Crashplan
       object_from_response(Org, :get, "org/#{id}")
     end
 
-    def delete_org(id = 'my')
-      delete("/org/#{id}")
+    # Returns one computer or http status 404
+    # @return [Crashplan::Computer] The requested computer
+    # @param id [String, Integer] A computer ID
+    def computer(id)
+      object_from_response(Computer, :get, "computer/#{id}")
     end
 
-    def delete_user(id = 'my')
-      delete("/user/#{id}")
+    # Returns a list of computers
+    # @return [Array] The list of computers
+    # @param params [Hash] A hash of valid search parameters for computers
+    def search_computers(params = {})
+      objects_from_response(Computer, :get, 'computer', params)
+    end
+
+    def delete_computer_block(id)
+      delete("/computer/#{id}")
     end
 
     # Searches orgs for a query string
@@ -116,6 +132,13 @@ module Crashplan
 
     def update_org(id = 'my', attrs = {})
       object_from_response(Org, :put, "org/#{id}", attrs)
+    end
+
+    # Block a computer from backing up
+    # @return [Crashplan::Computer] The blocked computer
+    # @params id [Integer, String] The computer ID you want to block
+    def block_computer(id)
+      object_from_response(Org, :put, "computer#{id}")
     end
 
     # Creates a user
@@ -191,7 +214,7 @@ module Crashplan
     def object_from_response(klass, request_method, path, options = {})
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
-      return nil unless response_has_data?(response)
+      return nil unless response_has_data?(response['data'])
       klass.from_response(response['data'], self)
     end
 
@@ -204,7 +227,7 @@ module Crashplan
     end
 
     def response_has_data?(response)
-      !response.nil? || !response['data'].nil?
+      !response.nil?
     end
 
     def collection_from_response(collection_klass, object_klass, request_method, path, options = {})

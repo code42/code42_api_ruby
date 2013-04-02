@@ -3,12 +3,12 @@ module Crashplan
 
     attribute :id, :from => 'computerId'
 
-    def self.delete
-      client.delete_computer_block(id)
+    def unblock
+      client.unblock_computer(id)
     end
 
-    def self.block
-      client.create_computer_block(id)
+    def block
+      client.block_computer(id)
     end
 
   end

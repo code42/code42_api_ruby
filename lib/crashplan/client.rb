@@ -64,12 +64,9 @@ module Crashplan
     # Returns a list of computers
     # @return [Array] The list of computers
     # @param params [Hash] A hash of valid search parameters for computers
-    def search_computers(params = {})
+    def computers(params = {})
+      params.merge!(key: 'computers')
       objects_from_response(Computer, :get, 'computer', params)
-    end
-
-    def delete_computer_block(id)
-      delete("/computer/#{id}")
     end
 
     # Searches orgs for a query string
@@ -138,7 +135,12 @@ module Crashplan
     # @return [Crashplan::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block
     def block_computer(id)
-      object_from_response(Org, :put, "computer#{id}")
+      # object_from_response(Org, :put, "computerblock/#{id}")
+      put("computerblock/#{id}")
+    end
+
+    def unblock_computer(id)
+      delete("computerblock/#{id}")
     end
 
     # Creates a user

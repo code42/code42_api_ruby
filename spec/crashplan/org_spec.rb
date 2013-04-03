@@ -26,38 +26,38 @@ describe Crashplan::Org do
         name: 'Target'
       }
       serialized = Crashplan::Org.serialize(data)
-      expect(serialized).to be_a(Hash)
-      expect(serialized['orgName']).to eq 'Target'
+      serialized.should be_a(Hash)
+      serialized['orgName'].should eq 'Target'
     end
   end
 
   describe "#id" do
     it "returns the correct id" do
-      expect(org.id).to eq 123
+      org.id.should eq 123
     end
   end
 
   describe "#created_at" do
     it "returns a DateTime object" do
-      expect(org.created_at).to be_a DateTime
+      org.created_at.should be_a DateTime
     end
 
     it "returns the correct date" do
-      expect(org.created_at.day).to eq 23
-      expect(org.created_at.month).to eq 5
-      expect(org.created_at.year).to eq 2006
+      org.created_at.day.should eq 23
+      org.created_at.month.should eq 5
+      org.created_at.year.should eq 2006
     end
   end
 
   describe "#updated_at" do
     it "returns a DateTime object" do
-      expect(org.updated_at).to be_a DateTime
+      org.updated_at.should be_a DateTime
     end
 
     it "returns the correct date" do
-      expect(org.updated_at.day).to eq 9
-      expect(org.updated_at.month).to eq 3
-      expect(org.updated_at.year).to eq 2010
+      org.updated_at.day.should eq 9
+      org.updated_at.month.should eq 3
+      org.updated_at.year.should eq 2010
     end
   end
 end

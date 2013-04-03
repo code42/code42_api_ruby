@@ -16,22 +16,22 @@ describe Crashplan::Client, :vcr do
     it "returns a valid response" do
       token = client.get_token
       validation = client.validate_token token
-      expect(validation).to be_valid
+      validation.should be_valid
     end
   end
 
   describe "#user_roles" do
     it "returns an enumerable" do
       roles = client.user_roles
-      expect(roles).to respond_to(:each)
+      roles.should respond_to(:each)
     end
   end
 
   describe "#get_token" do
     it "returns valid tokens" do
       auth = client.get_token
-      expect(auth.cookie_token).to have(26).characters
-      expect(auth.url_token).to have(26).characters
+      auth.cookie_token.should have(26).characters
+      auth.url_token.should have(26).characters
     end
 
     context "when providing invalid credentials" do
@@ -51,7 +51,7 @@ describe Crashplan::Client, :vcr do
 
     it "returns created org" do
       org = client.create_org(org_attributes)
-      expect(org.name).to eq 'IBM'
+      org.name.should eq 'IBM'
     end
 
   end
@@ -66,8 +66,8 @@ describe Crashplan::Client, :vcr do
 
     it "returns created user" do
       user = client.create_user(user_attributes)
-      expect(user.username).to eq 'testuser'
-      expect(user.id).to eq 2
+      user.username.should eq 'testuser'
+      user.id.should eq 2
     end
 
     context "when sending an invalid email" do
@@ -82,16 +82,14 @@ describe Crashplan::Client, :vcr do
     context "when ID is not passed" do
       it "returns my user" do
         user = client.user
-        expect(user.id).to eq 1
+        user.id.should == 1
       end
     end
 
     context "when ID is passed in" do
       it "returns a specific user" do
-        user = client.user(1)
-        expect(user.id).to eq 1
-        expect(user.uid).to eq "thwlhuOyiq2svbdcqfmm2demndi"
-        expect(user.created_at).to be_a DateTime
+        user = client.user(2)
+        user.id.should == 2
       end
     end
   end
@@ -100,21 +98,28 @@ describe Crashplan::Client, :vcr do
     context "when ID is not passed" do
       it "returns my org" do
         org = client.org
-        expect(org.id).to eq 1
+        org.id.should == 1
       end
     end
 
     context "when ID is passed in" do
       it "returns a specific org" do
         org = client.org(1)
-        expect(org.id).to eq 1
+        org.id.should == 1
       end
+    end
+  end
+
+  describe "#find_org_by_name" do
+    it "returns the org with the specified name" do
+      org = client.find_org_by_name 'Default'
+      org.name.should == 'Default'
     end
   end
 
   describe "#ping" do
     it "returns a ping" do
-      expect(client.ping).to be_true
+      client.ping.should be_true
     end
   end
 end

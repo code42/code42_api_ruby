@@ -22,7 +22,7 @@ describe Crashplan::Role do
 
     it "should translate roleId to id" do
       role = Crashplan::Role.deserialize_and_initialize(response_data)
-      expect(role.id).to eq 3
+      role.id.should eq 3
     end
   end
 end

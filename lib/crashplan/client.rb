@@ -82,10 +82,12 @@ module Crashplan
       end
     end
 
+    # Returns a user for a given id
     def find_user_by_id(id = 'my')
       object_from_response(User, :get, "user/#{id}")
     end
 
+    # Returns a user for a given username
     def find_user_by_username(username)
       users(username: username).first
     end
@@ -105,6 +107,7 @@ module Crashplan
       objects_from_response(User, :get, 'user', params)
     end
 
+    # Check if user exists with given username.
     def user_exists?(username)
       users(username: username).present?
     end
@@ -135,7 +138,7 @@ module Crashplan
     # @example
     #   client.create_org(:company => "test", :email => "test@test.com", :firstname => "test", :lastname => "test")
     def create_pro_org(attrs = {})
-      object_from_response(Org, :post, "proorgchannel", attrs)
+      object_from_response(Org, :post, "proOrgChannel", attrs)
     end
 
     # Creates an org
@@ -154,11 +157,28 @@ module Crashplan
       object_from_response(Org, :get, "org/#{id}")
     end
 
+    # Returns an org for a given name
+    # @return [Crashplan::Org] The requested org
+    # @param name [String] A Crashplan org name
+    # FIXME: This needs to change when the API implements a better way.
+    def find_org_by_name(name)
+      search_orgs(name).select { |o| o.name == name }.first
+    end
+
     # Searches orgs for a query string
     # @return [Array] An array of matching orgs
     # @param query [String] A string to search for
     def search_orgs(query)
       orgs(q: query)
+    end
+
+    # Creates a user
+    # @return [Crashplan::User] The created user
+    # @param attrs [Hash] A hash of attributes to assign to created user
+    # @example
+    #   client.create_user(:username => 'testuser', :password => 'letmein', :email => 'test@example.com', :org_id => 3)
+    def create_user(attrs = {})
+      object_from_response(User, :post, "user", attrs)
     end
 
     # Returns a list of up to 100 orgs
@@ -233,8 +253,9 @@ module Crashplan
 
     def objects_from_response(klass, request_method, path, options = {})
       key = options.delete(:key)
-      response = send(request_method.to_sym, path, options)['data']
+      response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
+      response = response['data']
       response = response[key] if key
       objects_from_array(klass, response)
     end

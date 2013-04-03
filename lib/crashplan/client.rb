@@ -84,7 +84,7 @@ module Crashplan
 
     # Returns a user for a given id
     def find_user_by_id(id = 'my', params = {})
-      object_from_response(User, :get, "user/#{id}", params = {})
+      object_from_response(User, :get, "user/#{id}", params)
     end
 
     # Returns a user for a given username

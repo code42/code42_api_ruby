@@ -18,14 +18,17 @@ module Crashplan
     end
 
     def serialize(key, value)
-      if value.class == Hash
-        values = {}
-        value.each do |k,v|
-          p.merge! serialize(k,v)
-        end
-        Hash[serialize_key(key), values]
+      Hash[serialize_key(key), serialize_value(value)]
+    end
+
+    def serialize_value(value)
+      case value
+      when Resource
+        value.serialize
+      when DateTime
+        value.to_s
       else
-        Hash[serialize_key(key), value]
+        value
       end
     end
 

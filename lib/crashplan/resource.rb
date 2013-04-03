@@ -47,5 +47,9 @@ module Crashplan
         attributes[key.to_sym] = send(key.to_sym)
       end
     end
+
+    def serialize
+      self.class.serialize attributes
+    end
   end
 end

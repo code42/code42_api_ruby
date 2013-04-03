@@ -22,10 +22,9 @@ module Crashplan
     end
 
     def serialize_value(value)
-      case value
-      when Resource
+      if value.respond_to? :serialize
         value.serialize
-      when DateTime
+      elsif value.is_a? DateTime
         value.to_s
       else
         value

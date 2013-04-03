@@ -12,6 +12,29 @@ module Crashplan
       @settings = Settings.new(options)
     end
 
+    # Pings the server
+    # @return [Boolean] A boolean result (this should always return true)
+    def ping
+      get('ping')['data']['success']
+    end
+
+    # Use basic authentication for future requests
+    # @param username [String] The username to authenticate with
+    # @param password [String] The password to authenticate with
+    def use_basic_auth(username, password)
+      settings.token = nil
+      settings.username = username
+      settings.password = password
+    end
+
+    # Use token authentication for future requests
+    # @param token [Crashplan::Token, String] The token to authenticate with
+    def use_token_auth(token)
+      settings.token = token.to_s
+    end
+
+    ### Authentication With Tokens :post, :get, :delete ###
+
     # Gets a token for the currently authorized user
     def get_token
       object_from_response(Token, :post, "authToken")
@@ -21,6 +44,31 @@ module Crashplan
     # @return [CrashPlan::Token] Token to pass to ServerUrl's AuthToken resource
     def get_login_token
       object_from_response(Token, :post, "loginToken")
+    end
+
+    # Validates an authorization token
+    # @return [Crashplan::TokenValidation]
+    # @param token [Crashplan::Token, String] The token to validate
+    def validate_token(token)
+      object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
+    end
+
+    # Manually expires a token
+    # @param token [Crashplan::Token, String] A token to expire (leave blank to expire currently used token)
+    def delete_token(token = nil)
+      token = token || settings.token
+      delete "authToken/#{token.to_s}"
+    end
+
+    ### Users :post, :get ###
+
+    # Creates a user
+    # @return [Crashplan::User] The created user
+    # @param attrs [Hash] A hash of attributes to assign to created user
+    # @example
+    #   client.create_user(:username => 'testuser', password: 'letmein', email: 'test@example.com', org_id: 3)
+    def create_user(attrs = {})
+      object_from_response(User, :post, "user", attrs)
     end
 
     # Returns information for a given user
@@ -43,45 +91,10 @@ module Crashplan
     end
 
     # Returns a user for a given channel id
+    # @return [Crashplan::User] The requested user
+    # @param channel_id [String, Integer] A crashplan User
     def find_user_by_channel_id(channel_id = 1)
       object_from_response(User, :get, "userChannel?channelCustomerId=#{channel_id}")
-    end
-
-    # Returns information for a given org
-    # @return [Crashplan::Org] The requested org
-    # @param id [String, Integer] A crashplan user ID
-    def org(id = "my")
-      object_from_response(Org, :get, "org/#{id}")
-    end
-
-    # Returns one computer or http status 404
-    # @return [Crashplan::Computer] The requested computer
-    # @param id [String, Integer] A computer ID
-    def computer(id)
-      object_from_response(Computer, :get, "computer/#{id}")
-    end
-
-    # Returns a list of computers
-    # @return [Array] The list of computers
-    # @param params [Hash] A hash of valid search parameters for computers
-    def computers(params = {})
-      params.merge!(key: 'computers')
-      objects_from_response(Computer, :get, 'computer', params)
-    end
-
-    # Searches orgs for a query string
-    # @return [Array] An array of matching orgs
-    # @param query [String] A string to search for
-    def search_orgs(query)
-      orgs(q: query)
-    end
-
-    # Returns a list of up to 100 orgs
-    # @return [Array] An array of matching orgs
-    # @param params [Hash] A hash of parameters to match results against
-    def orgs(params = {})
-      params.merge!(key: 'orgs')
-      objects_from_response(Org, :get, 'org', params)
     end
 
     # Returns a list of up to 100 users
@@ -96,18 +109,25 @@ module Crashplan
       users(username: username).present?
     end
 
-    # Pings the server
-    # @return [Boolean] A boolean result (this should always return true)
-    def ping
-      get('ping')['data']['success']
+    ### Roles :post, :get ###
+
+    # Assigns a role to a user
+    # @return [Crashplan::Role] The assigned role
+    # @param attrs [Hash] A hash of attributes for assigning a user role
+    # @example
+    #   client.assign_role(:user_id => 2, :role_name => 'Admin')
+    def assign_role(attrs = {})
+      object_from_response(Role, :post, 'UserRole', attrs)
     end
 
-    # Manually expires a token
-    # @param token [Crashplan::Token, String] A token to expire (leave blank to expire currently used token)
-    def delete_token(token = nil)
-      token = token || settings.token
-      delete "authToken/#{token.to_s}"
+    # Returns a list of roles for a given user
+    # @return [Crashplan::RoleCollection] A collection of matching roles
+    # @param id [String, Integer] The id of the user to return roles for
+    def user_roles(id = 'my')
+      collection_from_response(RoleCollection, Role, :get, "userRole/#{id}")
     end
+
+    ### Orgs :post, :get, :put, :delete ###
 
     # Creates blue org as well as user for the org
     # @return [Crashplan::Org] The created org
@@ -127,67 +147,58 @@ module Crashplan
       object_from_response(Org, :post, "org", attrs)
     end
 
+    # Returns information for a given org
+    # @return [Crashplan::Org] The requested org
+    # @param id [String, Integer] A crashplan user ID
+    def org(id = "my")
+      object_from_response(Org, :get, "org/#{id}")
+    end
+
+    # Searches orgs for a query string
+    # @return [Array] An array of matching orgs
+    # @param query [String] A string to search for
+    def search_orgs(query)
+      orgs(q: query)
+    end
+
+    # Returns a list of up to 100 orgs
+    # @return [Array] An array of matching orgs
+    # @param params [Hash] A hash of parameters to match results against
+    def orgs(params = {})
+      params.merge!(key: 'orgs')
+      objects_from_response(Org, :get, 'org', params)
+    end
+
     def update_org(id = 'my', attrs = {})
       object_from_response(Org, :put, "org/#{id}", attrs)
+    end
+
+    ### Computers :get, :put  ###
+
+    # Returns one computer or http status 404
+    # @return [Crashplan::Computer] The requested computer
+    # @param id [String, Integer] A computer ID
+    def computer(id)
+      object_from_response(Computer, :get, "computer/#{id}")
+    end
+
+    # Returns a list of computers
+    # @return [Array] The list of computers
+    # @param params [Hash] A hash of valid search parameters for computers
+    def computers(params = {})
+      params.merge!(key: 'computers')
+      objects_from_response(Computer, :get, 'computer', params)
     end
 
     # Block a computer from backing up
     # @return [Crashplan::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block
     def block_computer(id)
-      # object_from_response(Org, :put, "computerblock/#{id}")
       put("computerblock/#{id}")
     end
 
     def unblock_computer(id)
       delete("computerblock/#{id}")
-    end
-
-    # Creates a user
-    # @return [Crashplan::User] The created user
-    # @param attrs [Hash] A hash of attributes to assign to created user
-    # @example
-    #   client.create_user(:username => 'testuser', password: 'letmein', email: 'test@example.com', org_id: 3)
-    def create_user(attrs = {})
-      object_from_response(User, :post, "user", attrs)
-    end
-
-    # Assigns a role to a user
-    # @return [Crashplan::Role] The assigned role
-    # @param attrs [Hash] A hash of attributes for assigning a user role
-    # @example
-    #   client.assign_role(:user_id => 2, :role_name => 'Admin')
-    def assign_role(attrs = {})
-      object_from_response(Role, :post, 'UserRole', attrs)
-    end
-
-    # Validates an authorization token
-    # @return [Crashplan::TokenValidation]
-    # @param token [Crashplan::Token, String] The token to validate
-    def validate_token(token)
-      object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
-    end
-
-    # Returns a list of roles for a given user
-    # @return [Crashplan::RoleCollection] A collection of matching roles
-    # @param id [String, Integer] The id of the user to return roles for
-    def user_roles(id = 'my')
-      collection_from_response(RoleCollection, Role, :get, "userRole/#{id}")
-    end
-
-    # Use basic authentication for future requests
-    # @param username [String] The username to authenticate with
-    # @param password [String] The password to authenticate with
-    def use_basic_auth(username, password)
-      settings.token = nil
-      settings.username = username
-      settings.password = password
-    end
-
-    # Use token authentication for future requests
-    # @param token [Crashplan::Token, String] The token to authenticate with
-    def use_token_auth(token)
-      settings.token = token.to_s
     end
 
     def connection

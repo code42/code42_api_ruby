@@ -74,22 +74,23 @@ module Crashplan
     # Returns information for a given user
     # @return [Crashplan::User] The requested user
     # @param id_or_username [String, Integer] A crashplan user ID or username
-    def user(id_or_username = "my")
+    def user(id_or_username = "my", params = {})
       if id_or_username.is_a?(Fixnum) || id_or_username == 'my'
-        find_user_by_id id_or_username
+        find_user_by_id id_or_username, params
       else
-        find_user_by_username id_or_username
+        find_user_by_username id_or_username, params
       end
     end
 
     # Returns a user for a given id
-    def find_user_by_id(id = 'my')
-      object_from_response(User, :get, "user/#{id}")
+    def find_user_by_id(id = 'my', params = {})
+      object_from_response(User, :get, "user/#{id}", params)
     end
 
     # Returns a user for a given username
-    def find_user_by_username(username)
-      users(username: username).first
+    def find_user_by_username(username, params = {})
+      params.merge!(username: username)
+      users(params).first
     end
 
     # Returns a user for a given channel id

@@ -20,6 +20,10 @@ module Crashplan
       map(&:attributes)
     end
 
+    def serialize
+      map(&:serialize)
+    end
+
     def includes_id?(id)
       map(&:id).include? id
     end

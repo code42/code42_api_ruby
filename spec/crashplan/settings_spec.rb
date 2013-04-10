@@ -21,7 +21,6 @@ describe Crashplan::Settings do
 
     it "should raise an exception if settings invalid" do
       settings.host = 'example.com'
-      settings.port = 123
       expect { settings.base_url }.to raise_error(Crashplan::Error)
     end
   end

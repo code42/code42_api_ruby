@@ -91,6 +91,11 @@ describe Crashplan::Client, :vcr do
         user = client.user(2)
         user.id.should == 2
       end
+
+      it "passes params to crashplan server" do
+        client.should_receive(:object_from_response).with(Crashplan::User, :get, "user/2", :incAll => true)
+        user = client.user(2, :incAll => true)
+      end
     end
   end
 
@@ -106,6 +111,11 @@ describe Crashplan::Client, :vcr do
       it "returns a specific org" do
         org = client.org(1)
         org.id.should == 1
+      end
+
+      it "passes params to crashplan server" do
+        client.should_receive(:object_from_response).with(Crashplan::Org, :get, "org/2", :incAll => true)
+        user = client.org(2, :incAll => true)
       end
     end
   end

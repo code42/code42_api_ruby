@@ -8,7 +8,7 @@ module Crashplan
       self.port     = options[:port]
       self.https    = !!options[:https]
       self.verify_https = !options[:verify_https].nil? ? options[:verify_https] : true
-      self.api_root = options[:api_root]
+      self.api_root = options[:api_root] || '/api'
       self.username = options[:username]
       self.password = options[:password]
       self.token    = options[:token]

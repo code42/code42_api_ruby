@@ -27,7 +27,9 @@ module Crashplan
       elsif value.is_a? DateTime
         value.to_s
       elsif value.is_a? Hash
-        value.map { |k,v| serialize(k,v) }
+        value.inject({}) do |h,a|
+          h.merge! serialize(a[0], a[1])
+        end
       else
         value
       end

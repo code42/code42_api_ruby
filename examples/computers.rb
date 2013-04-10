@@ -2,9 +2,9 @@
 
 require 'rubygems'
 require 'bundler/setup'
-require 'crashplan'
 require 'optparse'
 require 'highline/import'
+require 'crashplan'
 
 class Parser
   class << self
@@ -18,7 +18,7 @@ class Parser
         raise ArgumentError, 'Invalid arguments'
       end
       options.merge! parse_connection_string(args.shift)
-      options[:user_id] = args.shift
+      options[:computer_id] = args.shift
       options
     end
 
@@ -34,7 +34,7 @@ class Parser
 
     def option_parser
       @option_parser ||= OptionParser.new do |opts|
-        opts.banner = "Usage: users [options] [user@]address[:port] [user_id]"
+        opts.banner = "Usage: computers [options] [user@]address[:port] [computer_id]"
         opts.on('-p', '--password [PASSWORD]', String, 'server password') do |password|
           options[:password] = password
         end
@@ -62,8 +62,8 @@ rescue ArgumentError
   abort Parser.help
 end
 
-if !options[:user]
-  options[:user] = ask('Enter username: ')
+if !options[:password]
+  options[:password] = ask('Enter password: ') { |q| q.echo = "*" }
 end
 
 if !options[:password]
@@ -79,10 +79,10 @@ client = Crashplan::Client.new(
   :api_root => '/api'
 )
 
-if options[:user_id]
-  user = client.user(options[:user_id].to_i, :incAll => true)
-  jj user.serialize
+if options[:computer_id]
+  computer = client.computer(options[:computer_id].to_i, :incAll => true)
+  jj computer.serialize
 else
-  users = client.users(:incAll => true)
-  jj users.map(&:serialize)
+  computers = client.computers(:incAll => true)
+  jj computers.map(&:serialize)
 end

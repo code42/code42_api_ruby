@@ -61,8 +61,8 @@ rescue ArgumentError
   abort Parser.help
 end
 
-if !options[:password]
-  options[:password] = ask('Enter password: ') { |q| q.echo = "*" }
+if !options[:user]
+  options[:user] = ask('Enter username: ')
 end
 
 if !options[:password]

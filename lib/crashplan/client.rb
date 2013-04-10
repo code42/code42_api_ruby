@@ -211,6 +211,10 @@ module Crashplan
       objects_from_response(Computer, :get, 'computer', params)
     end
 
+    def diagnostic
+      object_from_response(Diagnostic, :get, 'diagnostic')
+    end
+
     # Block a computer from backing up
     # @return [Crashplan::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block

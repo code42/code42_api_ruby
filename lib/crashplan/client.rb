@@ -154,8 +154,8 @@ module Crashplan
     # Returns information for a given org
     # @return [Crashplan::Org] The requested org
     # @param id [String, Integer] A crashplan user ID
-    def org(id = "my")
-      object_from_response(Org, :get, "org/#{id}")
+    def org(id = "my", params = {})
+      object_from_response(Org, :get, "org/#{id}", params)
     end
 
     # Returns an org for a given name
@@ -199,8 +199,8 @@ module Crashplan
     # Returns one computer or http status 404
     # @return [Crashplan::Computer] The requested computer
     # @param id [String, Integer] A computer ID
-    def computer(id)
-      object_from_response(Computer, :get, "computer/#{id}")
+    def computer(id, params = {})
+      object_from_response(Computer, :get, "computer/#{id}", params)
     end
 
     # Returns a list of computers

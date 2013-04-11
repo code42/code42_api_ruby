@@ -56,7 +56,6 @@ module Crashplan
           ]}
         resource = Resource.new
         deserialized = resource.class.deserialize(attrs)
-        puts deserialized.inspect
       end
     end
   end

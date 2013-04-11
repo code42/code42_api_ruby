@@ -30,6 +30,10 @@ module Crashplan
         value.inject({}) do |h,a|
           h.merge! serialize(a[0], a[1])
         end
+      elsif value.is_a? Array
+        value.map do |item|
+          serialize_value(item)
+        end
       else
         value
       end

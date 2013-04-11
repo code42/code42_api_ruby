@@ -31,5 +31,33 @@ module Crashplan
         serialized['permissions'].should include('bar' => 2)
       end
     end
+
+    describe '#deserialize' do
+      before do
+        prod = Class.new(Resource)
+        prod.class_eval do
+          attribute :name
+        end
+        coll = Class.new(Resource)
+        coll.define_method(:collection_from_response) do |array|
+          @products = array.map { |element| prod.deserialize_and_initialize(element, self) }
+        end
+        res = Class.new(Resource)
+        res.class_eval do
+          attribute :products, :as => coll
+        end
+      end
+
+      it 'deserialize a single object response with nested objects' do
+        attrs =
+          {'products' => [
+            {'product' => {'name' => 1}},
+            {'product' => {'name' => 1}}
+          ]}
+        resource = Resource.new
+        deserialized = resource.class.deserialize(attrs)
+        puts deserialized.inspect
+      end
+    end
   end
 end

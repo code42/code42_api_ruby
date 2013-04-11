@@ -53,7 +53,7 @@ module Crashplan
 
     def deserialize_value(key, value)
       if klass = attribute_for(key).try(:as)
-        if klass.respond_to?(:collection_from_response)
+        if attribute_for(key).try(:collection)
           klass.collection_from_response(value)
         elsif klass.respond_to?(:from_response)
           klass.from_response(value)

@@ -34,17 +34,10 @@ module Crashplan
 
     describe '#deserialize' do
       before do
-        prod = Class.new(Resource)
-        prod.class_eval do
-          attribute :name
+        class LineItem < Resource
         end
-        coll = Class.new(Resource)
-        coll.define_method(:collection_from_response) do |array|
-          @products = array.map { |element| prod.deserialize_and_initialize(element, self) }
-        end
-        res = Class.new(Resource)
-        res.class_eval do
-          attribute :products, :as => coll
+        Resource.class_eval do
+          attribute :products, :as => LineItem, :collection => true
         end
       end
 
@@ -54,8 +47,9 @@ module Crashplan
             {'product' => {'name' => 1}},
             {'product' => {'name' => 1}}
           ]}
-        resource = Resource.new
-        deserialized = resource.class.deserialize(attrs)
+        res = Resource.new
+        deserialized = res.class.deserialize(attrs)
+        expect(deserialized[:products].count).to eq 2
       end
     end
   end

@@ -30,6 +30,10 @@ module Crashplan
         value.inject({}) do |h,a|
           h.merge! serialize(a[0], a[1])
         end
+      elsif value.is_a? Array
+        value.map do |item|
+          serialize_value(item)
+        end
       else
         value
       end
@@ -49,7 +53,9 @@ module Crashplan
 
     def deserialize_value(key, value)
       if klass = attribute_for(key).try(:as)
-        if klass.respond_to?(:from_response)
+        if attribute_for(key).try(:collection)
+          klass.collection_from_response(value)
+        elsif klass.respond_to?(:from_response)
           klass.from_response(value)
         elsif klass.respond_to?(:parse)
           klass.parse(value)

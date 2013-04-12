@@ -29,8 +29,11 @@ module Crashplan
           serializer << Attribute.new(name, options)
         end
       end
-    end
 
+      def collection_from_response(array)
+        array.map { |element| self.deserialize_and_initialize(element, self) }
+      end
+    end
     attr_accessor :client, :attributes
 
     def initialize(data = {}, client = nil)

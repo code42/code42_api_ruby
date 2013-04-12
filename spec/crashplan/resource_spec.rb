@@ -31,5 +31,26 @@ module Crashplan
         serialized['permissions'].should include('bar' => 2)
       end
     end
+
+    describe '#deserialize' do
+      before do
+        class LineItem < Resource
+        end
+        Resource.class_eval do
+          attribute :products, :as => LineItem, :collection => true
+        end
+      end
+
+      it 'deserialize a single object response with nested objects' do
+        attrs =
+          {'products' => [
+            {'product' => {'name' => 1}},
+            {'product' => {'name' => 1}}
+          ]}
+        res = Resource.new
+        deserialized = res.class.deserialize(attrs)
+        expect(deserialized[:products].count).to eq 2
+      end
+    end
   end
 end

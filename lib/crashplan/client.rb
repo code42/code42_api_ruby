@@ -258,6 +258,7 @@ module Crashplan
 
     def objects_from_response(klass, request_method, path, options = {})
       key = options.delete(:key)
+      options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
       response = response['data']

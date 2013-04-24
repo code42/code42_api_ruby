@@ -140,12 +140,6 @@ The Code 42 open source project is a set of frameworks and examples for developi
 
 Our goal is to give developers the tools necessary to build solutions that range from integration efforts to stand-alone application experiences.
 
-##  Communication
-
-Project Zeppelin is available as an open source project on Github, located here:
-
-* <https://github.com/code42>
-
 ## Communication
 
 Project Zeppelin is available as an open source project on Github :

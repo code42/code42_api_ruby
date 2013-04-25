@@ -6,7 +6,7 @@ module Crashplan
       options.symbolize_keys!
       self.host     = options[:host]
       self.port     = options[:port]
-      self.https    = !!options[:https]
+      self.https    = !options[:https].nil? ? options[:https] : true
       self.verify_https = !options[:verify_https].nil? ? options[:verify_https] : true
       self.api_root = options[:api_root] || '/api'
       self.username = options[:username]

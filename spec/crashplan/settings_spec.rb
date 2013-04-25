@@ -68,9 +68,9 @@ describe Crashplan::Settings do
       settings.https.should be_true
     end
 
-    it "should default to false" do
+    it "should default to true" do
       settings = Crashplan::Settings.new
-      settings.https.should be_false
+      settings.https.should be_true
     end
   end
 

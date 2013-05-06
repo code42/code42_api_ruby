@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Crashplan
+module Code42
   describe Resource do
     describe '#serialize' do
       before do

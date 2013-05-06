@@ -1,5 +1,5 @@
 require 'date'
-module Crashplan
+module Code42
   class Org < Resource
 
     attribute :id, :from => 'orgId'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Crashplan::Org do
+describe Code42::Org do
   let(:valid_attributes) do
     {
       "orgId"            => 123,
@@ -17,7 +17,7 @@ describe Crashplan::Org do
   end
 
   subject(:org) do
-    Crashplan::Org.from_response(valid_attributes)
+    Code42::Org.from_response(valid_attributes)
   end
 
   describe ".serialize" do
@@ -25,7 +25,7 @@ describe Crashplan::Org do
       data = {
         name: 'Target'
       }
-      serialized = Crashplan::Org.serialize(data)
+      serialized = Code42::Org.serialize(data)
       serialized.should be_a(Hash)
       serialized['orgName'].should eq 'Target'
     end

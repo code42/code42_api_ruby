@@ -1,4 +1,4 @@
-require 'crashplan'
+require 'code42'
 require 'rspec/autorun'
 require 'vcr'
 require 'net/http'
@@ -22,7 +22,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
 end
 
-Crashplan.configure do |config|
+Code42.configure do |config|
   config.host     = "localhost"
   config.port     = 7280
   config.username = "admin"

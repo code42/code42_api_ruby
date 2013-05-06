@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Role < Resource
 
     # @!attribute [rw] id

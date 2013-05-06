@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost:7280/api/org/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tc3RvcmU=
+      !binary "UHJhZ21h":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "U2VydmVy":
+      - !binary |-
+        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAJ2Sz3KCMBDG730KJmdxghT/5NaqB6ZT21H7ACmumClJmLB0
+        ZBzfvQlgHZReynDJL/t9fLvL6cHziATkO46cMM/zTpZYhkJCgVzmFpIRDUKf
+        Rj4db4MRoxGLpsNwMrWIUUoGjSLnhsvClp/OFpwdJbeu2qTxzoJg8Hv+EA6Q
+        p8VrvCJXvOIS7rgNhGVR4wTFN1w4b07MQ1NCyz4znXyB897zrIBrSFD41sZQ
+        ZZa1F1jl9feWq+1y/b6ON8uLORwRjOJZfJ/zIMBwkxyquS4VNr23V4lWe5HG
+        6gBGIFcJ9JQY4Ci0WnCEZsp07KY8CrdBxIKAhbNhEM26U5Z6J/Yi6RFOfGqF
+        lD3adzKMgqgrNJCKAk0tfIHK6Y43z7U01waFSjtpywK1nNdtdSddALriol70
+        ZdUuKj9ubIeO++3CG/pcITS0hucbn3Zo9e7+MiSkz5CQXsNNKSU31b/zud/5
+        4fwDfG0bySsDAAA=
+    http_version: 
+  recorded_at: Mon, 06 May 2013 17:05:58 GMT
+recorded_with: VCR 2.4.0

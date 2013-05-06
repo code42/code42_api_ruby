@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Crashplan::Client, :vcr do
+describe Code42::Client, :vcr do
   subject(:client) do
-    Crashplan::Client.new(
+    Code42::Client.new(
       host: 'localhost',
       port: 7280,
       https: false,
@@ -37,7 +37,7 @@ describe Crashplan::Client, :vcr do
     context "when providing invalid credentials" do
       it "should raise an exception" do
         client.settings.password = 'badpassword'
-        expect{client.get_token}.to raise_error Crashplan::Error::AuthenticationError
+        expect{client.get_token}.to raise_error Code42::Error::AuthenticationError
       end
     end
   end
@@ -67,13 +67,13 @@ describe Crashplan::Client, :vcr do
     it "returns created user" do
       user = client.create_user(user_attributes)
       user.username.should eq 'testuser'
-      user.id.should eq 2
+      user.id.should eq 3
     end
 
     context "when sending an invalid email" do
       it "raises an exception" do
         user_attributes[:email] = 'testuser'
-        expect { client.create_user(user_attributes) }.to raise_error Crashplan::Error::EmailInvalid
+        expect { client.create_user(user_attributes) }.to raise_error Code42::Error::EmailInvalid
       end
     end
   end
@@ -92,8 +92,8 @@ describe Crashplan::Client, :vcr do
         user.id.should == 2
       end
 
-      it "passes params to crashplan server" do
-        client.should_receive(:object_from_response).with(Crashplan::User, :get, "user/2", :incAll => true)
+      it "passes params to code42 server" do
+        client.should_receive(:object_from_response).with(Code42::User, :get, "user/2", :incAll => true)
         user = client.user(2, :incAll => true)
       end
     end
@@ -113,8 +113,8 @@ describe Crashplan::Client, :vcr do
         org.id.should == 1
       end
 
-      it "passes params to crashplan server" do
-        client.should_receive(:object_from_response).with(Crashplan::Org, :get, "org/2", :incAll => true)
+      it "passes params to code42 server" do
+        client.should_receive(:object_from_response).with(Code42::Org, :get, "org/2", :incAll => true)
         user = client.org(2, :incAll => true)
       end
     end
@@ -122,8 +122,8 @@ describe Crashplan::Client, :vcr do
 
   describe "#find_org_by_name" do
     it "returns the org with the specified name" do
-      org = client.find_org_by_name 'Default'
-      org.name.should == 'Default'
+      org = client.find_org_by_name 'PROServer Demo'
+      org.name.should == 'PROServer Demo'
     end
   end
 

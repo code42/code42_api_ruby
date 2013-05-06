@@ -1,12 +1,12 @@
-# Crashplan
+# Code42
 
-A Ruby interface to the Crashplan API
+A Ruby interface to the Code42 API
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'crashplan'
+    gem 'code42'
 
 And then execute:
 
@@ -14,12 +14,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install crashplan
+    $ gem install code42
 
 ## Configuration
 
-    client = Crashplan::Client.new(
-      host: 'staging.crashplan.com',
+    client = Code42::Client.new(
+      host: 'staging.code42.com',
       port: 1234,
       https: true,
       api_root: '/api/',
@@ -35,8 +35,8 @@ token = client.get_token
 
 Then you can pass this token for further requests:
 
-    client = Crashplan::Client.new(
-      host: 'staging.crashplan.com',
+    client = Code42::Client.new(
+      host: 'staging.code42.com',
       port: 1234,
       https: true,
       api_root: '/api/',
@@ -134,8 +134,8 @@ client.validate_token(token).valid?
 
 The Code 42 open source project is a set of frameworks and examples for developing solutions based on the Code 42 CrashPlan REST API.
 
-* [CrashPlan product website](http://www.crashplan.com/enterprise)
-* [CrashPlan online API documentation](http://www.crashplan.com/apidocviewer)
+* [CrashPlan product website](http://www.code42.com/enterprise)
+* [CrashPlan online API documentation](http://www.code42.com/apidocviewer)
 * [Code 42 Open Source on Github](https://github.com/code42)
 
 Our goal is to give developers the tools necessary to build solutions that range from integration efforts to stand-alone application experiences.

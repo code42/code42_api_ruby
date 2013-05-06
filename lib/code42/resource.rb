@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Resource
     alias_method :inspect, :to_s
 
@@ -20,7 +20,7 @@ module Crashplan
       end
 
       def serializer
-        @serializer ||= Crashplan::AttributeSerializer.new
+        @serializer ||= Code42::AttributeSerializer.new
       end
 
       def attribute(*args)
@@ -37,7 +37,7 @@ module Crashplan
     attr_accessor :client, :attributes
 
     def initialize(data = {}, client = nil)
-      self.client = client || Crashplan.client
+      self.client = client || Code42.client
       self.attributes = {}
       data.each do |key, value|
         unless self.respond_to?("#{key}=".to_sym)

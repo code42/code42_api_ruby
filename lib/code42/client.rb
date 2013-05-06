@@ -1,6 +1,6 @@
 require 'json'
 
-module Crashplan
+module Code42
   class Client
     attr_accessor :settings
 
@@ -28,7 +28,7 @@ module Crashplan
     end
 
     # Use token authentication for future requests
-    # @param token [Crashplan::Token, String] The token to authenticate with
+    # @param token [Code42::Token, String] The token to authenticate with
     def use_token_auth(token)
       settings.token = token.to_s
     end
@@ -47,14 +47,14 @@ module Crashplan
     end
 
     # Validates an authorization token
-    # @return [Crashplan::TokenValidation]
-    # @param token [Crashplan::Token, String] The token to validate
+    # @return [Code42::TokenValidation]
+    # @param token [Code42::Token, String] The token to validate
     def validate_token(token)
       object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
     end
 
     # Manually expires a token
-    # @param token [Crashplan::Token, String] A token to expire (leave blank to expire currently used token)
+    # @param token [Code42::Token, String] A token to expire (leave blank to expire currently used token)
     def delete_token(token = nil)
       token = token || settings.token
       delete "authToken/#{token.to_s}"
@@ -63,7 +63,7 @@ module Crashplan
     ### Users :post, :get ###
 
     # Creates a user
-    # @return [Crashplan::User] The created user
+    # @return [Code42::User] The created user
     # @param attrs [Hash] A hash of attributes to assign to created user
     # @example
     #   client.create_user(:username => 'testuser', password: 'letmein', email: 'test@example.com', org_id: 3)
@@ -72,8 +72,8 @@ module Crashplan
     end
 
     # Returns information for a given user
-    # @return [Crashplan::User] The requested user
-    # @param id_or_username [String, Integer] A crashplan user ID or username
+    # @return [Code42::User] The requested user
+    # @param id_or_username [String, Integer] A code42 user ID or username
     def user(id_or_username = "my", params = {})
       if id_or_username.is_a?(Fixnum) || id_or_username == 'my'
         find_user_by_id id_or_username, params
@@ -94,8 +94,8 @@ module Crashplan
     end
 
     # Returns a user for a given channel id
-    # @return [Crashplan::User] The requested user
-    # @param channel_id [String, Integer] A crashplan User
+    # @return [Code42::User] The requested user
+    # @param channel_id [String, Integer] A code42 User
     def find_user_by_channel_id(channel_id = 1)
       object_from_response(User, :get, "userChannel?channelCustomerId=#{channel_id}")
     end
@@ -116,7 +116,7 @@ module Crashplan
     ### Roles :post, :get ###
 
     # Assigns a role to a user
-    # @return [Crashplan::Role] The assigned role
+    # @return [Code42::Role] The assigned role
     # @param attrs [Hash] A hash of attributes for assigning a user role
     # @example
     #   client.assign_role(:user_id => 2, :role_name => 'Admin')
@@ -125,7 +125,7 @@ module Crashplan
     end
 
     # Returns a list of roles for a given user
-    # @return [Crashplan::RoleCollection] A collection of matching roles
+    # @return [Code42::RoleCollection] A collection of matching roles
     # @param id [String, Integer] The id of the user to return roles for
     def user_roles(id = 'my')
       collection_from_response(RoleCollection, Role, :get, "userRole/#{id}")
@@ -134,7 +134,7 @@ module Crashplan
     ### Orgs :post, :get, :put, :delete ###
 
     # Creates blue org as well as user for the org
-    # @return [Crashplan::Org] The created org
+    # @return [Code42::Org] The created org
     # @param attrs [Hash] A hash of attributes to assign to created org
     # @example
     #   client.create_org(:company => "test", :email => "test@test.com", :firstname => "test", :lastname => "test")
@@ -143,7 +143,7 @@ module Crashplan
     end
 
     # Creates an org
-    # @return [Crashplan::Org] The created org
+    # @return [Code42::Org] The created org
     # @param attrs [Hash] A hash of attributes to assign to created org
     # @example
     #   client.create_org(:name => 'Acme Org', :parent_id => 2)
@@ -152,15 +152,15 @@ module Crashplan
     end
 
     # Returns information for a given org
-    # @return [Crashplan::Org] The requested org
-    # @param id [String, Integer] A crashplan user ID
+    # @return [Code42::Org] The requested org
+    # @param id [String, Integer] A code42 user ID
     def org(id = "my", params = {})
       object_from_response(Org, :get, "org/#{id}", params)
     end
 
     # Returns an org for a given name
-    # @return [Crashplan::Org] The requested org
-    # @param name [String] A Crashplan org name
+    # @return [Code42::Org] The requested org
+    # @param name [String] A Code42 org name
     # FIXME: This needs to change when the API implements a better way.
     def find_org_by_name(name)
       search_orgs(name).select { |o| o.name == name }.first
@@ -174,7 +174,7 @@ module Crashplan
     end
 
     # Creates a user
-    # @return [Crashplan::User] The created user
+    # @return [Code42::User] The created user
     # @param attrs [Hash] A hash of attributes to assign to created user
     # @example
     #   client.create_user(:username => 'testuser', :password => 'letmein', :email => 'test@example.com', :org_id => 3)
@@ -197,7 +197,7 @@ module Crashplan
     ### Computers :get, :put  ###
 
     # Returns one computer or http status 404
-    # @return [Crashplan::Computer] The requested computer
+    # @return [Code42::Computer] The requested computer
     # @param id [String, Integer] A computer ID
     def computer(id, params = {})
       object_from_response(Computer, :get, "computer/#{id}", params)
@@ -216,7 +216,7 @@ module Crashplan
     end
 
     # Block a computer from backing up
-    # @return [Crashplan::Computer] The blocked computer
+    # @return [Code42::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block
     def block_computer(id)
       put("computerblock/#{id}")

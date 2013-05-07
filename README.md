@@ -1,6 +1,6 @@
-# Code42
+# Code 42 API
 
-A Ruby interface to the Code42 API
+A Ruby interface to the Code 42 API
 
 ## Installation
 
@@ -142,24 +142,19 @@ Our goal is to give developers the tools necessary to build solutions that range
 
 ##  Communication
 
-Project Zeppelin is available as an open source project on Github, located here:
+The Code 42 API is available as an open source project on Github, located here:
 
 * <https://github.com/code42>
 
-## Communication
-
-Project Zeppelin is available as an open source project on Github :
-* <https://github.com/code42>
- 
 Announcements, updates, bug fixes and issue tracking are managed within each repository listed.
 
 ## Copyright and Licensing
 
-Unless otherwise noted, all files and works contained in Project Zeppelin are covered by the Apache 2 license as detailed below:
+Unless otherwise noted, all files and works contained in the Code 42 projects are covered by the Apache 2 license as detailed below:
 
->Copyright 2013, Code 42 Software Inc.  
+>Copyright 2013, Code 42 Software Inc.
 
->Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at  
+>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 > <http://www.apache.org/licenses/LICENSE-2.0 >
 

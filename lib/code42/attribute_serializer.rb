@@ -63,7 +63,13 @@ module Code42
           value
         end
       else
-        value
+        if value.is_a?(Hash)
+          value.inject({}) do |h,a|
+            h.merge! deserialize(a[0], a[1])
+          end
+        else
+          value
+        end
       end
     end
 

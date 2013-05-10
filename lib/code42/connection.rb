@@ -96,24 +96,24 @@ module Code42
 
     def check_for_errors(response)
       if response.status == 401
-        raise Code42::Error::AuthenticationError
+        raise Code42::Error::AuthenticationError.new(nil, response.status)
       elsif response.status == 404
-        raise Code42::Error::ResourceNotFound
+        raise Code42::Error::ResourceNotFound.new(nil, response.status)
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
-        raise exception_from_body(body)
+        raise exception_from_body(body, response.status)
       end
     end
 
-    def exception_from_body(body)
-      return Code42::Error if body.nil? || !body.has_key?('name')
+    def exception_from_body(body, status = nil)
+      return Code42::Error.new("Status: #{status}") if body.nil? || !body.has_key?('name')
       exception_name = body['name'].downcase.camelize
       if Code42::Error.const_defined?(exception_name)
         klass = Code42::Error.const_get(exception_name)
       else
         klass = Code42::Error
       end
-      klass.new(body['description'])
+      klass.new(body['description'], status)
     end
 
     def method_missing(method_name, *args, &block)

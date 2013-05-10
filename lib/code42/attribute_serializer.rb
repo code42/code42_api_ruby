@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class AttributeSerializer
     def add_exception(from, to)
       exceptions << AttributeSerializerException.new(from, to)

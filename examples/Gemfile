@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'crashplan', :git => 'ssh://git@stash.c42:7999/OS/crashplan_api_gem.git', :branch => 'develop'
+gem 'code42', :git => 'ssh://git@stash.c42:7999/OS/code42_api_gem.git', :branch => 'develop'
 gem 'minitest'
 gem 'turn'
 gem 'highline'

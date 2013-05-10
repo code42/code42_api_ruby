@@ -2,7 +2,7 @@
 
 require 'rubygems'
 require 'bundler/setup'
-require 'crashplan'
+require 'code42'
 require 'optparse'
 require 'highline/import'
 
@@ -70,7 +70,7 @@ if !options[:password]
   options[:password] = ask('Enter password: ') { |q| q.echo = "*" }
 end
 
-client = Crashplan::Client.new(
+client = Code42::Client.new(
   :host => options[:host],
   :username => options[:user],
   :password => options[:password],

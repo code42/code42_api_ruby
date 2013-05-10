@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Crashplan::Settings do
-  subject(:settings) { Crashplan::Settings.new }
+describe Code42::Settings do
+  subject(:settings) { Code42::Settings.new }
 
   describe "#host" do
     it "should return configured host" do
@@ -21,7 +21,7 @@ describe Crashplan::Settings do
 
     it "should raise an exception if settings invalid" do
       settings.host = 'example.com'
-      expect { settings.base_url }.to raise_error(Crashplan::Error)
+      expect { settings.base_url }.to raise_error(Code42::Error)
     end
   end
 
@@ -68,9 +68,9 @@ describe Crashplan::Settings do
       settings.https.should be_true
     end
 
-    it "should default to false" do
-      settings = Crashplan::Settings.new
-      settings.https.should be_false
+    it "should default to true" do
+      settings = Code42::Settings.new
+      settings.https.should be_true
     end
   end
 
@@ -97,7 +97,7 @@ describe Crashplan::Settings do
 
   describe "#all" do
     it "should return a hash of all settings" do
-      settings = Crashplan::Settings.new(
+      settings = Code42::Settings.new(
         host: 'example.com',
         port: 123,
         api_root: '/api',

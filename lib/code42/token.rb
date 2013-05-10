@@ -1,6 +1,6 @@
-require 'crashplan/resource'
+require 'code42/resource'
 
-module Crashplan
+module Code42
   class Token < Resource
 
     class << self

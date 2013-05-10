@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Crashplan::Role do
+describe Code42::Role do
   describe "#deserialize_and_initialize" do
     let(:response_data) do
     data = <<-JSON
@@ -21,7 +21,7 @@ describe Crashplan::Role do
     end
 
     it "should translate roleId to id" do
-      role = Crashplan::Role.deserialize_and_initialize(response_data)
+      role = Code42::Role.deserialize_and_initialize(response_data)
       role.id.should eq 3
     end
   end

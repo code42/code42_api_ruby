@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Error < StandardError; end
   class Error::AuthenticationError < Error; end
   class Error::UsernameNotEmail < Error; end

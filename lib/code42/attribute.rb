@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Attribute
     attr_reader :name, :from, :as, :collection
     alias_method :to, :name

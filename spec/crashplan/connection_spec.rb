@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Crashplan::Connection do
+describe Code42::Connection do
   subject(:connection) do
-    Crashplan::Connection.new(
+    Code42::Connection.new(
       host: 'example.com',
       port: 1234,
       scheme: 'http',

@@ -4,28 +4,28 @@ require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/string/inflections"
 require "active_support/core_ext/object/blank"
 require "active_support/core_ext/object/try"
-require "crashplan/version"
-require "crashplan/client"
-require "crashplan/settings"
-require "crashplan/error"
-require "crashplan/connection"
-require "crashplan/attribute"
-require "crashplan/attribute_serializer"
-require "crashplan/resource"
-require "crashplan/org"
-require "crashplan/user"
-require "crashplan/computer"
-require "crashplan/diagnostic"
-require "crashplan/ping"
-require "crashplan/token"
-require "crashplan/role"
-require "crashplan/role_collection"
-require "crashplan/token_validation"
+require "code42/version"
+require "code42/client"
+require "code42/settings"
+require "code42/error"
+require "code42/connection"
+require "code42/attribute"
+require "code42/attribute_serializer"
+require "code42/resource"
+require "code42/org"
+require "code42/user"
+require "code42/computer"
+require "code42/diagnostic"
+require "code42/ping"
+require "code42/token"
+require "code42/role"
+require "code42/role_collection"
+require "code42/token_validation"
 
-module Crashplan
+module Code42
   class << self
     def client
-      @client ||= Crashplan::Client.new
+      @client ||= Code42::Client.new
     end
 
     def configure

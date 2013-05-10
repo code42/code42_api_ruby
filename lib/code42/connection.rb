@@ -1,9 +1,9 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'logger'
-require 'crashplan/error'
+require 'code42/error'
 
-module Crashplan
+module Code42
   class Connection
     attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger
     def initialize(options = {})
@@ -60,7 +60,7 @@ module Crashplan
       begin
         response = self.send(method, *args)
       rescue Faraday::Error::ConnectionFailed
-        raise Crashplan::Error::ConnectionFailed
+        raise Code42::Error::ConnectionFailed
       end
       check_for_errors(response)
       response.body
@@ -96,9 +96,9 @@ module Crashplan
 
     def check_for_errors(response)
       if response.status == 401
-        raise Crashplan::Error::AuthenticationError
+        raise Code42::Error::AuthenticationError
       elsif response.status == 404
-        raise Crashplan::Error::ResourceNotFound
+        raise Code42::Error::ResourceNotFound
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
         raise exception_from_body(body)
@@ -106,12 +106,12 @@ module Crashplan
     end
 
     def exception_from_body(body)
-      return Crashplan::Error if body.nil? || !body.has_key?('name')
+      return Code42::Error if body.nil? || !body.has_key?('name')
       exception_name = body['name'].downcase.camelize
-      if Crashplan::Error.const_defined?(exception_name)
-        klass = Crashplan::Error.const_get(exception_name)
+      if Code42::Error.const_defined?(exception_name)
+        klass = Code42::Error.const_get(exception_name)
       else
-        klass = Crashplan::Error
+        klass = Code42::Error
       end
       klass.new(body['description'])
     end

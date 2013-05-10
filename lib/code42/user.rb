@@ -1,6 +1,6 @@
 require 'date'
 
-module Crashplan
+module Code42
   class User < Resource
 
     attribute :id, :from => 'userId'
@@ -19,19 +19,19 @@ module Crashplan
     end
 
     # Returns the org associated with this user
-    # @return [Crashplan::User]
+    # @return [Code42::User]
     def org
       client.org(org_id)
     end
 
     # Returns the roles associated with this user
-    # @return [Crashplan::RoleCollection]
+    # @return [Code42::RoleCollection]
     def roles
       client.user_roles(id)
     end
 
     # Assigns a role to this user
-    # @return [Crashplan::Role]
+    # @return [Code42::Role]
     def assign_role(attrs = {})
       attrs.merge!(user_id: id)
       client.assign_role(attrs)

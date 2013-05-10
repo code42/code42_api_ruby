@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Computer < Resource
 
     attribute :id, :from => 'computerId'

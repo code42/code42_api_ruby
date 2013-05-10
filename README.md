@@ -1,12 +1,12 @@
-# Crashplan
+# Code 42 API
 
-A Ruby interface to the Crashplan API
+A Ruby interface to the Code 42 API
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'crashplan'
+    gem 'code42'
 
 And then execute:
 
@@ -14,12 +14,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install crashplan
+    $ gem install code42
 
 ## Configuration
 
-    client = Crashplan::Client.new(
-      host: 'staging.crashplan.com',
+    client = Code42::Client.new(
+      host: 'staging.code42.com',
       port: 1234,
       https: true,
       api_root: '/api/',
@@ -35,8 +35,8 @@ token = client.get_token
 
 Then you can pass this token for further requests:
 
-    client = Crashplan::Client.new(
-      host: 'staging.crashplan.com',
+    client = Code42::Client.new(
+      host: 'staging.code42.com',
       port: 1234,
       https: true,
       api_root: '/api/',
@@ -134,26 +134,27 @@ client.validate_token(token).valid?
 
 The Code 42 open source project is a set of frameworks and examples for developing solutions based on the Code 42 CrashPlan REST API.
 
-* [CrashPlan product website](http://www.crashplan.com/enterprise)
-* [CrashPlan online API documentation](http://www.crashplan.com/apidocviewer)
+* [CrashPlan product website](http://www.code42.com/enterprise)
+* [CrashPlan online API documentation](http://www.code42.com/apidocviewer)
 * [Code 42 Open Source on Github](https://github.com/code42)
 
 Our goal is to give developers the tools necessary to build solutions that range from integration efforts to stand-alone application experiences.
 
-## Communication
+##  Communication
 
-Project Zeppelin is available as an open source project on Github :
+The Code 42 API is available as an open source project on Github, located here:
+
 * <https://github.com/code42>
- 
+
 Announcements, updates, bug fixes and issue tracking are managed within each repository listed.
 
 ## Copyright and Licensing
 
-Unless otherwise noted, all files and works contained in Project Zeppelin are covered by the Apache 2 license as detailed below:
+Unless otherwise noted, all files and works contained in the Code 42 projects are covered by the Apache 2 license as detailed below:
 
->Copyright 2013, Code 42 Software Inc.  
+>Copyright 2013, Code 42 Software Inc.
 
->Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at  
+>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
 > <http://www.apache.org/licenses/LICENSE-2.0 >
 

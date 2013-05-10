@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost:7280/api/ping
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.7
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tc3RvcmU=
+      !binary "UHJhZ21h":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "U2VydmVy":
+      - !binary |-
+        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAC3MPQ6AIAwG0N1TNJ3FFA1qOIcXaJTBgYRAnQh3t0TX9/3U
+        AQBjEL5YGD0AVBU1uWMowjEp4kx2MeQMrYedPTnvtmlfSckT4fgtEmeOReu1
+        KbSu+L9WLM95htJTyU9oQ3sBjNQqq3kAAAA=
+    http_version: 
+  recorded_at: Mon, 06 May 2013 17:05:57 GMT
+recorded_with: VCR 2.4.0

@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-describe Crashplan::User do
+describe Code42::User do
   let(:valid_attributes) do
     {
       :id => 1,
@@ -10,7 +10,7 @@ describe Crashplan::User do
   end
 
   subject(:user) do
-    Crashplan::User.new(valid_attributes)
+    Code42::User.new(valid_attributes)
   end
 
   describe "#id" do

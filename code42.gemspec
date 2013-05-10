@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'crashplan/version'
+require 'code42/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "crashplan"
-  gem.version       = Crashplan::VERSION
+  gem.name          = "code42"
+  gem.version       = Code42::VERSION
   gem.authors       = ["Code 42"]
   gem.email         = ["dev-ruby@code42.com"]
-  gem.description   = %q{Provides a Ruby interface to the Crashplan API}
+  gem.description   = %q{Provides a Ruby interface to the Code42 API}
   gem.summary       = %q{...}
   gem.homepage      = ""
 

@@ -4,7 +4,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'optparse'
 require 'highline/import'
-require 'crashplan'
+require 'code42'
 
 class Parser
   class << self
@@ -69,7 +69,7 @@ if !options[:password]
   options[:password] = ask('Enter password: ') { |q| q.echo = "*" }
 end
 
-client = Crashplan::Client.new(
+client = Code42::Client.new(
   :host => options[:host],
   :username => options[:user],
   :password => options[:password],

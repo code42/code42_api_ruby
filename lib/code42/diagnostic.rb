@@ -1,4 +1,4 @@
-module Crashplan
+module Code42
   class Diagnostic < Resource
     attribute :timestamp, :from => 'diagnosticTimestamp', :as => DateTime
     attribute :db_ok

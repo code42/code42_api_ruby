@@ -1,4 +1,4 @@
-# Code 42 API
+# Code 42 API Ruby Gem
 
 A Ruby interface to the Code 42 API
 
@@ -27,7 +27,7 @@ Or install it yourself as:
       password: 'letmein'
     )
 
-## Authentication
+### Authentication
 
 ```
 token = client.get_token
@@ -43,7 +43,9 @@ Then you can pass this token for further requests:
       token: token
     )
 
-## User
+## Resources
+
+### User
 
 attributes:
 
@@ -67,7 +69,7 @@ attributes:
      :created_at,
      :updated_at]
 
-## Org
+### Org
 
 attributes:
 
@@ -128,6 +130,23 @@ org = client.org(42)
 ```
 client.validate_token(token).valid?
 ```
+
+### Documentation
+
+The project owner will publish a README.md with each project.
+
+The community can created linked and versioned documentation in the Wiki associated with this project:
+
+https://github.com/code42/code42_api_ruby/wiki
+
+### Bug / Issue tracking
+
+[Please open a new issue](https://github.com/code42/code42_api_ruby/issues). Before opening any issue, please search for existing issues.
+
+## Author(s) / Maintainer(s)
+
+[@melissavoegeli](http://github.com/melissavoegeli)
+
 # Code 42 README
 
 ## What is this?

@@ -154,7 +154,7 @@ https://github.com/code42/code42_api_ruby/wiki
 The Code 42 open source project is a set of frameworks and examples for developing solutions based on the Code 42 CrashPlan REST API.
 
 * [CrashPlan product website](http://www.code42.com/enterprise)
-* [CrashPlan online API documentation](http://www.code42.com/apidocviewer)
+* [CrashPlan online API documentation](http://www.crashplan.com/apidocviewer)
 * [Code 42 Open Source on Github](https://github.com/code42)
 
 Our goal is to give developers the tools necessary to build solutions that range from integration efforts to stand-alone application experiences.

@@ -143,7 +143,9 @@ https://github.com/code42/code42_api_ruby/wiki
 
 [Please open a new issue](https://github.com/code42/code42_api_ruby/issues). Before opening any issue, please search for existing issues.
 
-## Author(s) / Maintainer(s)
+## Authors/Maintainers
+
+[@ncolgan](http://github.com/ncolgan)
 
 [@melissavoegeli](http://github.com/melissavoegeli)
 

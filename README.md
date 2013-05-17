@@ -6,42 +6,52 @@ A Ruby interface to the Code 42 API
 
 Add this line to your application's Gemfile:
 
-    gem 'code42'
+```ruby
+gem 'code42'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install code42
+```bash
+$ gem install code42
+```
 
 ## Configuration
 
-    client = Code42::Client.new(
-      host: 'staging.code42.com',
-      port: 1234,
-      https: true,
-      api_root: '/api/',
-      username: 'testuser',
-      password: 'letmein'
-    )
+```ruby
+client = Code42::Client.new(
+  host: 'staging.code42.com',
+  port: 1234,
+  https: true,
+  api_root: '/api/',
+  username: 'testuser',
+  password: 'letmein'
+)
+```
 
 ### Authentication
 
-```
+```ruby
 token = client.get_token
 ```
 
 Then you can pass this token for further requests:
 
-    client = Code42::Client.new(
-      host: 'staging.code42.com',
-      port: 1234,
-      https: true,
-      api_root: '/api/',
-      token: token
-    )
+```ruby
+client = Code42::Client.new(
+  host: 'staging.code42.com',
+  port: 1234,
+  https: true,
+  api_root: '/api/',
+  token: token
+)
+```
 
 ## Resources
 
@@ -49,85 +59,89 @@ Then you can pass this token for further requests:
 
 attributes:
 
-    [:id,
-     :uid,
-     :status,
-     :username,
-     :email,
-     :first_name,
-     :last_name,
-     :quota_in_bytes,
-     :org_id,
-     :org_uid,
-     :org_name,
-     :active,
-     :blocked,
-     :email_promo,
-     :invited,
-     :org_type,
-     :username_is_an_email,
-     :created_at,
-     :updated_at]
+```ruby
+[:id,
+ :uid,
+ :status,
+ :username,
+ :email,
+ :first_name,
+ :last_name,
+ :quota_in_bytes,
+ :org_id,
+ :org_uid,
+ :org_name,
+ :active,
+ :blocked,
+ :email_promo,
+ :invited,
+ :org_type,
+ :username_is_an_email,
+ :created_at,
+ :updated_at]
+```
 
 ### Org
 
 attributes:
 
-    [:id,
-     :uid,
-     :name,
-     :status,
-     :active,
-     :blocked,
-     :parent_id,
-     :type,
-     :external_id,
-     :hierarchy_counts,
-     :config_inheritance_counts,
-     :created_at,
-     :updated_at,
-     :registration_key,
-     :reporting,
-     :custom_config,
-     :settings,
-     :settings_inherited,
-     :settings_summary]
+```ruby
+[:id,
+ :uid,
+ :name,
+ :status,
+ :active,
+ :blocked,
+ :parent_id,
+ :type,
+ :external_id,
+ :hierarchy_counts,
+ :config_inheritance_counts,
+ :created_at,
+ :updated_at,
+ :registration_key,
+ :reporting,
+ :custom_config,
+ :settings,
+ :settings_inherited,
+ :settings_summary]
+```
 
 ## Usage
 
 ### Ping a host
 
-```
+```ruby
 success = client.ping.success?
 ```
 
 ### Fetch the currently authorized API user
 
-```
+```ruby
 user = client.user
 ```
 
-### Get the get a user by ID
+### Fetch a user by ID
 
-```
+```ruby
 user = client.user(42)
 ```
 
 ### Fetch the Org for the currently authorized API user
 
-```
+```ruby
 org = client.org
 ```
 
 ### Fetch a specific Org by ID
 
-```
+```ruby
 org = client.org(42)
 ```
 
 ### Validate a token
 
-```
+```ruby
 client.validate_token(token).valid?
 ```
 

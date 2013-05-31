@@ -1,7 +1,14 @@
 require 'json'
+Dir[File.dirname(__FILE__) + '/api/*.rb'].each { |file| require file }
 
 module Code42
   class Client
+    include Code42::API::User
+    include Code42::API::Role
+    include Code42::API::Org
+    include Code42::API::Computer
+    include Code42::API::Token
+
     attr_accessor :settings
 
     def initialize(options = {})
@@ -31,184 +38,6 @@ module Code42
     # @param token [Code42::Token, String] The token to authenticate with
     def use_token_auth(token)
       settings.token = token.to_s
-    end
-
-    ### Authentication With Tokens :post, :get, :delete ###
-
-    # Gets a token for the currently authorized user
-    def get_token
-      object_from_response(Token, :post, "authToken")
-    end
-
-    # Returns LoginToken and ServerUrl
-    # @return [CrashPlan::Token] Token to pass to ServerUrl's AuthToken resource
-    def get_login_token
-      object_from_response(Token, :post, "loginToken")
-    end
-
-    # Validates an authorization token
-    # @return [Code42::TokenValidation]
-    # @param token [Code42::Token, String] The token to validate
-    def validate_token(token)
-      object_from_response(TokenValidation, :get, "authToken/#{token.to_s}")
-    end
-
-    # Manually expires a token
-    # @param token [Code42::Token, String] A token to expire (leave blank to expire currently used token)
-    def delete_token(token = nil)
-      token = token || settings.token
-      delete "authToken/#{token.to_s}"
-    end
-
-    ### Users :post, :get ###
-
-    # Creates a user
-    # @return [Code42::User] The created user
-    # @param attrs [Hash] A hash of attributes to assign to created user
-    # @example
-    #   client.create_user(:username => 'testuser', password: 'letmein', email: 'test@example.com', org_id: 3)
-    def create_user(attrs = {})
-      object_from_response(User, :post, "user", attrs)
-    end
-
-    # Returns information for a given user
-    # @return [Code42::User] The requested user
-    # @param id_or_username [String, Integer] A code42 user ID or username
-    def user(id_or_username = "my", params = {})
-      if id_or_username.is_a?(Fixnum) || id_or_username == 'my'
-        find_user_by_id id_or_username, params
-      else
-        find_user_by_username id_or_username, params
-      end
-    end
-
-    # Returns a user for a given id
-    def find_user_by_id(id = 'my', params = {})
-      object_from_response(User, :get, "user/#{id}", params)
-    end
-
-    # Returns a user for a given username
-    def find_user_by_username(username, params = {})
-      params.merge!(username: username)
-      users(params).first
-    end
-
-    # Returns a user for a given channel id
-    # @return [Code42::User] The requested user
-    # @param channel_id [String, Integer] A code42 User
-    def find_user_by_channel_id(channel_id = 1)
-      object_from_response(User, :get, "userChannel?channelCustomerId=#{channel_id}")
-    end
-
-    # Returns a list of up to 100 users
-    # @return [Array] An array of matching users
-    # @param params [Hash] A hash of parameters to match results against
-    def users(params = {})
-      params.merge!(key: 'users')
-      objects_from_response(User, :get, 'user', params)
-    end
-
-    # Check if user exists with given username.
-    def user_exists?(username)
-      users(username: username).present?
-    end
-
-    ### Roles :post, :get ###
-
-    # Assigns a role to a user
-    # @return [Code42::Role] The assigned role
-    # @param attrs [Hash] A hash of attributes for assigning a user role
-    # @example
-    #   client.assign_role(:user_id => 2, :role_name => 'Admin')
-    def assign_role(attrs = {})
-      object_from_response(Role, :post, 'UserRole', attrs)
-    end
-
-    # Returns a list of roles for a given user
-    # @return [Code42::RoleCollection] A collection of matching roles
-    # @param id [String, Integer] The id of the user to return roles for
-    def user_roles(id = 'my')
-      collection_from_response(RoleCollection, Role, :get, "userRole/#{id}")
-    end
-
-    ### Orgs :post, :get, :put, :delete ###
-
-    # Creates blue org as well as user for the org
-    # @return [Code42::Org] The created org
-    # @param attrs [Hash] A hash of attributes to assign to created org
-    # @example
-    #   client.create_org(:company => "test", :email => "test@test.com", :firstname => "test", :lastname => "test")
-    def create_pro_org(attrs = {})
-      object_from_response(Org, :post, "proOrgChannel", attrs)
-    end
-
-    # Creates an org
-    # @return [Code42::Org] The created org
-    # @param attrs [Hash] A hash of attributes to assign to created org
-    # @example
-    #   client.create_org(:name => 'Acme Org', :parent_id => 2)
-    def create_org(attrs = {})
-      object_from_response(Org, :post, "org", attrs)
-    end
-
-    # Returns information for a given org
-    # @return [Code42::Org] The requested org
-    # @param id [String, Integer] A code42 user ID
-    def org(id = "my", params = {})
-      object_from_response(Org, :get, "org/#{id}", params)
-    end
-
-    # Returns an org for a given name
-    # @return [Code42::Org] The requested org
-    # @param name [String] A Code42 org name
-    # FIXME: This needs to change when the API implements a better way.
-    def find_org_by_name(name)
-      search_orgs(name).select { |o| o.name == name }.first
-    end
-
-    # Searches orgs for a query string
-    # @return [Array] An array of matching orgs
-    # @param query [String] A string to search for
-    def search_orgs(query)
-      orgs(q: query)
-    end
-
-    # Creates a user
-    # @return [Code42::User] The created user
-    # @param attrs [Hash] A hash of attributes to assign to created user
-    # @example
-    #   client.create_user(:username => 'testuser', :password => 'letmein', :email => 'test@example.com', :org_id => 3)
-    def create_user(attrs = {})
-      object_from_response(User, :post, "user", attrs)
-    end
-
-    # Returns a list of up to 100 orgs
-    # @return [Array] An array of matching orgs
-    # @param params [Hash] A hash of parameters to match results against
-    def orgs(params = {})
-      params.merge!(key: 'orgs')
-      objects_from_response(Org, :get, 'org', params)
-    end
-
-    def update_org(id = 'my', attrs = {})
-      object_from_response(Org, :put, "org/#{id}", attrs)
-    end
-
-    ### Computers :get, :put  ###
-
-    # Returns one computer or http status 404
-    # @return [Code42::Computer] The requested computer
-    # @param id [String, Integer] A computer ID
-    def computer(id, params = {})
-      object_from_response(Computer, :get, "computer/#{id}", params)
-    end
-
-    # Returns a list of computers
-    # @return [Array] The list of computers
-    # @param params [Hash] A hash of valid search parameters for computers
-    def computers(params = {})
-      params.merge!(key: 'computers')
-      objects_from_response(Computer, :get, 'computer', params)
     end
 
     def diagnostic

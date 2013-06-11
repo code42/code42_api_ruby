@@ -30,9 +30,9 @@ http_interactions:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-05-06T12:05:58.625-05:00\",\n
-        \   \"params\": {}\n  },\n  \"data\":   [\n    \"1cgl9anbs064v1rkwf7n6rv8d7\",\n
-        \   \"0ahnn5s4gu27a0ctl9u4vbqmxy\"\n  ]\n}"
+      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-06-11T15:36:13.358-05:00\",\n
+        \   \"params\": {}\n  },\n  \"data\":   [\n    \"1vg9c5mi59cze0e9v679dha9wi\",\n
+        \   \"12d07otjuvxh51o5woefxkofdq\"\n  ]\n}"
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:58 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+recorded_with: VCR 2.5.0

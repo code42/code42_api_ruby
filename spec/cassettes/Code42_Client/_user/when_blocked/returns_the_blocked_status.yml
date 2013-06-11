@@ -1,8 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://admin:admin@localhost:7280/api/authToken
+    method: put
+    uri: http://admin:admin@localhost:7280/api/userblock/2
     body:
       encoding: UTF-8
       string: ! '{}'
@@ -15,29 +15,25 @@ http_interactions:
       - ! '*/*'
   response:
     status:
-      code: 200
-      message: OK
+      code: 204
+      message: No Content
     headers:
       Cache-Control:
       - no-store
       Pragma:
       - no-cache
       Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      - application/json
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-06-11T15:36:12.961-05:00\",\n
-        \   \"params\": {}\n  },\n  \"data\":   [\n    \"0kar1p08yxaj018frlrvyinmgk\",\n
-        \   \"00urf5qlpxdfh0p1nfwwxout68\"\n  ]\n}"
+      string: ''
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:12 GMT
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/authToken/0kar1p08yxaj018frlrvyinmgk-00urf5qlpxdfh0p1nfwwxout68
+    uri: http://admin:admin@localhost:7280/api/user/2
     body:
       encoding: US-ASCII
       string: ''
@@ -75,9 +71,14 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAAF3NMQrDMAyF4T2nMJqTYiUkpT5HLyCwBkMUgq10Mb57ZNqp
-        64f+pzo4B8JKkZQgOOeqiZkm4aIkpyHMHpfJbxPiG9ewbAHnx+tptAbvYfwW
-        J2WSYue1GbSu8L/6oT1FA80X/7KrcD5IuP+hKOmAXg/tBgjg2zKaAAAA
+        H4sIAAAAAAAAAI2SQXOCMBCF7/4KJmdxEqhWuenIgUOtY+m5s0KomRKiyWLH
+        cfzvDQgKHtoe8+XtvuTNOw8ch0iOkAICCRzHOVtiGQrJDYLcW0g8ynyXTlzG
+        YjYO/EnA/BGdei4dB5SS4XViDxqksfLzxYJLRcnj1tJwHaWWeMM7eBcVIbj7
+        znfl60kcPHPcpskhk9JLuSxSaC3sg7CsLMg8QXHkQ2eRq+SLp6SzrgDJKwkk
+        iSoL/IDSoIZc3LZwCSL/VZEJbXD1154c/iE6lAohKhYn5NXDXdZwpT/rIDrn
+        Jof58iVakTtuLXoc6v9bjLrkDds2WfRg/dm1VlJZnkFu2gtRHAXW6i61fvFp
+        X/uFqzjcrDfRW/iYbmTmRdiE2B1ONAcUqlgC8mttbGfok8ueY+YFPrVlGc1m
+        tF8bqVKRieRhsNe3ceBNbd/awapdg8sP9oPlU7oCAAA=
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:12 GMT
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
 recorded_with: VCR 2.5.0

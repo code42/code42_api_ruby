@@ -33,5 +33,5 @@ http_interactions:
       encoding: US-ASCII
       string: ! '[{"name":"SYSTEM","description":"Invalid or missing credentials"}]'
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:58 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+recorded_with: VCR 2.5.0

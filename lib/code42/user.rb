@@ -36,5 +36,13 @@ module Code42
       attrs.merge!(user_id: id)
       client.assign_role(attrs)
     end
+
+    def block
+      client.block_user(user_id: id)
+    end
+
+    def unblock
+      client.unblock_user(user_id: id)
+    end
   end
 end

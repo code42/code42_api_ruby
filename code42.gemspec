@@ -12,12 +12,12 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{...}
   gem.homepage      = ""
 
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'webmock'
-  gem.add_development_dependency 'vcr'
-  gem.add_dependency 'faraday'
-  gem.add_dependency 'activesupport', '~> 3.2.0'
-  gem.add_dependency 'faraday_middleware'
+  gem.add_development_dependency 'rspec',   '~> 2.11.0'
+  gem.add_development_dependency 'webmock', '~> 1.11.0'
+  gem.add_development_dependency 'vcr',     '~> 2.4.0'
+  gem.add_dependency 'faraday',             '~> 0.8.7'
+  gem.add_dependency 'activesupport',       '~> 3.2.0'
+  gem.add_dependency 'faraday_middleware',  '~> 0.9.0'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -53,6 +53,20 @@ module Code42
       def user_exists?(username)
         users(username: username).present?
       end
+
+      # Block a user from logging in
+      # @return true if blocked
+      # @params id [Integer, String] The user ID you want to block
+      def block_user(id)
+        put("userblock/#{id}")
+      end
+
+      # Unblock a previously blocked user
+      # @return true if unblocked
+      # @params id [Integer, String] The user ID you want to unblock
+      def unblock_user(id)
+        delete("userblock/#{id}")
+      end
     end
   end
 end

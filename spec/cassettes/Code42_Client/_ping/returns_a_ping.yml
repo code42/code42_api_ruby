@@ -40,9 +40,9 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAAC3MPQ6AIAwG0N1TNJ3FFA1qOIcXaJTBgYRAnQh3t0TX9/3U
-        AQBjEL5YGD0AVBU1uWMowjEp4kx2MeQMrYedPTnvtmlfSckT4fgtEmeOReu1
-        KbSu+L9WLM95htJTyU9oQ3sBjNQqq3kAAAA=
+        H4sIAAAAAAAAAC3MPQqAMAwG0N1ThMxWEquCPYcXCLWDQ0FsnErvbkTX9/3U
+        DgBzUtlFBQMAVBMzPXIqKvk0xJHYO1oc88Zz8EtgP4zr5GgORNh/i1MuycXq
+        tRm0V/F/rVjuGFN5U73u1Lr2ABGVoIR5AAAA
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:57 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+recorded_with: VCR 2.5.0

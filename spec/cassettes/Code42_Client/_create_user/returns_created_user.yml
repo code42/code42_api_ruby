@@ -30,15 +30,15 @@ http_interactions:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-05-06T12:05:57.453-05:00\",\n
+      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-06-11T15:36:13.440-05:00\",\n
         \   \"params\": {}\n  },\n  \"data\":   {\n    \"userId\": 3,\n    \"userUid\":
-        \"827da4bcbdf814a6\",\n    \"status\": \"Active\",\n    \"username\": \"testuser\",\n
+        \"89e29f40cccc6890\",\n    \"status\": \"Active\",\n    \"username\": \"testuser\",\n
         \   \"email\": null,\n    \"firstName\": null,\n    \"lastName\": null,\n
         \   \"quotaInBytes\": -1,\n    \"orgId\": 2,\n    \"orgUid\": \"proserverdemo\",\n
         \   \"orgName\": \"PROServer Demo\",\n    \"active\": true,\n    \"blocked\":
         false,\n    \"emailPromo\": true,\n    \"invited\": true,\n    \"orgType\":
-        \"ENTERPRISE\",\n    \"usernameIsAnEmail\": null,\n    \"creationDate\": \"2013-05-06T12:05:57.391-05:00\",\n
-        \   \"modificationDate\": \"2013-05-06T12:05:57.395-05:00\"\n  }\n}"
+        \"ENTERPRISE\",\n    \"usernameIsAnEmail\": null,\n    \"creationDate\": \"2013-06-11T15:34:42.178-05:00\",\n
+        \   \"modificationDate\": \"2013-06-11T15:36:13.426-05:00\"\n  }\n}"
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:57 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+recorded_with: VCR 2.5.0

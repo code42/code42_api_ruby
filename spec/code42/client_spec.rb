@@ -53,7 +53,6 @@ describe Code42::Client, :vcr do
       org = client.create_org(org_attributes)
       org.name.should eq 'IBM'
     end
-
   end
 
   describe "#create_user" do
@@ -79,6 +78,8 @@ describe Code42::Client, :vcr do
   end
 
   describe "#user" do
+    let(:user_id) { 2 }
+
     context "when ID is not passed" do
       it "returns my user" do
         user = client.user
@@ -88,13 +89,33 @@ describe Code42::Client, :vcr do
 
     context "when ID is passed in" do
       it "returns a specific user" do
-        user = client.user(2)
-        user.id.should == 2
+        user = client.user(user_id)
+        user.id.should == user_id
       end
 
       it "passes params to code42 server" do
-        client.should_receive(:object_from_response).with(Code42::User, :get, "user/2", :incAll => true)
-        user = client.user(2, :incAll => true)
+        client.should_receive(:object_from_response).with(Code42::User, :get, "user/#{user_id}", :incAll => true)
+        user = client.user(user_id, :incAll => true)
+      end
+    end
+
+    context "when blocked" do
+      it "returns the blocked status" do
+        client.block_user(user_id)
+        user = client.user(user_id)
+        user.blocked.should be_true
+      end
+    end
+
+    context "when unblocked" do
+      before(:each) do
+        client.block_user(user_id)
+      end
+
+      it "returns the blocked status" do
+        client.unblock_user(user_id)
+        user = client.user(user_id)
+        user.blocked.should be_false
       end
     end
   end

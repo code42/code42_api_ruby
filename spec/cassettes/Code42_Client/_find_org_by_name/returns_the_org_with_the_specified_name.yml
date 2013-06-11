@@ -2,52 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/org?q=Default
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.8.7
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - ! '*/*'
-  response:
-    status:
-      code: 200
-      message: !binary |-
-        T0s=
-    headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAGWNuw7CMAxF936F5blFbpARylo+gQ11sERASA3pw52i/DuO
-        YGP0ufdc5wYAY1C5iwp6AMhGjOkrhk0lzgbRUX/siDs6XXvniT2fD+zsZk+E
-        7deYZZW4WT3jUqVLeMg+KRaLS+3g34+kMg1pf6tR+s2k9VlHbmPVmvIB1DL0
-        wKEAAAA=
-    http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:58 GMT
-- request:
-    method: get
     uri: http://admin:admin@localhost:7280/api/org?q=PROServer%20Demo
     body:
       encoding: US-ASCII
@@ -86,16 +40,16 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAAKVTTU/CQBC9+yuaPVtTqqj05geJhEQJLfFgPIxlgI3d3bo7
-        NTak/93dBQsCetBTs2/evDdfXR4FARNIMAUClgRBsLSIxYgLNASitCCLo85p
-        GHXD6DzrxEnUS+KLk3P37iZRxI5XGSVoEMbSl+zNJY3GDynqd9TBLQrFGstq
-        HJXtWSmC4kZVkizaWaspPXdaT0HLW4GDqUXj4y1kwh3ESq2Mt5s6t23CPQg8
-        UFBLsW1S5czYVU78HTcRWL2TgHSFLfpSqPwVnekMCrPB7QBQ0sO6RlkVRRui
-        uvQl9O+z/ng0HqT9jQl+EGoJxeC3NhYcNeh8Ufs5+Sk3bTBXcsbnA7lAzQlk
-        jgdJGoG4krdAeGCnnaR7dtKLom87dbehpnzG87+kapxzQ9qnDrH2mcPhY9jL
-        0iyM7yZxOBlll9v8Umnicr5TeGVIiRvf497MDZLLMP6etm/FlQ4fqe3Z7Cxj
-        FbmuCb8i60Czp7oeqd/1b/KMHRZn7EfptBICdP1vYf9tnt3PddR8ApJu5H7O
-        AwAA
+        H4sIAAAAAAAAAKVTy07DMBC88xWRzwQlKVSQG49KVJWgalJxQByWdNtaxHaw
+        N4ioyr9juyUttHCAU+TZ2Zl9ZXUUBEwgwQwIWBoEwcoiFiMu0BCIyoIsieJe
+        GPXDOM7js7TXT+PeSRSfhtFZGkXseJ1RgQZhLH3FXl3SeHKfoX5DHdygUKy1
+        rNZR2Z6VIiivVS3JovFGTemF03oMOt4aHM4smhzvIFPuIFZpZbzdzLntEu5A
+        4IGCOoptk2pnxi4L4m+4jcD6nQaka+zQ51IVL+hM51CaLW4HgJLuNzXKuiy7
+        EDWVL2Fwlw8m48kwG2xN8J1QSyiHv7Wx5KhBF8vGz8lPue2ChZJzvhjKJWpO
+        IAs8SNIIxJW8AcIDO03SJDrpR+dfdupuQ834nBd/SdW44Ia0Tx1h4zNHo4fw
+        Is/yMLmdJuF0nJ/v8iulicvFt8JrQ0pc+x73Zm6QXIbx97R7K650eM9sz+bb
+        MtaRq4bwM7IJtHuqm5H6Xf8mz9hhccZ+lM5qIUA3/xb23/bJ/VxH7QdHtqUI
+        zgMAAA==
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:09:27 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+recorded_with: VCR 2.5.0

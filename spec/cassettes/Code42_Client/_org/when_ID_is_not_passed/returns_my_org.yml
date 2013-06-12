@@ -40,15 +40,15 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAAJ2SwW7CMAyG73uKKmeKUkph9LYBh2oam4A9QFZMidYkVeJO
-        VIh3X9KWIUp3WdSLv9h/f9s5PXgeEYBsx5CR2PO8kyWWIRdgkInCQjKiQejT
-        yKeTbTCKaRRHj8NxaOMoppQMmoqCaSaMTT+dLTg7SrqqSmfJzoJg8Bt/cAfI
-        0+I1WZErXjEBd9wawtLUOEX+DRfOmij2UJfQss9cpV/gtPcsN3A1CRLfWhuy
-        zPP2Aqui/t9ytV2u39fJZnkRhyOClixP7n0eOGim00M1V6XEpvf2KlVyz7NE
-        HkBzZDKFnhQNDLmSC4bQTJlO3JRH4TaI4iCIw9kwiGa3UxZqx/c87Smc+tQW
-        0nhsv+kwCjrr0ZBxg7oufIHK1R0755paKI1cZjduS4NKzOu2bidtAF2yqRd9
-        WbWzyo4b26Hjfrvwhj5XCA2t4bmj0w6t3t1fgoT0CRLSK7gphWC6+rc/95wf
-        zj8FHKrJKwMAAA==
+        H4sIAAAAAAAAAJ2SwXKCMBCG7z4Fk7M4BIROubXqgenUdtQ+QIorZkoSJiwd
+        GYd3bwJYB7SXcsuX3T///st54jhEALI9Q0Zix3HOhhiGXECJTBQGEt+jgetF
+        LqU7GsZBFFN/FlHqemHseWTadRRMM1Ga8nNjQGMpGasqnSV7A+j09/zBLSBP
+        y9dkTa54zQTccGMIq7LFKfJvuHDWnWIHdQU9+8xV+gVW+8DyEq4mQeJbb0NW
+        ed5fYF20763Wu9XmfZNsVxdxOCFoyfLk1ueRg2Y6PdYLVUnsZu+vUiUPPEvk
+        ETRHJlO4U6KBIVdyyRC6lE3EXuj6gU2Z0jh4nNHwcZiyUHt+4OmocbCeeTyn
+        swc/GjZqyHiJum18gdr2nUbftbRQGrnMBm6rEpVYtGMNky4BbXHZLvqyamuV
+        nbZmQsvdfuEdfa4ROtrCZqTTh9bu7i9BQu4JEnJXcFsJwXT9b3/2d540P9qU
+        bgYrAwAA
     http_version: 
-  recorded_at: Mon, 06 May 2013 17:05:58 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Tue, 11 Jun 2013 20:36:12 GMT
+recorded_with: VCR 2.5.0

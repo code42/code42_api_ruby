@@ -163,6 +163,10 @@ https://github.com/code42/code42_api_ruby/wiki
 
 [@melissavoegeli](http://github.com/melissavoegeli)
 
+## Contributors
+
+[@jrmehle](http://github.com/jrmehle)
+
 # Code 42 README
 
 ## What is this?

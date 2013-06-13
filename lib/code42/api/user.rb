@@ -58,14 +58,14 @@ module Code42
       # @return true if blocked
       # @params id [Integer, String] The user ID you want to block
       def block_user(id)
-        put("userblock/#{id}")
+        put("UserBlock/#{id}")
       end
 
       # Unblock a previously blocked user
       # @return true if unblocked
       # @params id [Integer, String] The user ID you want to unblock
       def unblock_user(id)
-        delete("userblock/#{id}")
+        delete("UserBlock/#{id}")
       end
     end
   end

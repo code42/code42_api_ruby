@@ -5,18 +5,20 @@ http_interactions:
     uri: http://admin:badpassword@localhost:7280/api/authToken
     body:
       encoding: UTF-8
-      string: ! '{}'
+      string: '{}'
     headers:
       User-Agent:
       - Faraday v0.8.7
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 401
-      message: ! '[{   "name": "SYSTEM",   "description": "Invalid or missing credentials"
+      message: '[{   "name": "SYSTEM",   "description": "Invalid or missing credentials"
         }]'
     headers:
       Pragma:
@@ -30,8 +32,8 @@ http_interactions:
       Server:
       - Jetty(7.6.3.v20120416)
     body:
-      encoding: US-ASCII
-      string: ! '[{"name":"SYSTEM","description":"Invalid or missing credentials"}]'
+      encoding: UTF-8
+      string: '[{"name":"SYSTEM","description":"Invalid or missing credentials"}]'
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

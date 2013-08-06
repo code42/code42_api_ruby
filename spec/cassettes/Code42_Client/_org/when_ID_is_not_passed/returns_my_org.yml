@@ -12,43 +12,61 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAJ2SwXKCMBCG7z4Fk7M4BIROubXqgenUdtQ+QIorZkoSJiwd
-        GYd3bwJYB7SXcsuX3T///st54jhEALI9Q0Zix3HOhhiGXECJTBQGEt+jgetF
-        LqU7GsZBFFN/FlHqemHseWTadRRMM1Ga8nNjQGMpGasqnSV7A+j09/zBLSBP
-        y9dkTa54zQTccGMIq7LFKfJvuHDWnWIHdQU9+8xV+gVW+8DyEq4mQeJbb0NW
-        ed5fYF20763Wu9XmfZNsVxdxOCFoyfLk1ueRg2Y6PdYLVUnsZu+vUiUPPEvk
-        ETRHJlO4U6KBIVdyyRC6lE3EXuj6gU2Z0jh4nNHwcZiyUHt+4OmocbCeeTyn
-        swc/GjZqyHiJum18gdr2nUbftbRQGrnMBm6rEpVYtGMNky4BbXHZLvqyamuV
-        nbZmQsvdfuEdfa4ROtrCZqTTh9bu7i9BQu4JEnJXcFsJwXT9b3/2d540P9qU
-        bgYrAwAA
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:30.279-05:00",
+            "params": {}
+          },
+          "data":   {
+            "orgId": 1,
+            "orgUid": "ADMIN",
+            "orgName": "ADMIN",
+            "status": "Active",
+            "active": true,
+            "blocked": false,
+            "parentOrgId": null,
+            "type": "ENTERPRISE",
+            "externalId": "ADMIN",
+            "hierarchyCounts": {},
+            "configInheritanceCounts": {},
+            "creationDate": "2006-05-23T15:11:39.159-05:00",
+            "modificationDate": "2013-06-13T15:14:38.120-05:00",
+            "registrationKey": "xxxxxxxxxxxxxxxx",
+            "reporting": {},
+            "customConfig": true,
+            "settings":     {
+              "maxSeats": -1,
+              "maxBytes": -1
+            },
+            "settingsInherited":     {
+              "maxSeats": "",
+              "maxBytes": ""
+            },
+            "settingsSummary":     {
+              "maxSeats": -1,
+              "maxBytes": -1
+            }
+          }
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:12 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

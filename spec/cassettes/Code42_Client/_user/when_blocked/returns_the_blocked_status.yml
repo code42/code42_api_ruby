@@ -2,21 +2,23 @@
 http_interactions:
 - request:
     method: put
-    uri: http://admin:admin@localhost:7280/api/userblock/2
+    uri: http://admin:admin@localhost:7280/api/UserBlock/2
     body:
       encoding: UTF-8
-      string: ! '{}'
+      string: '{}'
     headers:
       User-Agent:
       - Faraday v0.8.7
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
-      code: 204
-      message: No Content
+      code: 201
+      message: Created
     headers:
       Cache-Control:
       - no-store
@@ -24,13 +26,15 @@ http_interactions:
       - no-cache
       Content-Type:
       - application/json
+      Content-Length:
+      - '0'
       Server:
       - Jetty(7.6.3.v20120416)
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 - request:
     method: get
     uri: http://admin:admin@localhost:7280/api/user/2
@@ -43,42 +47,52 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAI2SQXOCMBCF7/4KJmdxEqhWuenIgUOtY+m5s0KomRKiyWLH
-        cfzvDQgKHtoe8+XtvuTNOw8ch0iOkAICCRzHOVtiGQrJDYLcW0g8ynyXTlzG
-        YjYO/EnA/BGdei4dB5SS4XViDxqksfLzxYJLRcnj1tJwHaWWeMM7eBcVIbj7
-        znfl60kcPHPcpskhk9JLuSxSaC3sg7CsLMg8QXHkQ2eRq+SLp6SzrgDJKwkk
-        iSoL/IDSoIZc3LZwCSL/VZEJbXD1154c/iE6lAohKhYn5NXDXdZwpT/rIDrn
-        Jof58iVakTtuLXoc6v9bjLrkDds2WfRg/dm1VlJZnkFu2gtRHAXW6i61fvFp
-        X/uFqzjcrDfRW/iYbmTmRdiE2B1ONAcUqlgC8mttbGfok8ueY+YFPrVlGc1m
-        tF8bqVKRieRhsNe3ceBNbd/awapdg8sP9oPlU7oCAAA=
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:30.243-05:00",
+            "params": {}
+          },
+          "data":   {
+            "userId": 2,
+            "userUid": "thwlhuOyiq2svbdcqfmm2demnda",
+            "status": "Active, Blocked",
+            "username": "account_australia",
+            "email": "account_australia",
+            "firstName": "account_australia",
+            "lastName": "account_australia",
+            "quotaInBytes": -1,
+            "orgId": 1,
+            "orgUid": "ADMIN",
+            "orgName": "ADMIN",
+            "active": true,
+            "blocked": true,
+            "emailPromo": false,
+            "invited": false,
+            "orgType": "ENTERPRISE",
+            "usernameIsAnEmail": false,
+            "creationDate": "2006-04-17T12:30:00.990-05:00",
+            "modificationDate": "2013-06-13T15:16:30.212-05:00"
+          }
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

@@ -5,14 +5,16 @@ http_interactions:
     uri: http://admin:admin@localhost:7280/api/org
     body:
       encoding: UTF-8
-      string: ! '{"orgName":"IBM"}'
+      string: '{"orgName":"IBM"}'
     headers:
       User-Agent:
       - Faraday v0.8.7
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
@@ -29,19 +31,44 @@ http_interactions:
       Server:
       - Jetty(7.6.3.v20120416)
     body:
-      encoding: US-ASCII
-      string: ! "{\n  \"metadata\":   {\n    \"timestamp\": \"2013-06-11T15:36:12.931-05:00\",\n
-        \   \"params\": {}\n  },\n  \"data\":   {\n    \"orgId\": 88,\n    \"orgUid\":
-        \"587597449746066070\",\n    \"orgName\": \"IBM\",\n    \"status\": \"Active\",\n
-        \   \"active\": true,\n    \"blocked\": false,\n    \"parentOrgId\": null,\n
-        \   \"type\": \"ENTERPRISE\",\n    \"externalId\": \"587597449746066070\",\n
-        \   \"hierarchyCounts\": {},\n    \"configInheritanceCounts\": {},\n    \"creationDate\":
-        \"2013-06-11T15:36:12.778-05:00\",\n    \"modificationDate\": \"2013-06-11T15:36:12.894-05:00\",\n
-        \   \"registrationKey\": \"K44T-JS9H-892T-4C4U\",\n    \"reporting\": {},\n
-        \   \"customConfig\": false,\n    \"settings\":     {\n      \"maxSeats\":
-        null,\n      \"maxBytes\": null\n    },\n    \"settingsInherited\":     {\n
-        \     \"maxSeats\": \"\",\n      \"maxBytes\": \"\"\n    },\n    \"settingsSummary\":
-        \    {\n      \"maxSeats\": \"\",\n      \"maxBytes\": \"\"\n    }\n  }\n}"
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:29.975-05:00",
+            "params": {}
+          },
+          "data":   {
+            "orgId": 87,
+            "orgUid": "587885375444888214",
+            "orgName": "IBM",
+            "status": "Active",
+            "active": true,
+            "blocked": false,
+            "parentOrgId": null,
+            "type": "ENTERPRISE",
+            "externalId": "587885375444888214",
+            "hierarchyCounts": {},
+            "configInheritanceCounts": {},
+            "creationDate": "2013-06-13T15:16:29.859-05:00",
+            "modificationDate": "2013-06-13T15:16:29.957-05:00",
+            "registrationKey": "SCTR-799T-224R-JWTW",
+            "reporting": {},
+            "customConfig": false,
+            "settings":     {
+              "maxSeats": null,
+              "maxBytes": null
+            },
+            "settingsInherited":     {
+              "maxSeats": "",
+              "maxBytes": ""
+            },
+            "settingsSummary":     {
+              "maxSeats": "",
+              "maxBytes": ""
+            }
+          }
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:12 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:29 GMT
 recorded_with: VCR 2.5.0

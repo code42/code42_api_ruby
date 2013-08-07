@@ -12,39 +12,39 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAF2PPQ+CMBRFd39F0xlISxGlmwmLgy6wGOPwAs+kkYopdSL8
-        d18jfq4n755377hgjFv00IIHrhljIxFi3lgcPNgbQZ4KqWKRx1LWcqlVrqVK
-        VLqOxVILwaNn4gYO7EDn40RgCpTP1uNb6/oOty0hGX3AHiyGN9Wh2pS77f5l
-        7PrmguHYuzvOrHEI3vTXEjw+q1EvkcVyVctUK0GFkmK9+q1m+9acTfMX/NmU
-        aZEnRaH+NqGzZhgoFoYdxy8QHNBac+XTKew9LaYHscZqsU0BAAA=
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:30.345-05:00",
+            "params": {}
+          },
+          "data": [  {
+            "roleId": 1,
+            "roleName": "SYSADMIN",
+            "locked": true,
+            "creationDate": "2006-04-17T12:30:00.987-05:00",
+            "modificationDate": "2013-06-13T15:13:53.293-05:00",
+            "permissions": [{"permission": "admin"}]
+          }]
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

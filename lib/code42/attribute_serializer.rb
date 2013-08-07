@@ -64,9 +64,11 @@ module Code42
         end
       else
         if value.is_a?(Hash)
-          value.inject({}) do |h,a|
-            h.merge! deserialize(a[0], a[1])
+          value.inject({}) do |h,(key, value)|
+            h.merge! deserialize(key, value)
           end
+        elsif value.is_a?(Array)
+          value.map { |item| deserialize_value(nil, item) }
         else
           value
         end

@@ -12,44 +12,64 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKVTy07DMBC88xWRzwQlKVSQG49KVJWgalJxQByWdNtaxHaw
-        N4ioyr9juyUttHCAU+TZ2Zl9ZXUUBEwgwQwIWBoEwcoiFiMu0BCIyoIsieJe
-        GPXDOM7js7TXT+PeSRSfhtFZGkXseJ1RgQZhLH3FXl3SeHKfoX5DHdygUKy1
-        rNZR2Z6VIiivVS3JovFGTemF03oMOt4aHM4smhzvIFPuIFZpZbzdzLntEu5A
-        4IGCOoptk2pnxi4L4m+4jcD6nQaka+zQ51IVL+hM51CaLW4HgJLuNzXKuiy7
-        EDWVL2Fwlw8m48kwG2xN8J1QSyiHv7Wx5KhBF8vGz8lPue2ChZJzvhjKJWpO
-        IAs8SNIIxJW8AcIDO03SJDrpR+dfdupuQ834nBd/SdW44Ia0Tx1h4zNHo4fw
-        Is/yMLmdJuF0nJ/v8iulicvFt8JrQ0pc+x73Zm6QXIbx97R7K650eM9sz+bb
-        MtaRq4bwM7IJtHuqm5H6Xf8mz9hhccZ+lM5qIUA3/xb23/bJ/VxH7QdHtqUI
-        zgMAAA==
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:30.378-05:00",
+            "params": {"q": "PROServer Demo"}
+          },
+          "data":   {
+            "totalCount": 1,
+            "orgs": [    {
+              "orgId": 2,
+              "orgUid": "proserverdemo",
+              "orgName": "PROServer Demo",
+              "status": "Active",
+              "active": true,
+              "blocked": false,
+              "parentOrgId": null,
+              "type": "ENTERPRISE",
+              "externalId": "proserverdemo",
+              "hierarchyCounts": {},
+              "configInheritanceCounts": {},
+              "creationDate": "2013-06-13T15:12:53.017-05:00",
+              "modificationDate": "2013-06-13T15:12:53.017-05:00",
+              "registrationKey": "2KKW-9TST-2HU2-UPT8",
+              "reporting": {},
+              "customConfig": false,
+              "settings":       {
+                "maxSeats": null,
+                "maxBytes": null
+              },
+              "settingsInherited":       {
+                "maxSeats": "",
+                "maxBytes": ""
+              },
+              "settingsSummary":       {
+                "maxSeats": "",
+                "maxBytes": ""
+              }
+            }]
+          }
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

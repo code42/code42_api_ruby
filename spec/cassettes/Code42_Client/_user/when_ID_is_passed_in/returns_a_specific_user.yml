@@ -12,42 +12,52 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - ! '*/*'
+      - '*/*'
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tc3RvcmU=
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "U2VydmVy":
-      - !binary |-
-        SmV0dHkoNy42LjMudjIwMTIwNDE2KQ==
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAI2SQXOCMBCF7/4KJmdxEqi0ctORA4dax9JzZ4VQMyVEk8WO
-        4/jfGxAqeGh7zJe3+5I37zxyHCI5QgYIJHQc52yJZSgkNwhybyHxKPNdGriM
-        JWwa+kHI/AkLApdOQ0rJ+DqxBw3SWPn5YsGlpuR+a2W4jjNLvPENvImaENx9
-        Fbvq5SQOnjlus/SQS+llXJYZdBb2QVjVFmSeojjysbMoVPrJM9JbV4LktQTS
-        VFUlvkNlUEMhfrZwCaL4VZELbXD1154C/iE6VAohLhcn5PXDXdZypT+aIHrn
-        Nof58jlekRvuLAYcmv9bjLriLdu2WQxg89m1VlJZnkNhugtRHgU26j61fslp
-        3/hFqyTarDfxa3SfbmzmZdSG2B9ONQcUqlwC8mttbGfog8seE+aFPrVlmcxm
-        dFgbqTKRi/RucNC3aeg9TehTN1i3a3T5Br40MGq6AgAA
+      encoding: UTF-8
+      string: |-
+        {
+          "metadata":   {
+            "timestamp": "2013-06-13T15:16:30.098-05:00",
+            "params": {}
+          },
+          "data":   {
+            "userId": 2,
+            "userUid": "thwlhuOyiq2svbdcqfmm2demnda",
+            "status": "Active, Blocked",
+            "username": "account_australia",
+            "email": "account_australia",
+            "firstName": "account_australia",
+            "lastName": "account_australia",
+            "quotaInBytes": -1,
+            "orgId": 1,
+            "orgUid": "ADMIN",
+            "orgName": "ADMIN",
+            "active": true,
+            "blocked": true,
+            "emailPromo": false,
+            "invited": false,
+            "orgType": "ENTERPRISE",
+            "usernameIsAnEmail": false,
+            "creationDate": "2006-04-17T12:30:00.990-05:00",
+            "modificationDate": "2013-06-13T15:14:39.525-05:00"
+          }
+        }
     http_version: 
-  recorded_at: Tue, 11 Jun 2013 20:36:13 GMT
+  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
 recorded_with: VCR 2.5.0

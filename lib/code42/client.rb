@@ -56,24 +56,26 @@ module Code42
     end
 
     def connection
-      @connection = Connection.new(
-        host: settings.host,
-        port: settings.port,
-        scheme: settings.scheme,
-        path_prefix: settings.api_root,
-        verify_https: settings.verify_https,
-      )
-      if settings.debug
-        @connection.use Faraday::Response::Logger
+      @connection ||= begin
+        c = Connection.new(
+          host: settings.host,
+          port: settings.port,
+          scheme: settings.scheme,
+          path_prefix: settings.api_root,
+          verify_https: settings.verify_https,
+        )
+        if settings.debug
+          c.use Faraday::Response::Logger
+        end
+        if settings.username && settings.password
+          c.username = settings.username
+          c.password = settings.password
+        end
+        if settings.token
+          c.token = settings.token
+        end
+        c
       end
-      if settings.username && settings.password
-        @connection.username = settings.username
-        @connection.password = settings.password
-      end
-      if settings.token
-        @connection.token = settings.token
-      end
-      @connection
     end
 
     private

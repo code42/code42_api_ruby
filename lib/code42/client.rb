@@ -75,6 +75,9 @@ module Code42
       if settings.token
         @connection.token = settings.token
       end
+      if settings.mlk
+        @connection.mlk = settings.mlk
+      end
       @connection
     end
 

@@ -1,6 +1,6 @@
 module Code42
   class Settings
-    attr_accessor :host, :port, :https, :api_root, :username, :password, :token, :verify_https, :debug
+    attr_accessor :host, :port, :https, :api_root, :username, :password, :token, :verify_https, :debug, :mlk
 
     def initialize(options = {})
       options.symbolize_keys!

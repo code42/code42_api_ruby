@@ -29,8 +29,8 @@ module Code42
 
     def adapter
       if !@adapter
-        @adapter = Faraday.new do |f|
-          f.adapter :excon
+        @adapter = Faraday.new do |conn|
+          conn.adapter :excon
         end
         @adapter.response :json
       end

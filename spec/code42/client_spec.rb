@@ -3,13 +3,29 @@ require 'spec_helper'
 describe Code42::Client, :vcr do
   subject(:client) do
     Code42::Client.new(
-      host: 'localhost',
-      port: 7280,
+      host: '10.10.46.137',
+      port: 4280,
       https: false,
       api_root: '/api',
       username: 'admin',
-      password: 'admin'
+      password: 'admin',
+      verify_https: false,
+      debug: true
     )
+  end
+
+  describe '#product_licenses' do
+    it 'returns an array of product licenses' do
+      client.product_licenses.should be_an(Array)
+      client.product_licenses.first.should be_a(Code42::ProductLicense)
+    end
+  end
+
+  describe '#update_product_license' do
+    it 'updates a product license' do
+      product_licenses = client.update_product_license("ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ==")
+      product_licenses.first.license_key.should == "ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ=="
+    end
   end
 
   describe "#validate_token" do
@@ -66,7 +82,7 @@ describe Code42::Client, :vcr do
     it "returns created user" do
       user = client.create_user(user_attributes)
       user.username.should eq 'testuser'
-      user.id.should eq 3
+      user.org_id.should eq 2
     end
 
     context "when sending an invalid email" do
@@ -95,7 +111,7 @@ describe Code42::Client, :vcr do
 
       it "passes params to code42 server" do
         client.should_receive(:object_from_response).with(Code42::User, :get, "user/#{user_id}", :incAll => true)
-        user = client.user(user_id, :incAll => true)
+        client.user(user_id, :incAll => true)
       end
     end
 
@@ -136,7 +152,7 @@ describe Code42::Client, :vcr do
 
       it "passes params to code42 server" do
         client.should_receive(:object_from_response).with(Code42::Org, :get, "org/2", :incAll => true)
-        user = client.org(2, :incAll => true)
+        client.org(2, :incAll => true)
       end
     end
   end

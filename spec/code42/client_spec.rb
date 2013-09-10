@@ -21,10 +21,19 @@ describe Code42::Client, :vcr do
     end
   end
 
-  describe '#update_product_license' do
-    it 'updates a product license' do
-      product_licenses = client.update_product_license("ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ==")
+  describe '#add_product_license' do
+    it 'adds a product license' do
+      product_licenses = client.add_product_license("ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ==")
       product_licenses.first.license_key.should == "ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ=="
+    end
+  end
+
+  describe '#remove_product_license' do
+    it 'removes a product license' do
+      product_licenses = client.product_licenses
+      id = product_licenses.first.id
+      client.remove_product_license id
+      client.product_licenses.should be_empty
     end
   end
 

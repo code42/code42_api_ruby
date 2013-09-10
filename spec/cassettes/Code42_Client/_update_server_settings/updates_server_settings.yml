@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://10.10.46.137:4280/api/serverSettings/1
+    body:
+      encoding: UTF-8
+      string: '{"name":"Foo Bar Server"}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.46.137:4280/api/v1/serverSettings/1
+      Content-Length:
+      - '0'
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 10 Sep 2013 18:58:41 GMT
+- request:
+    method: get
+    uri: http://10.10.46.137:4280/api/serverSettings/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.46.137:4280/api/v1/serverSettings/1
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-10T13:58:44.584-05:00","params":{}},"data":{"serverId":1,"name":"Foo
+        Bar Server","discriminator":"MyCluster","dailyAccountingTime":"02:01","archiveMaintenanceIntervalInDays":7,"expiredArchiveCleanupInDays":20,"autoUpgrade":true,"deviceAutoUpgrade":true,"serverUpgraded":false,"clientUpgradeAvailable":false,"network":{"website":"http://10.10.46.137:4280","primaryAddress":null,"secondaryAddress":null,"privateAddress":""},"email":{"internal":true,"host":null,"ssl":false,"username":null,"password":null,"sender":"noreply@crashplanproe.com","isUsingInheritedValues":false},"emailInherited":{"internal":true,"host":null,"ssl":false,"username":null,"password":null},"cluster":true,"alert":{"freeSpace":{"warning":10,"critical":5},"license":{"warning":1,"critical":0},"backup":{"warning":3,"critical":7},"email":{"sysAdmins":[],"additional":[]}},"ldap":{"syncIntervalHours":12,"nonLdapOrgId":0},"security":{"useHttps":false}}}'
+    http_version: 
+  recorded_at: Tue, 10 Sep 2013 18:58:41 GMT
+recorded_with: VCR 2.5.0

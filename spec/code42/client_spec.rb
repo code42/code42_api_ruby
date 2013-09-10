@@ -14,6 +14,19 @@ describe Code42::Client, :vcr do
     )
   end
 
+  describe '#server_settings' do
+    it 'returns a server settings object' do
+      client.server_settings(1).should be_a(Code42::ServerSettings)
+    end
+  end
+
+  describe '#update_server_settings' do
+    it 'updates server settings' do
+      client.update_server_settings(1, name: 'Foo Bar Server')
+      client.server_settings(1).name.should == 'Foo Bar Server'
+    end
+  end
+
   describe '#product_licenses' do
     it 'returns an array of product licenses' do
       client.product_licenses.should be_an(Array)

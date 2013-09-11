@@ -25,6 +25,7 @@ require "code42/product_license"
 require "code42/server_settings"
 require "code42/destination"
 require "code42/server"
+require "code42/server_connection_string"
 
 module Code42
   class << self

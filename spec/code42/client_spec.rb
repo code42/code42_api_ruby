@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Code42::Client, :vcr do
   subject(:client) do
     Code42::Client.new(
-      host: '10.10.46.137',
+      host: '10.10.47.82',
       port: 4280,
       https: false,
       api_root: '/api',
@@ -12,6 +12,14 @@ describe Code42::Client, :vcr do
       verify_https: false,
       debug: true
     )
+  end
+
+  describe '#server_connection_string' do
+    it 'returns a connection string' do
+      connection_string = client.server_connection_string(3)
+      connection_string.should be_a(Code42::ServerConnectionString)
+      connection_string.server_id.should == 3
+    end
   end
 
   describe '#org_share_destinations' do
@@ -23,6 +31,14 @@ describe Code42::Client, :vcr do
   describe '#server_settings' do
     it 'returns a server settings object' do
       client.server_settings(1).should be_a(Code42::ServerSettings)
+    end
+  end
+
+  describe '#server' do
+    it 'returns a server' do
+      server = client.server(3)
+      server.should be_a(Code42::Server)
+      server.id.should == 3
     end
   end
 

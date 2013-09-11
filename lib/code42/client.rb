@@ -52,6 +52,10 @@ module Code42
       get("orgShareDestinations/#{id}")['data']
     end
 
+    def server_connection_string(id)
+      object_from_response(Code42::ServerConnectionString, :get, "serverConnectionString/#{id}")
+    end
+
     # Block a computer from backing up
     # @return [Code42::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block

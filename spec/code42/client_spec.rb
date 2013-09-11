@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Code42::Client, :vcr do
   subject(:client) do
     Code42::Client.new(
-      host: '10.10.47.201',
+      host: '10.10.46.137',
       port: 4280,
       https: false,
       api_root: '/api',
@@ -12,6 +12,12 @@ describe Code42::Client, :vcr do
       verify_https: false,
       debug: true
     )
+  end
+
+  describe '#org_share_destinations' do
+    it 'returns a provider key' do
+      client.org_share_destinations(5).should == 'rO0ABXQCnSI2MDA3ODIyNTE5MDIzNzAwNDkifHwiNjAwNzgyMTgzNjg2MjA5NzkzInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJ1cms4Mm1tMjRtdzc4amNjInx8IjEwLjEwLjQ2LjEzNzo0MjgyInx8Im51bGwifHwiMTAuMTAuNDYuMTM3OjQyODYifHwiMTAuMTAuNDYuMTM3OjQyODMifHwiaHR0cDovLzEwLjEwLjQ2LjEzNzo0MjgwInx8Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBb2hoeXdmYUpTWDh2RzZmK2JvR3ZDeGJPUzJrdk8yRlRIQUdJUGJtb0kwUUphd2gxZ3ZPQVFUQk5WeHY2Y1k4R1hKckphelI4dUl0UGQ3ZFNHNFNTbFYyR2FsT09WVUJuRitpUGQ2T1E2cDBhaVgvR1JIcjNqaTU2ZVNNNW1yYlUvTmQybGVKMSttV1Z2UkhOQ2ErTXFWbWQ3K3dNYkJvZk5aeGRSbzhZRk1SSVVMVFJEZk1MRFJLbnZUWUgzRk5vMCt6STZkb1RUeHpueXdTWXlqN0hEbkRDbW4yZGs4WnJwbnNpRkZHU3NDRUxPWXUraDZEUVppTkhlVDdwNWMzYnhSSW1tU2VxOUtPRmxkSlhZYk9ZSXB4TVE0QUtnYXYyWk9RWlBKZkIxOTJNek8rK25TY1B4Z1R6SVR4Nmw1N0xIY3Fzc1RPaFV3Z29JSm9ncTJDZzl3SURBUUFCInx8IlBST1ZJREVSInx8Ijgya21yOGo5a3Bjdzk5cHMifHwiNjAwNzgyMjUyMDE5ODEwNTYxInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJudWxsIg=='
+    end
   end
 
   describe '#server_settings' do

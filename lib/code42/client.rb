@@ -48,6 +48,10 @@ module Code42
       object_from_response(Diagnostic, :get, 'diagnostic')
     end
 
+    def org_share_destinations(id)
+      get("orgShareDestinations/#{id}")['data']
+    end
+
     # Block a computer from backing up
     # @return [Code42::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block

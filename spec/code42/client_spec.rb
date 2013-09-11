@@ -42,6 +42,20 @@ describe Code42::Client, :vcr do
     end
   end
 
+  describe '#servers' do
+    it 'returns an array of servers' do
+      client.servers.should be_an(Array)
+    end
+  end
+
+  describe '#create_server' do
+    it 'creates a server' do
+      server = client.create_server(connection_string: 'rO0ABXQCmCI2MDA2MjQyNjI0MDI4MDE5MjEifHwiNjAwNjI0MTc0ODU5Mjg4ODMzInx8Im1vcmUtMDIifHwibWh3aGNza3I4bThocHcycyJ8fCIxMC4xMC40Ni45NDo0MjgyInx8Im51bGwifHwiMTAuMTAuNDYuOTQ6NDI4NiJ8fCIxMC4xMC40Ni45NDo0MjgzInx8Imh0dHA6Ly8xMC4xMC40Ni45NDo0MjgwInx8Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcFcxTVd0bnUyWEd0aXkzQjFWMXJlV1dXR204ak5OV3V1SHVDTGVNcHdqRGVHMUFUQm5aaTV5aEIxSTBBREhCekZYYkwrbHgvTTBMUDJuQkplek9nRVRXQ0R5ZCtncXV1K3pBdlF4K3RrdTZHcmo2cDZhaHgxYnQ2Y0tZd28zcW9jaTMxY3pZOElRWll5V0JVZUducDlEOTd3ZWxmaGgxakkwdEE3MlBUSEt0NzAvcUdDeXZaaVRqK3VSRDhIVTJsL3hDaVh2a2F6Wmc0dzBBQXhmL0VwNUlmNFJBYlNPTzZrTzNjVkFmcWxxcjdxS2dqc04ydGFhVlgvbXM0YnBmQ05ubXhHZWI3bnI1WXMrcUpuT0Q3bytTb1R5dmVJWm5SMUtkeEkwcDBIdmpLd3JSeEpIamdrS0Z6RU1lTFFhVmJlRmhrTm5RM3laVlVydkdOeDZXSHN3SURBUUFCInx8IlNUT1JBR0VfTk9ERSJ8fCJEZWZhdWx0Inx8Ii92YXIvb3B0L3Byb3NlcnZlci9iYWNrdXBBcmNoaXZlcyJ8fCJDcmFzaFBsYW5BcmNoaXZlX0RlZmF1bHQifHwibnVsbCI=', destination_id: 4)
+      server.should be_a(Code42::Server)
+
+    end
+  end
+
   describe '#destination' do
     it 'returns a destination' do
       client.destination(45).should be_a(Code42::Destination)

@@ -11,6 +11,7 @@ module Code42
     include Code42::API::ProductLicense
     include Code42::API::ServerSettings
     include Code42::API::Destination
+    include Code42::API::Server
 
     attr_accessor :settings
 

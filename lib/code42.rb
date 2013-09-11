@@ -24,6 +24,7 @@ require "code42/token_validation"
 require "code42/product_license"
 require "code42/server_settings"
 require "code42/destination"
+require "code42/server"
 
 module Code42
   class << self

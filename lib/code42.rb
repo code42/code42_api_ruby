@@ -23,6 +23,7 @@ require "code42/role_collection"
 require "code42/token_validation"
 require "code42/product_license"
 require "code42/server_settings"
+require "code42/destination"
 
 module Code42
   class << self

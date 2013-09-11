@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Code42::Client, :vcr do
   subject(:client) do
     Code42::Client.new(
-      host: '10.10.46.137',
+      host: '10.10.47.201',
       port: 4280,
       https: false,
       api_root: '/api',
@@ -24,6 +24,27 @@ describe Code42::Client, :vcr do
     it 'updates server settings' do
       client.update_server_settings(1, name: 'Foo Bar Server')
       client.server_settings(1).name.should == 'Foo Bar Server'
+    end
+  end
+
+  describe '#destinations' do
+    it 'returns an array of desinations' do
+      destinations = client.destinations
+      destinations.should be_an(Array)
+      destinations.first.should be_a(Code42::Destination)
+    end
+  end
+
+  describe '#create_destination' do
+    it 'creates a destination' do
+      destination = client.create_destination(provider: true, destination_name: 'aaa', provider_key: 'rO0ABXQCnSI2MDA3ODIyNTE5MDIzNzAwNDkifHwiNjAwNzgyMTgzNjg2MjA5NzkzInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJ1cms4Mm1tMjRtdzc4amNjInx8IjEwLjEwLjQ2LjEzNzo0MjgyInx8Im51bGwifHwiMTAuMTAuNDYuMTM3OjQyODYifHwiMTAuMTAuNDYuMTM3OjQyODMifHwiaHR0cDovLzEwLjEwLjQ2LjEzNzo0MjgwInx8Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBb2hoeXdmYUpTWDh2RzZmK2JvR3ZDeGJPUzJrdk8yRlRIQUdJUGJtb0kwUUphd2gxZ3ZPQVFUQk5WeHY2Y1k4R1hKckphelI4dUl0UGQ3ZFNHNFNTbFYyR2FsT09WVUJuRitpUGQ2T1E2cDBhaVgvR1JIcjNqaTU2ZVNNNW1yYlUvTmQybGVKMSttV1Z2UkhOQ2ErTXFWbWQ3K3dNYkJvZk5aeGRSbzhZRk1SSVVMVFJEZk1MRFJLbnZUWUgzRk5vMCt6STZkb1RUeHpueXdTWXlqN0hEbkRDbW4yZGs4WnJwbnNpRkZHU3NDRUxPWXUraDZEUVppTkhlVDdwNWMzYnhSSW1tU2VxOUtPRmxkSlhZYk9ZSXB4TVE0QUtnYXYyWk9RWlBKZkIxOTJNek8rK25TY1B4Z1R6SVR4Nmw1N0xIY3Fzc1RPaFV3Z29JSm9ncTJDZzl3SURBUUFCInx8IlBST1ZJREVSInx8IjRtOWhqNDJrd3BwY21yc20ifHwiNjAwNzgyMjUyMDE5ODEwNTYxInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJudWxsIg==')
+      destination.should be_true
+    end
+  end
+
+  describe '#destination' do
+    it 'returns a destination' do
+      client.destination(45).should be_a(Code42::Destination)
     end
   end
 

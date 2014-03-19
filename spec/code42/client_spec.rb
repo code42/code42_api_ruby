@@ -77,6 +77,32 @@ describe Code42::Client, :vcr do
     end
   end
 
+  describe "#update_user" do
+    let(:user_attributes) do
+      {
+        :orgId => 2,
+        :username => 'testuser'
+      }
+    end
+
+    let(:user) { @user }
+
+    before :each do
+      @user = client.create_user(user_attributes)
+    end
+
+    it "returns the updated user" do
+      updated_user = client.update_user(user.id, last_name: 'Jenkins')
+      expect(updated_user.last_name).to eq 'Jenkins'
+    end
+
+    context "when sending an invalid email" do
+      it "raises an exception" do
+        expect{ client.update_user(user.id, email: 'Jenkins') }.to raise_error(Code42::Error::EmailInvalid)
+      end
+    end
+  end
+
   describe "#user" do
     let(:user_id) { 2 }
 

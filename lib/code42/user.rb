@@ -14,6 +14,10 @@ module Code42
       client.create_user(attributes)
     end
 
+    def update(attributes)
+      client.update_user(id, attributes)
+    end
+
     def delete
       client.delete_user(id)
     end

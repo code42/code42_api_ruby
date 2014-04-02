@@ -8,6 +8,7 @@ module Code42
     include Code42::API::Org
     include Code42::API::Computer
     include Code42::API::Token
+    include Code42::API::PasswordReset
 
     attr_accessor :settings
 

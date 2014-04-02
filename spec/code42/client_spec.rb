@@ -179,4 +179,38 @@ describe Code42::Client, :vcr do
       client.ping.should be_true
     end
   end
+
+  describe "#reset_password" do
+    shared_examples 'reset_password' do
+      it 'is successful' do
+        expect(client.reset_password(*arguments)).to be_true
+      end
+    end
+
+    context 'when sending a username' do
+      let(:arguments){ ['admin'] }
+
+      it_behaves_like 'reset_password'
+    end
+
+    context 'when sending a view_url' do
+      let(:arguments){ %w(admin /new-pw-reset.html) }
+
+      it_behaves_like 'reset_password'
+    end
+
+    context 'when sending a user_id' do
+      context 'as an integer' do
+        let(:arguments){ [42] }
+
+        it_behaves_like 'reset_password'
+      end
+
+      context 'as a string' do
+        let(:arguments){ ['42'] }
+
+        it_behaves_like 'reset_password'
+      end
+    end
+  end
 end

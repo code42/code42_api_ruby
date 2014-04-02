@@ -196,6 +196,14 @@ describe Code42::Client, :vcr do
     context 'when sending a view_url' do
       let(:arguments){ %w(admin /new-pw-reset.html) }
 
+      before do
+        params = {
+          username: 'admin',
+          viewUrl: '/new-pw-reset.html'
+        }
+        client.should_receive(:post).with('UserPasswordReset', params).and_call_original
+      end
+
       it_behaves_like 'reset_password'
     end
 

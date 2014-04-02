@@ -1,4 +1,4 @@
-# Code 42 API Ruby Gem
+# Code 42 API Ruby Gem [![Build Status](https://travis-ci.org/code42/code42_api_ruby.svg?branch=master)](https://travis-ci.org/code42/code42_api_ruby)
 
 A Ruby interface to the Code 42 API
 

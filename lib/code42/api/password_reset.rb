@@ -7,6 +7,7 @@ module Code42
       def reset_password(username_or_id, view_url = nil)
         key    = username_or_id.to_i > 0 ? :userId : :username
         params = { key => username_or_id }
+        params.merge!(viewUrl: view_url) if view_url
         post("UserPasswordReset", params)['data']['success']
       end
     end

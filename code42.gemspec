@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{...}
   gem.homepage      = "http://www.crashplan.com/apidocviewer/"
 
-  gem.add_development_dependency 'rspec',   '~> 2.11.0'
+  gem.add_development_dependency 'rspec',   '~> 2.14.0'
   gem.add_development_dependency 'webmock', '~> 1.11.0'
   gem.add_development_dependency 'vcr',     '~> 2.5.0'
   gem.add_dependency 'faraday',             '~> 0.8.7'

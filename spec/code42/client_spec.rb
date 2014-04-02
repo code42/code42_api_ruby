@@ -181,41 +181,35 @@ describe Code42::Client, :vcr do
   end
 
   describe "#reset_password" do
-    context 'when sending a username' do
-      it 'passes the username in the request' do
-        data = { username: 'dude', viewUrl: '/console/password-reset.html' }
-        expected = ['UserPasswordReset', data]
-        client.should_receive(:post).with *expected
-        client.reset_password('dude')
+    shared_examples 'reset_password' do
+      it 'is successful' do
+        expect(client.reset_password(*arguments)).to be_true
       end
     end
 
+    context 'when sending a username' do
+      let(:arguments){ ['admin'] }
+
+      it_behaves_like 'reset_password'
+    end
+
     context 'when sending a view_url' do
-      it 'passes both parameters in the request' do
-        data = { username: 'dude', viewUrl: '/new-pw-reset.html' }
-        expected = ['UserPasswordReset', data]
-        client.should_receive(:post).with *expected
-        client.reset_password('dude', '/new-pw-reset.html')
-      end
+      let(:arguments){ %w(admin /new-pw-reset.html) }
+
+      it_behaves_like 'reset_password'
     end
 
     context 'when sending a user_id' do
       context 'as an integer' do
-        it 'passes the user_id in the request' do
-          data = { userId: 42, viewUrl: '/console/password-reset.html' }
-          expected = ['UserPasswordReset', data]
-          client.should_receive(:post).with *expected
-          client.reset_password(42)
-        end
+        let(:arguments){ [42] }
+
+        it_behaves_like 'reset_password'
       end
 
       context 'as a string' do
-        it 'passes the user_id in the request' do
-          data = { userId: '42', viewUrl: '/console/password-reset.html' }
-          expected = ['UserPasswordReset', data]
-          client.should_receive(:post).with *expected
-          client.reset_password('42')
-        end
+        let(:arguments){ ['42'] }
+
+        it_behaves_like 'reset_password'
       end
     end
   end

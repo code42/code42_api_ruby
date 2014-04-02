@@ -5,11 +5,9 @@ module Code42
       # @param username_or_id [String, Integer] The username or user_id of the user to whom the email should be sent.
       # @param view_url [String] the path of the password-reset form. Defaults to /console/password-reset.html
       def reset_password(username_or_id, view_url = nil)
-        view_url ||= '/console/password-reset.html'
-        params = { viewUrl: view_url }
         key    = username_or_id.to_i > 0 ? :userId : :username
-        params[key] = username_or_id
-        post("UserPasswordReset", params)
+        params = { key => username_or_id }
+        post("UserPasswordReset", params)['data']['success']
       end
     end
   end

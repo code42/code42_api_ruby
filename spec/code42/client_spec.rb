@@ -42,6 +42,14 @@ describe Code42::Client, :vcr do
     end
   end
 
+  describe '#deactivate_org' do
+    it 'puts to the correct route' do
+      expect(client).to receive(:deactivate_org).with(50).and_call_original
+      expect(client).to receive(:put).with("OrgDeactivation/50")
+      client.deactivate_org(50)
+    end
+  end
+
   describe "#create_org" do
     let(:org_attributes) do
       {

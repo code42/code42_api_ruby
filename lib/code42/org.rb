@@ -26,8 +26,8 @@ module Code42
       client.update_org(id, attrs)
     end
 
-    def delete
-      client.delete_org(id)
+    def deactivate
+      client.deactivate_org(id)
     end
 
     def create_user(attrs = {})

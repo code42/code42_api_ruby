@@ -56,6 +56,10 @@ module Code42
       delete("computerblock/#{id}")
     end
 
+    def deactivate_org(id)
+      put("OrgDeactivation/#{id}")
+    end
+
     def connection
       @connection = Connection.new(
         host: settings.host,

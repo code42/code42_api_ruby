@@ -29,13 +29,8 @@ module Code42
     end
 
     def use_extension(module_name)
-      begin
-        client_methods = module_name.const_get(:ClientMethods)
-        resources = module_name.const_get(:Resources)
-      rescue NameError
-      end
-      Client.send(:include, client_methods)
-      include resources
+      Client.send(:include, module_name::ClientMethods) if defined?(module_name::ClientMethods)
+      self.send(:include, module_name::Resources) if defined?(module_name::Resources)
     end
 
     def configure

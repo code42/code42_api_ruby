@@ -28,6 +28,16 @@ module Code42
       @client ||= Code42::Client.new
     end
 
+    def use_extension(module_name)
+      begin
+        client_methods = module_name.const_get(:ClientMethods)
+        resources = module_name.const_get(:Resources)
+      rescue NameError
+      end
+      Client.send(:include, client_methods)
+      include resources
+    end
+
     def configure
       yield self.settings
       self

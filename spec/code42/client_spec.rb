@@ -42,6 +42,14 @@ describe Code42::Client, :vcr do
     end
   end
 
+  describe '#deactivate_org' do
+    it 'puts to the correct route' do
+      expect(client).to receive(:deactivate_org).with(88).and_call_original
+      expect(client).to receive(:put).with("OrgDeactivation/88").and_call_original
+      client.deactivate_org(88)
+    end
+  end
+
   describe "#create_org" do
     let(:org_attributes) do
       {
@@ -73,6 +81,32 @@ describe Code42::Client, :vcr do
       it "raises an exception" do
         user_attributes[:email] = 'testuser'
         expect { client.create_user(user_attributes) }.to raise_error Code42::Error::EmailInvalid
+      end
+    end
+  end
+
+  describe "#update_user" do
+    let(:user_attributes) do
+      {
+        :orgId => 2,
+        :username => 'testuser'
+      }
+    end
+
+    let(:user) { @user }
+
+    before :each do
+      @user = client.create_user(user_attributes)
+    end
+
+    it "returns the updated user" do
+      updated_user = client.update_user(user.id, last_name: 'Jenkins')
+      expect(updated_user.last_name).to eq 'Jenkins'
+    end
+
+    context "when sending an invalid email" do
+      it "raises an exception" do
+        expect{ client.update_user(user.id, email: 'Jenkins') }.to raise_error(Code42::Error::EmailInvalid)
       end
     end
   end
@@ -151,6 +185,48 @@ describe Code42::Client, :vcr do
   describe "#ping" do
     it "returns a ping" do
       client.ping.should be_true
+    end
+  end
+
+  describe "#reset_password" do
+    shared_examples 'reset_password' do
+      it 'is successful' do
+        expect(client.reset_password(*arguments)).to be_true
+      end
+    end
+
+    context 'when sending a username' do
+      let(:arguments){ ['admin'] }
+
+      it_behaves_like 'reset_password'
+    end
+
+    context 'when sending a view_url' do
+      let(:arguments){ %w(admin /new-pw-reset.html) }
+
+      before do
+        params = {
+          username: 'admin',
+          viewUrl: '/new-pw-reset.html'
+        }
+        client.should_receive(:post).with('UserPasswordReset', params).and_call_original
+      end
+
+      it_behaves_like 'reset_password'
+    end
+
+    context 'when sending a user_id' do
+      context 'as an integer' do
+        let(:arguments){ [42] }
+
+        it_behaves_like 'reset_password'
+      end
+
+      context 'as a string' do
+        let(:arguments){ ['42'] }
+
+        it_behaves_like 'reset_password'
+      end
     end
   end
 end

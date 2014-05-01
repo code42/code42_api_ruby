@@ -8,6 +8,7 @@ module Code42
     include Code42::API::Org
     include Code42::API::Computer
     include Code42::API::Token
+    include Code42::API::PasswordReset
 
     attr_accessor :settings
 
@@ -53,6 +54,10 @@ module Code42
 
     def unblock_computer(id)
       delete("computerblock/#{id}")
+    end
+
+    def deactivate_org(id)
+      put("OrgDeactivation/#{id}")
     end
 
     def connection

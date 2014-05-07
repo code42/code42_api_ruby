@@ -16,6 +16,8 @@ module Code42
       self.settings = options
     end
 
+    def last_response; connection.last_response; end
+
     def settings=(options)
       @settings = Settings.new(options)
     end
@@ -61,16 +63,16 @@ module Code42
     end
 
     def connection
-      @connection = Connection.new(
-        host: settings.host,
-        port: settings.port,
-        scheme: settings.scheme,
-        path_prefix: settings.api_root,
-        verify_https: settings.verify_https,
-      )
-      if settings.debug
-        @connection.use Faraday::Response::Logger
-      end
+      @connection ||= begin
+                        connection = Connection.new
+                        settings.debug && connection.use(Faraday::Response::Logger)
+                        connection
+                      end
+      @connection.host         = settings.host
+      @connection.port         = settings.port
+      @connection.scheme       = settings.scheme
+      @connection.path_prefix  = settings.api_root
+      @connection.verify_https = settings.verify_https
       if settings.username && settings.password
         @connection.username = settings.username
         @connection.password = settings.password

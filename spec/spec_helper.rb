@@ -1,4 +1,5 @@
 require 'code42'
+require 'active_support'
 require 'rspec/autorun'
 require 'vcr'
 require 'net/http'

@@ -67,6 +67,11 @@ module Code42
     def make_request(method, *args)
       begin
         @last_response = response = self.send(method, *args)
+        ActiveSupport::Notifications.instrument('code42.request', {
+          method:   method,
+          args:     args,
+          response: response
+        })
       rescue Faraday::Error::ConnectionFailed
         raise Code42::Error::ConnectionFailed
       end

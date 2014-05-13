@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'faraday'
 require 'faraday_middleware'
 require 'logger'
@@ -5,7 +6,8 @@ require 'code42/error'
 
 module Code42
   class Connection
-    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger, :mlk
+    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger, :mlk, :last_response
+
     def initialize(options = {})
       self.host         = options[:host]
       self.port         = options[:port]
@@ -15,12 +17,19 @@ module Code42
       self.password     = options[:password]
       self.token        = options[:token] if options[:token]
       self.verify_https = !options[:verify_https].nil? ? options[:verify_https] : true
+    end
 
-      adapter.host        = host
-      adapter.port        = port
-      adapter.scheme      = scheme
-      adapter.path_prefix = path_prefix
+    extend Forwardable
+
+    delegate %i(host port path_prefix scheme) => :adapter
+    delegate %i(host= port= path_prefix= scheme=) => :adapter
+
+    def verify_https=(verify_https)
       adapter.ssl[:verify] = verify_https
+    end
+
+    def verify_https
+      adapter.ssl[:verify]
     end
 
     def logger
@@ -28,13 +37,11 @@ module Code42
     end
 
     def adapter
-      if !@adapter
-        @adapter = Faraday.new do |conn|
-          conn.adapter :excon
-        end
-        @adapter.response :json
+      @adapter ||= begin
+        adapter = Faraday.new
+        adapter.response :json
+        adapter
       end
-      @adapter
     end
 
     def has_valid_credentials?
@@ -66,7 +73,12 @@ module Code42
 
     def make_request(method, *args)
       begin
-        response = self.send(method, *args)
+        @last_response = response = self.send(method, *args)
+        ActiveSupport::Notifications.instrument('code42.request', {
+          method:   method,
+          args:     args,
+          response: response
+        })
       rescue Faraday::Error::ConnectionFailed
         raise Code42::Error::ConnectionFailed
       end

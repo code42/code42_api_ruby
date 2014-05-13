@@ -12,6 +12,16 @@ module Code42
         object_from_response(Code42::User, :post, "user", attrs)
       end
 
+      # Updates a user
+      # @returns [Code42::User] The updated user
+      # @param id [integer] The user id to be updated
+      # @param attrs [Hash] A hash of attributes to update
+      # @example
+      #   client.update_user(2, email_promo: true, first_name: 'John')
+      def update_user(id, attrs = {})
+        object_from_response(Code42::User, :put, "user/#{id}", attrs)
+      end
+
       # Returns information for a given user
       # @return [Code42::User] The requested user
       # @param id_or_username [String, Integer] A code42 user ID or username

@@ -12,12 +12,15 @@ module Code42
     include Code42::API::ServerSettings
     include Code42::API::Destination
     include Code42::API::Server
+    include Code42::API::PasswordReset
 
     attr_accessor :settings
 
     def initialize(options = {})
       self.settings = options
     end
+
+    def last_response; connection.last_response; end
 
     def settings=(options)
       @settings = Settings.new(options)
@@ -67,17 +70,21 @@ module Code42
       delete("computerblock/#{id}")
     end
 
+    def deactivate_org(id)
+      put("OrgDeactivation/#{id}")
+    end
+
     def connection
-      @connection = Connection.new(
-        host: settings.host,
-        port: settings.port,
-        scheme: settings.scheme,
-        path_prefix: settings.api_root,
-        verify_https: settings.verify_https,
-      )
-      if settings.debug
-        @connection.use Faraday::Response::Logger
-      end
+      @connection ||= begin
+                        connection = Connection.new
+                        settings.debug && connection.use(Faraday::Response::Logger)
+                        connection
+                      end
+      @connection.host         = settings.host
+      @connection.port         = settings.port
+      @connection.scheme       = settings.scheme
+      @connection.path_prefix  = settings.api_root
+      @connection.verify_https = settings.verify_https
       if settings.username && settings.password
         @connection.username = settings.username
         @connection.password = settings.password
@@ -94,6 +101,7 @@ module Code42
     private
 
     def object_from_response(klass, request_method, path, options = {})
+      klass = fetch_class(klass)
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response['data'])
@@ -102,12 +110,17 @@ module Code42
 
     def objects_from_response(klass, request_method, path, options = {})
       key = options.delete(:key)
+      klass = fetch_class(klass)
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
       response = response['data']
       response = response[key] if key
       objects_from_array(klass, response)
+    end
+
+    def fetch_class(klass)
+      klass.is_a?(Module) ? klass : Code42.const_get(klass)
     end
 
     def response_has_data?(response)

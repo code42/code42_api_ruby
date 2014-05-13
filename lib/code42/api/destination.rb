@@ -11,7 +11,7 @@ module Code42
 
       def create_destination(attrs)
         response = post('Destination', attrs)
-        response.is_a? Array
+        response && response['data'].is_a?(Array)
       end
     end
   end

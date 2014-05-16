@@ -7,6 +7,7 @@ require 'code42/error'
 module Code42
   class Connection
     attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger, :last_response
+
     def initialize(options = {})
       self.host         = options[:host]
       self.port         = options[:port]
@@ -109,13 +110,21 @@ module Code42
 
     def check_for_errors(response)
       if response.status == 401
-        raise Code42::Error::AuthenticationError.new(nil, response.status)
+        raise Code42::Error::AuthenticationError.new(description_from_response(response), response.status)
+      elsif response.status == 403
+        raise Code42::Error::AuthorizationError.new(description_from_response(response), response.status)
       elsif response.status == 404
-        raise Code42::Error::ResourceNotFound.new(nil, response.status)
+        raise Code42::Error::ResourceNotFound.new(description_from_response(response), response.status)
+      elsif response.status == 500
+        raise Code42::Error::ServerError.new(description_from_response(response), response.status)
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
         raise exception_from_body(body, response.status)
       end
+    end
+
+    def description_from_response(response)
+      response.try { |resp| resp.body.try { |body| body.first['description'] } }
     end
 
     def exception_from_body(body, status = nil)

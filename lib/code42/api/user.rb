@@ -77,6 +77,14 @@ module Code42
       def unblock_user(id)
         delete("UserBlock/#{id}")
       end
+
+      def deactivate_user(id)
+        put("UserDeactivation/#{id}")
+      end
+
+      def activate_user(id)
+        delete("UserDeactivation/#{id}")
+      end
     end
   end
 end

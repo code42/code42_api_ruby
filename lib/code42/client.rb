@@ -89,7 +89,7 @@ module Code42
       klass = fetch_class(klass)
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
-      return nil unless response_has_data?(response['data'])
+      return nil unless response.try { response_has_data?(response['data']) }
       klass.from_response(response['data'], self)
     end
 
@@ -100,7 +100,7 @@ module Code42
       response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
       response = response['data']
-      response = response[key] if key
+      response = response[key] if !response.empty? && key
       objects_from_array(klass, response)
     end
 

@@ -17,6 +17,18 @@ module Code42
         params.merge!(key: 'computers')
         objects_from_response(Code42::Computer, :get, 'computer', params)
       end
+
+
+      # Block a computer from backing up
+      # @return [Code42::Computer] The blocked computer
+      # @params id [Integer, String] The computer ID you want to block
+      def block_computer(id)
+        put("computerblock/#{id}")
+      end
+
+      def unblock_computer(id)
+        delete("computerblock/#{id}")
+      end
     end
   end
 end

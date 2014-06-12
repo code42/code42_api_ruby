@@ -36,10 +36,13 @@ module Code42
     end
 
     def adapter
-      @adapter ||= begin
-        adapter = Faraday.new
-        adapter.response :json
-        adapter
+      @adapter ||= Faraday.new do |f|
+        f.request  :multipart
+        f.request  :json
+
+        f.adapter  :net_http
+
+        f.response :json
       end
     end
 
@@ -84,13 +87,11 @@ module Code42
     end
 
     def put(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
-      adapter.put path, data.to_json
+      adapter.put path, data
     end
 
     def post(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
-      adapter.post path, data.to_json
+      adapter.post path, data
     end
 
     def delete(path, data)

@@ -36,10 +36,13 @@ module Code42
     end
 
     def adapter
-      @adapter ||= begin
-        adapter = Faraday.new
-        adapter.response :json
-        adapter
+      @adapter ||= Faraday.new do |f|
+        f.request  :multipart
+        f.request  :json
+
+        f.adapter  :net_http
+
+        f.response :json
       end
     end
 

@@ -87,12 +87,10 @@ module Code42
     end
 
     def put(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
       adapter.put path, data.to_json
     end
 
     def post(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
       adapter.post path, data.to_json
     end
 

@@ -133,7 +133,7 @@ module Code42
         klass = Code42::Error.const_get(exception_name)
       else
         # Generic server error if no specific error is caught.
-        klass = Code42::ServerError
+        klass = Code42::Error::ServerError
       end
       klass.new(body['description'], status)
     end

@@ -9,13 +9,47 @@ module Code42
     attribute :created_at, :from => 'creationDate', :as => DateTime
     attribute :updated_at, :from => 'modificationDate', :as => DateTime
     attribute :customer_id
+    attribute :active
+    attribute :blocked
 
     def self.create(attrs = {})
       client.create_org(attrs)
     end
 
-    def self.find_by_name(name)
-      client.find_org_by_name(name)
+    def self.find_by_id(id, attrs = {})
+      find_active_by_id(id, attrs) || find_inactive_by_id(id, attrs)
+    end
+
+    def self.find_active_by_id(id, attrs = {})
+      client.org(id, attrs)
+    end
+
+    def self.find_inactive_by_id(id, attrs = {})
+      client.org(id, attrs.merge(active: false))
+    end
+
+    def self.find_by_name(name, attrs = {})
+      find_active_by_name(name, attrs) || find_inactive_by_name(name, attrs)
+    end
+
+    def self.find_active_by_name(name, attrs = {})
+      client.find_org_by_name(name, attrs.merge(active: true))
+    end
+
+    def self.find_inactive_by_name(name, attrs = {})
+      client.find_inactive_org_by_name name, attrs
+    end
+
+    def self.find_all_orgs
+      find_all_active_orgs + find_all_inactive_orgs
+    end
+
+    def self.find_all_active_orgs
+      client.orgs
+    end
+
+    def self.find_all_inactive_orgs
+      client.orgs(active: false)
     end
 
     def users
@@ -26,8 +60,24 @@ module Code42
       client.update_org(id, attrs)
     end
 
+    def activate
+      client.activate_org(id)
+      client.org id
+    end
+
     def deactivate
       client.deactivate_org(id)
+      client.org(id, active: false)
+    end
+
+    def block
+      client.block_org(id)
+      client.org id
+    end
+
+    def unblock
+      client.unblock_org(id)
+      client.org id
     end
 
     def create_user(attrs = {})

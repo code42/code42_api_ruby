@@ -17,12 +17,7 @@ module Code42
     end
 
     def self.find_by_id(id, attrs = {})
-      org = client.org(id, attrs)
-      if org.nil?
-        attrs.merge!(:active => false)
-        org = client.org(id, attrs)
-      end
-      org
+      find_active_by_id(id, attrs) || find_inactive_by_id(id, attrs)
     end
 
     def self.find_active_by_id(id, attrs = {})
@@ -30,19 +25,15 @@ module Code42
     end
 
     def self.find_inactive_by_id(id, attrs = {})
-      client.org(id, attrs.merge!(:active => false))
+      client.org(id, attrs.merge(active: false))
     end
 
     def self.find_by_name(name, attrs = {})
-      org = client.find_org_by_name(name, attrs)
-      if org.nil?
-        org = find_inactive_by_name(name, attrs)
-      end
-      org
+      find_active_by_name(name, attrs) || find_inactive_by_name(name, attrs)
     end
 
     def self.find_active_by_name(name, attrs = {})
-      client.find_org_by_name(name, attrs.merge!(:active => true))
+      client.find_org_by_name(name, attrs.merge(active: true))
     end
 
     def self.find_inactive_by_name(name, attrs = {})
@@ -50,8 +41,7 @@ module Code42
     end
 
     def self.find_all_orgs
-      orgs = find_all_active_orgs
-      orgs += find_all_inactive_orgs
+      find_all_active_orgs + find_all_inactive_orgs
     end
 
     def self.find_all_active_orgs
@@ -59,11 +49,11 @@ module Code42
     end
 
     def self.find_all_inactive_orgs
-      client.orgs :active => false
+      client.orgs(active: false)
     end
 
     def users
-      client.users(:org_id => id)
+      client.users(org_id: id)
     end
 
     def update(attrs = {})
@@ -77,7 +67,7 @@ module Code42
 
     def deactivate
       client.deactivate_org(id)
-      client.org(id, :active => false)
+      client.org(id, active: false)
     end
 
     def block
@@ -91,7 +81,7 @@ module Code42
     end
 
     def create_user(attrs = {})
-      attrs.merge!(:org_id => id)
+      attrs.merge!(org_id: id)
       client.create_user(attrs)
     end
   end

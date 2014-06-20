@@ -28,9 +28,11 @@ module Code42
         object_from_response(Code42::Org, :get, "org/#{id}", params)
       end
 
-      # Returns an org for a given name
+      # Returns an org for a given name.  If multiple orgs are found, the first found will
+      # be returned.
       # @return [Code42::Org] The requested org
       # @param name [String] A Code42 org name
+      # @param params [Hash] Additional params used by the server for filtering, output, etc.
       # FIXME: This needs to change when the API implements a better way.
       def find_org_by_name(name, params = {})
         search_orgs(name, params).select { |o| o.name == name }.first
@@ -39,6 +41,8 @@ module Code42
       # Returns the first org that starts with a given name.
       # Since orgs are renamed when they are deactivated, it is impossible
       # to guarantee a match by name alone.
+      # @param name [String] A Code42 org name
+      # @param params [Hash] Additional params used by the server for filtering, output, etc.
       def find_inactive_org_by_name(name, params = {})
         search_orgs(name, params.merge!(:active => false)).first
       end

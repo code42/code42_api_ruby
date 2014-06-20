@@ -24,8 +24,7 @@ module Code42
     end
 
     def self.find_all_users
-      all_users = client.users
-      all_users += client.users :active => false
+      client.users + client.users(active: false)
     end
 
     def update(attributes)
@@ -68,7 +67,7 @@ module Code42
 
     def deactivate
       client.deactivate_user(id)
-      client.user(id, :active => false)
+      client.user(id, active: false)
     end
   end
 end

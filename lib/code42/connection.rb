@@ -116,8 +116,6 @@ module Code42
         raise Code42::Error::AuthorizationError.new(description_from_response(response), response.status)
       elsif response.status == 404
         raise Code42::Error::ResourceNotFound.new(description_from_response(response), response.status)
-      elsif response.status == 500
-        raise Code42::Error::ServerError.new(description_from_response(response), response.status)
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
         raise exception_from_body(body, response.status)
@@ -134,7 +132,8 @@ module Code42
       if Code42::Error.const_defined?(exception_name)
         klass = Code42::Error.const_get(exception_name)
       else
-        klass = Code42::Error
+        # Generic server error if no specific error is caught.
+        klass = Code42::ServerError
       end
       klass.new(body['description'], status)
     end

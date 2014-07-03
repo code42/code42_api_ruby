@@ -31,9 +31,10 @@ module Code42
       end
 
       def collection_from_response(array)
-        array.map { |element| self.deserialize_and_initialize(element, self) }
+        (array || []).map { |element| self.deserialize_and_initialize(element, self) }
       end
     end
+
     attr_accessor :client, :attributes
 
     def initialize(data = {}, client = nil)
@@ -47,7 +48,7 @@ module Code42
           self.class.instance_eval { attr_reader key.to_sym }
         end
         self.send("#{key}=", value)
-        attributes[key.to_sym] = send(key.to_sym)
+        attributes[key.to_sym] = self.send(key.to_sym)
       end
     end
 

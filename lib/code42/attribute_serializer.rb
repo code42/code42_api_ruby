@@ -58,7 +58,7 @@ module Code42
         elsif klass.respond_to?(:from_response)
           klass.from_response(value)
         elsif klass.respond_to?(:parse)
-          klass.parse(value)
+          klass.parse(value) unless value.nil?
         else
           value
         end

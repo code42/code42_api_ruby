@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost:7280/api/permission
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://localhost:7280/api/v1/permission
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-07-08T18:11:49.621-05:00","params":{}},"data":[{"name":"ALL","value":"admin.org","description":"Permission
+        to create, alter or delete information within user\u0027s org"},{"name":"ALL","value":"admin.alluser","description":"Permission
+        to access, alter or remove any user information in any org"},{"name":"CREATE","value":"admin.plan.create","description":"User
+        is allowed to create plans within his org hierarchy"},{"name":"LOGIN","value":"admin.cps.login","description":"Permission
+        to log in to the client desktop"},{"name":"READ","value":"admin.computer.read","description":"Permission
+        to view computer information"},{"name":"ALL","value":"admin","description":"Super
+        User Permission; grant with caution!"},{"name":"ALL","value":"admin.system","description":"Permission
+        to edit all system information not reserved for the System Administrator"},{"name":"CREATE","value":"admin.user.create","description":"Permission
+        to create users"},{"name":"COMMAND","value":"admin.system.command","description":"View
+        the CLI and run any command"},{"name":"LOGIN","value":"admin.spd.login","description":"Required
+        to Login to the SharePlan client desktop application"},{"name":"DELETE","value":"admin.allplan.delete","description":"User
+        is allowed to delete plans from any org hierarchy"},{"name":"READ","value":"admin.allplan.read","description":"User
+        is allowed to read information about plans in any org hierarchy"},{"name":"ALL","value":"admin.allplan","description":"User
+        is allowed to create, read, update and delete plans in any org hierarchy"},{"name":"LOGIN","value":"admin.cpp.login","description":"Permission
+        to log in to the administration console"},{"name":"READ","value":"admin.planuser.read","description":"Users
+        can read plan information."},{"name":"WRITE","value":"admin.planuser.write","description":"Users
+        can write plan information."},{"name":"ALL","value":"admin.allcomputer","description":"Permission
+        to access, alter or remove any computer information in any org"},{"name":"PERSONAL","value":"admin.restore.personal","description":"Permission
+        to perform a personal web restore"},{"name":"PROMOTE","value":"admin.planuser.promote","description":"Member
+        can change the role of other plan members"},{"name":"UPDATE_BASIC","value":"admin.allorg.update_basic","description":"Permission
+        to update basic org information for all orgs"},{"name":"LIFECYCLE","value":"admin.planuser.lifecycle","description":"Member
+        can deactivate and reactivate the plan"},{"name":"DELETE","value":"admin.alluser.delete","description":"Permission
+        to delete users for all orgs"},{"name":"ALL","value":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"name":"READ","value":"admin.org.read","description":"Permission
+        to view org information within user\u0027s org"},{"name":"ALL","value":"admin.planuser","description":"Member
+        can view the member list, invite and evict members, and their changes are
+        synced to the plan"},{"name":"UPDATE","value":"admin.computer.update","description":"Permission
+        to update computer information"},{"name":"LOGIN","value":"admin.cpd.login","description":"Permission
+        to log in to the CrashPlan app"},{"name":"READ","value":"admin.allorg.read","description":"Permission
+        to view org information for all orgs"},{"name":"EVICT","value":"admin.planuser.evict","description":"Member
+        can remove others from the plan"},{"name":"ALL","value":"admin.user","description":"Permission
+        to access, alter or remove any user information"},{"name":"LOGIN","value":"admin.console.login","description":"Permission
+        to log in to the Code42 administration console"},{"name":"UPDATE_RESTRICTED","value":"admin.allorg.update_restricted","description":"Permission
+        to update restricted org information for all orgs"},{"name":"DELETE","value":"admin.plan.delete","description":"User
+        is allowed to delete plans from his org hierarchy"},{"name":"READ","value":"admin.plan.read","description":"User
+        is allowed to read information about plans within his org hierarchy"},{"name":"ASSUME_USER","value":"admin.system.assume_user","description":"Assume
+        the identity of a user account under your management control"},{"name":"INVITE","value":"admin.planuser.invite","description":"Member
+        can invite others into the plan"},{"name":"PERSONAL","value":"admin.select.personal","description":"Permission
+        to remotely browse file and directory names for personal devices. Used for
+        remotely selecting push-restore destination and backup sources"},{"name":"CREATE","value":"admin.alluser.create","description":"Permission
+        to create users for all orgs"},{"name":"DELETE","value":"admin.allorg.delete","description":"Permission
+        to delete any org"},{"name":"ALL","value":"admin.allrestorerecord","description":"Permission
+        to do all restore record operations (currently just READ)"},{"name":"PERSONAL","value":"admin.pushrestore.personal","description":"Permission
+        to perform a personal push restore"},{"name":"CREATE","value":"admin.org.create","description":"Permission
+        to create child orgs within user\u0027s org"},{"name":"CONTENT_WRITE","value":"admin.planuser.content_write","description":"File
+        changes made by the member is synced to devices of others in the plan"},{"name":"UPDATE","value":"admin.user.update","description":"Permission
+        to update user information"},{"name":"LIMITED","value":"admin.pushrestore.limited","description":"Permission
+        to perform a push restore only to the source user\u0027s devices.  There is
+        no size limit"},{"name":"CONTENT_READ","value":"admin.planuser.content_read","description":"File
+        changes made by other members are synced to the member\u0027s devices"},{"name":"UPDATE","value":"admin.allcomputer.update","description":"Permission
+        to update computer information for all orgs"},{"name":"QUICKSHARE","value":"admin.planuser.quickshare","description":"Member
+        can share content with QuickShare."},{"name":"READ","value":"admin.user.read","description":"Permission
+        to view user information"},{"name":"SEND_EMAIL","value":"admin.system.send_email","description":"Ability
+        to send email through EmailResource"},{"name":"LIMITED","value":"admin.restore.limited","description":"Permission
+        to perform a limited size web restore for all devices user has authority to
+        manage"},{"name":"ARCHIVE_MAINTENANCE","value":"admin.system.archive_maintenance","description":"View
+        and cancel jobs in the archive maintenance queue"},{"name":"READ","value":"admin.allcomputer.read","description":"Permission
+        to view computer information for all orgs"},{"name":"ALL","value":"admin.computer","description":"Permission
+        to access, alter or remove any computer information"},{"name":"UPDATE","value":"admin.plan.update","description":"User
+        is allowed to update information on plans within his org hierarchy"},{"name":"DELETE","value":"admin.org.delete","description":"Permission
+        to delete information within user\u0027s org"},{"name":"DELETE","value":"admin.allcomputer.delete","description":"Permission
+        to delete computer in any org"},{"name":"ALL","value":"admin.viewlogs","description":"Permission
+        to view system logs"},{"name":"READ","value":"admin.allrestorerecord.read","description":"Permission
+        to view all restore records across all orgs"},{"name":"LOGIN","value":"admin.cpo.login","description":"Permission
+        to log in to the administration console"},{"name":"DELETE","value":"admin.computer.delete","description":"Permission
+        to delete computer"},{"name":"UPDATE","value":"admin.alluser.update","description":"Permission
+        to update user information for all orgs"},{"name":"ALL","value":"admin.plan","description":"User
+        is allowed to create, read, update and delete plans within his org hierarchy"},{"name":"SYSTEM_SETTINGS","value":"admin.system.system_settings","description":"Permission
+        to edit the System Settings"},{"name":"UPDATE","value":"admin.allplan.update","description":"User
+        is allowed to update information on plans in any org hierarchy"},{"name":"ALL","value":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"name":"READ","value":"admin.alluser.read","description":"Permission
+        to view user information for all orgs"},{"name":"MANAGE_DATABASE","value":"admin.system.manage_database","description":"Permission
+        to import or export the database"},{"name":"COMMAND_RESTRICTED","value":"admin.system.command_restricted","description":"View
+        the CLI and run any command which the user has permission for"},{"name":"ALL","value":"admin.restore","description":"Permission
+        to perform a full web restore for all devices user has authority to manage"},{"name":"DELETE","value":"admin.user.delete","description":"Permission
+        to delete users"},{"name":"UPDATE_BASIC","value":"admin.org.update_basic","description":"Permission
+        to update basic information within user\u0027s org"},{"name":"UPDATE_RESTRICTED","value":"admin.org.update_restricted","description":"Permission
+        to update quota and auth settings within user\u0027s org"},{"name":"CREATE","value":"admin.allorg.create","description":"Permission
+        to create new parent orgs"},{"name":"ALL","value":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"}]}'
+    http_version: 
+  recorded_at: Tue, 08 Jul 2014 23:11:49 GMT
+recorded_with: VCR 2.5.0

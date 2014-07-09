@@ -18,6 +18,18 @@ module Code42
       def user_roles(id = 'my')
         collection_from_response(Code42::RoleCollection, Code42::Role, :get, "userRole/#{id}")
       end
+
+      # TODO: The REST resource should really take the userId in the url path, not as a query param
+      # Unassign a role from a user
+      # @return true if role was unassigned
+      # @param id [String, Integer] The id of the user to return roles for
+      # @param id [String] The role name to unassign
+      # @example
+      #   client.unassign_role(2, 'Admin')
+      def unassign_role(id, role_name)
+        delete('UserRole', { :userId => id, :roleName => role_name })
+      end
+
     end
   end
 end

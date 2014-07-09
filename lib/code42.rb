@@ -22,6 +22,7 @@ require "code42/token"
 require "code42/role"
 require "code42/role_collection"
 require "code42/token_validation"
+require "code42/permission"
 
 module Code42
   class << self

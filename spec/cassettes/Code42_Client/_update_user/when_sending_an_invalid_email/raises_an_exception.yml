@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: http://admin:admin@localhost:7280/api/user
+    uri: http://admin:admin@localhost:4280/api/user
     body:
       encoding: UTF-8
       string: '{"orgId":2,"username":"testuser"}'
     headers:
       User-Agent:
-      - Faraday v0.8.8
+      - Faraday v0.9.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -25,27 +25,28 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Location:
-      - http://localhost:7280/api/v1/user
+      - http://localhost:4280/api/v1/user
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: '{"metadata":{"timestamp":"2014-03-19T17:11:52.875-05:00","params":{}},"data":{"userId":2,"userUid":"3b1d82e0fd88818b","status":"Active","username":"testuser","email":null,"firstName":null,"lastName":"Jenkins","quotaInBytes":-1,"orgId":2,"orgUid":"DEFAULT_CUSTOMER_ORG_ID","orgName":"Default","active":true,"blocked":false,"emailPromo":true,"invited":true,"orgType":"ENTERPRISE","usernameIsAnEmail":null,"creationDate":"2014-03-19T17:04:14.449-05:00","modificationDate":"2014-03-19T17:11:52.865-05:00","passwordReset":false}}'
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:44.391-05:00","params":{}},"data":{"userId":38,"userUid":"7a1c8ea53caabfe3","status":"Active","username":"testuser","email":null,"firstName":null,"lastName":"Jenkins","quotaInBytes":-1,"orgId":2,"orgUid":"proserverdemo","orgName":"PROServer
+        Demo","active":true,"blocked":false,"emailPromo":true,"invited":true,"orgType":"ENTERPRISE","usernameIsAnEmail":null,"creationDate":"2014-07-09T10:27:12.465-05:00","modificationDate":"2014-07-09T10:34:44.379-05:00","passwordReset":false}}'
     http_version: 
-  recorded_at: Wed, 19 Mar 2014 22:11:52 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
 - request:
     method: put
-    uri: http://admin:admin@localhost:7280/api/user/2
+    uri: http://admin:admin@localhost:4280/api/user/38
     body:
       encoding: UTF-8
       string: '{"email":"Jenkins"}'
     headers:
       User-Agent:
-      - Faraday v0.8.8
+      - Faraday v0.9.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -60,7 +61,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Location:
-      - http://localhost:7280/api/v1/user/2
+      - http://localhost:4280/api/v1/user/38
       Content-Type:
       - text/html;charset=ISO-8859-1
       Cache-Control:
@@ -73,5 +74,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"name":"EMAIL_INVALID","description":"com.code42.core.BuilderException","objects":[]}]'
     http_version: 
-  recorded_at: Wed, 19 Mar 2014 22:11:52 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
 recorded_with: VCR 2.5.0

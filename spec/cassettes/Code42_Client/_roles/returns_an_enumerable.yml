@@ -1,0 +1,243 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@localhost:4280/api/role
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/role
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:44.494-05:00","params":{}},"data":[{"roleId":3,"roleName":"Org
+        Manager","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.395-05:00","modificationDate":"2014-07-09T10:22:30.892-05:00","permissions":[{"permission":"admin.pushrestore.personal","description":"Permission
+        to perform a personal push restore"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.user.read","description":"Permission
+        to view user information"},{"permission":"admin.plan.read","description":"User
+        is allowed to read information about plans within his org hierarchy"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.computer.read","description":"Permission
+        to view computer information"},{"permission":"admin.restore.limited","description":"Permission
+        to perform a limited size web restore for all devices user has authority to
+        manage"},{"permission":"admin.cps.login","description":"Required to Login
+        to Client Desktop"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.org.read","description":"Permission
+        to view org information within user\u0027s org"},{"permission":"admin.restore.personal","description":"Permission
+        to perform a personal web restore"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.select.personal","description":"Permission
+        to remotely browse file and directory names for personal devices. Used for
+        remotely selecting push-restore destination and backup sources"}]},{"roleId":4,"roleName":"PROe
+        User","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.418-05:00","modificationDate":"2014-07-08T10:58:40.418-05:00","permissions":[{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"}]},{"roleId":1,"roleName":"SYSADMIN","locked":true,"numberOfUsers":1,"creationDate":"2006-04-17T12:30:00.987-05:00","modificationDate":"2014-07-08T10:58:40.634-05:00","permissions":[{"permission":"admin","description":"Super
+        User Permission; grant with caution!"}]},{"roleId":2,"roleName":"O42 Sales
+        DGR","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:10.798-05:00","modificationDate":"2014-07-08T10:58:40.555-05:00","permissions":[{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"permission":"admin.security.sales_dgr","description":"Sales
+        DGR"}]},{"roleId":8,"roleName":"Server Administrator","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.434-05:00","modificationDate":"2014-07-09T10:22:30.875-05:00","permissions":[{"permission":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"},{"permission":"admin.allplan","description":"User is allowed to create,
+        read, update and delete plans in any org hierarchy"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.alluser","description":"Permission
+        to access, alter or remove any user information in any org"},{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"permission":"admin.restore","description":"Permission to perform
+        a full web restore for all devices user has authority to manage"},{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.system","description":"Permission
+        to edit all system information not reserved for the System Administrator"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.allcomputer","description":"Permission
+        to access, alter or remove any computer information in any org"}]},{"roleId":5,"roleName":"All
+        Org Manager","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.421-05:00","modificationDate":"2014-07-09T10:22:30.885-05:00","permissions":[{"permission":"admin.pushrestore.personal","description":"Permission
+        to perform a personal push restore"},{"permission":"admin.allorg.read","description":"Permission
+        to view org information for all orgs"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.plan.read","description":"User
+        is allowed to read information about plans within his org hierarchy"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.system.command_restricted","description":"View
+        the CLI and run any command which the user has permission for"},{"permission":"admin.restore.limited","description":"Permission
+        to perform a limited size web restore for all devices user has authority to
+        manage"},{"permission":"admin.cps.login","description":"Required to Login
+        to Client Desktop"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.restore.personal","description":"Permission
+        to perform a personal web restore"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.allcomputer.read","description":"Permission
+        to view computer information for all orgs"},{"permission":"admin.alluser.read","description":"Permission
+        to view user information for all orgs"},{"permission":"admin.select.personal","description":"Permission
+        to remotely browse file and directory names for personal devices. Used for
+        remotely selecting push-restore destination and backup sources"}]},{"roleId":6,"roleName":"Admin
+        Restore Limited","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.425-05:00","modificationDate":"2014-07-08T10:58:40.425-05:00","permissions":[{"permission":"admin.restore.limited","description":"Permission
+        to perform a limited size web restore for all devices user has authority to
+        manage"}]},{"roleId":11,"roleName":"Admin Partner Owner","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.445-05:00","modificationDate":"2014-07-08T10:58:40.445-05:00","permissions":[{"permission":"admin.partner.own","description":null}]},{"roleId":12,"roleName":"Admin
+        Restore","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.448-05:00","modificationDate":"2014-07-08T10:58:40.448-05:00","permissions":[{"permission":"admin.restore","description":"Permission
+        to perform a full web restore for all devices user has authority to manage"}]},{"roleId":9,"roleName":"Org
+        Help Desk","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.438-05:00","modificationDate":"2014-07-09T10:22:30.866-05:00","permissions":[{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.org.read","description":"Permission
+        to view org information within user\u0027s org"},{"permission":"admin.pushrestore.limited","description":"Permission
+        to perform a push restore only to the source user\u0027s devices.  There is
+        no size limit"},{"permission":"admin.cpd.login","description":"Required to
+        Login to Client Desktop"},{"permission":"admin.plan.read","description":"User
+        is allowed to read information about plans within his org hierarchy"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.user.read","description":"Permission
+        to view user information"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"permission":"admin.computer.read","description":"Permission to
+        view computer information"}]},{"roleId":15,"roleName":"User Destination Move","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.459-05:00","modificationDate":"2014-07-08T10:58:40.459-05:00","permissions":[{"permission":"admin.functional","description":null},{"permission":"admin.allcomputer","description":"Permission
+        to access, alter or remove any computer information in any org"},{"permission":"admin.alluser","description":"Permission
+        to access, alter or remove any user information in any org"},{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"}]},{"roleId":16,"roleName":"Push
+        Restore","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.463-05:00","modificationDate":"2014-07-08T10:58:40.463-05:00","permissions":[{"permission":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"},{"permission":"admin.select","description":"Permission to remotely
+        browse file and directory names for all devices user has authority to manage.  Used
+        for remotely selecting push-restore destination and backup sources"}]},{"roleId":14,"roleName":"Help
+        Desk","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.455-05:00","modificationDate":"2014-07-08T10:58:40.455-05:00","permissions":[{"permission":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"},{"permission":"admin.system.archive_maintenance","description":"View
+        and cancel jobs in the archive maintenance queue"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.account.update","description":"Subject
+        is allowed to update information on this account"},{"permission":"admin.viewlogs","description":"Permission
+        to view system logs"},{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.alluser","description":"Permission
+        to access, alter or remove any user information in any org"},{"permission":"admin.system.command_restricted","description":"View
+        the CLI and run any command which the user has permission for"},{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"permission":"admin.restore","description":"Permission to perform
+        a full web restore for all devices user has authority to manage"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.allcomputer","description":"Permission
+        to access, alter or remove any computer information in any org"}]},{"roleId":20,"roleName":"PRO-Online
+        Admin","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.477-05:00","modificationDate":"2014-07-08T10:58:40.477-05:00","permissions":[{"permission":"admin.org.read","description":"Permission
+        to view org information within user\u0027s org"},{"permission":"admin.user","description":"Permission
+        to access, alter or remove any user information"},{"permission":"admin.org.update_basic","description":"Permission
+        to update basic information within user\u0027s org"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.computer","description":"Permission
+        to access, alter or remove any computer information"},{"permission":"admin.restore","description":"Permission
+        to perform a full web restore for all devices user has authority to manage"}]},{"roleId":17,"roleName":"Org
+        Admin","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.466-05:00","modificationDate":"2014-07-09T10:22:30.897-05:00","permissions":[{"permission":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"},{"permission":"admin.account.update","description":"Subject is allowed
+        to update information on this account"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.org.update_basic","description":"Permission
+        to update basic information within user\u0027s org"},{"permission":"admin.plan","description":"User
+        is allowed to create, read, update and delete plans within his org hierarchy"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.computer","description":"Permission
+        to access, alter or remove any computer information"},{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"permission":"admin.restore","description":"Permission to perform
+        a full web restore for all devices user has authority to manage"},{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.org.read","description":"Permission
+        to view org information within user\u0027s org"},{"permission":"admin.user","description":"Permission
+        to access, alter or remove any user information"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.org.delete","description":"Permission
+        to delete information within user\u0027s org"},{"permission":"admin.org.create","description":"Permission
+        to create child orgs within user\u0027s org"}]},{"roleId":24,"roleName":"Desktop
+        User","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.491-05:00","modificationDate":"2014-07-09T10:22:30.904-05:00","permissions":[{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.restore.personal","description":"Permission
+        to perform a personal web restore"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.plan.create","description":"User
+        is allowed to create plans within his org hierarchy"},{"permission":"admin.spd.login","description":"Required
+        to Login to the SharePlan client desktop application"},{"permission":"admin.select.personal","description":"Permission
+        to remotely browse file and directory names for personal devices. Used for
+        remotely selecting push-restore destination and backup sources"}]},{"roleId":23,"roleName":"All
+        Org Admin","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.487-05:00","modificationDate":"2014-07-09T10:22:30.911-05:00","permissions":[{"permission":"admin.pushrestore","description":"Permission
+        to perform a push restore from and to any device the user has authority to
+        manage"},{"permission":"admin.allplan","description":"User is allowed to create,
+        read, update and delete plans in any org hierarchy"},{"permission":"admin.system.archive_maintenance","description":"View
+        and cancel jobs in the archive maintenance queue"},{"permission":"admin.account.update","description":"Subject
+        is allowed to update information on this account"},{"permission":"admin.cpd.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.viewlogs","description":"Permission
+        to view system logs"},{"permission":"admin.alluser","description":"Permission
+        to access, alter or remove any user information in any org"},{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"},{"permission":"admin.system.command_restricted","description":"View
+        the CLI and run any command which the user has permission for"},{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"},{"permission":"admin.restore","description":"Permission to perform
+        a full web restore for all devices user has authority to manage"},{"permission":"admin.cps.login","description":"Required
+        to Login to Client Desktop"},{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"},{"permission":"admin.cpp.login","description":"Login:
+        PROe Server Mgmt Console"},{"permission":"admin.allcomputer","description":"Permission
+        to access, alter or remove any computer information in any org"}]},{"roleId":22,"roleName":"Remote
+        File Selection","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.483-05:00","modificationDate":"2014-07-08T10:58:40.483-05:00","permissions":[{"permission":"admin.select","description":"Permission
+        to remotely browse file and directory names for all devices user has authority
+        to manage.  Used for remotely selecting push-restore destination and backup
+        sources"}]},{"roleId":28,"roleName":"O42 Channel Manager","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.560-05:00","modificationDate":"2014-07-08T10:58:40.560-05:00","permissions":[{"permission":"admin.security.channel_manager","description":"Channel
+        Manager"}]},{"roleId":27,"roleName":"O42 Partner Manager","locked":true,"numberOfUsers":3,"creationDate":"2014-07-08T10:58:40.547-05:00","modificationDate":"2014-07-08T10:58:40.547-05:00","permissions":[{"permission":"admin.security.partner_manager","description":"Partner
+        Manager"}]},{"roleId":26,"roleName":"PRO-Online User","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.499-05:00","modificationDate":"2014-07-08T10:58:40.499-05:00","permissions":[{"permission":"admin.cpo.login","description":"Login:
+        PRO-Online Mgmt Console"},{"permission":"admin.console.login","description":"Login:
+        CrashPlan Console"}]},{"roleId":25,"roleName":"Consumer User","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.495-05:00","modificationDate":"2014-07-08T10:58:40.495-05:00","permissions":[{"permission":"admin.cpw.login","description":"Login:
+        CrashPlan Consumer Website"}]},{"roleId":32,"roleName":"O42 Inventory Manager","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.575-05:00","modificationDate":"2014-07-08T10:58:40.575-05:00","permissions":[{"permission":"admin.security.inv_manager","description":"Inventory
+        Manager"}]},{"roleId":31,"roleName":"COMMERCE_DISCOUNT_052","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.572-05:00","modificationDate":"2014-07-08T10:58:40.572-05:00","permissions":[{"permission":"admin.commerce.discount_52","description":"52%
+        Seat License Discount"}]},{"roleId":30,"roleName":"O42 Sales Manager","locked":true,"numberOfUsers":3,"creationDate":"2014-07-08T10:58:40.567-05:00","modificationDate":"2014-07-08T10:58:40.567-05:00","permissions":[{"permission":"admin.security.sales_person","description":"Sales
+        Person"},{"permission":"admin.security.sales_manager","description":"Sales
+        Manager"},{"permission":"admin.allorg","description":"Permission to create,
+        alter or delete information in any org"}]},{"roleId":29,"roleName":"COMMERCE_DISCOUNT_095","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.563-05:00","modificationDate":"2014-07-08T10:58:40.563-05:00","permissions":[{"permission":"admin.commerce.discount_95","description":"95%
+        Seat License Discount"}]},{"roleId":37,"roleName":"COMMERCE_DISCOUNT_090","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.596-05:00","modificationDate":"2014-07-08T10:58:40.596-05:00","permissions":[{"permission":"admin.commerce.discount_90","description":"90%
+        Seat License Discount"}]},{"roleId":38,"roleName":"ADMIN_COMMERCE_ACCOUNT","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.600-05:00","modificationDate":"2014-07-08T10:58:40.600-05:00","permissions":[{"permission":"admin.commerce.account","description":"User
+        can make purchases on account"}]},{"roleId":39,"roleName":"O42 Custom Invoice","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.603-05:00","modificationDate":"2014-07-08T10:58:40.603-05:00","permissions":[{"permission":"admin.commerce.custom_invoice","description":"Ability
+        to pass price overrides for invoices"},{"permission":"admin.security.custom_invoice","description":"Custom
+        Invoice"}]},{"roleId":40,"roleName":"COMMERCE_DISCOUNT_050","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.607-05:00","modificationDate":"2014-07-08T10:58:40.607-05:00","permissions":[{"permission":"admin.commerce.discount_50","description":"50%
+        Seat License Discount"}]},{"roleId":33,"roleName":"O42 Pricing Manager","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.578-05:00","modificationDate":"2014-07-08T10:58:40.578-05:00","permissions":[{"permission":"admin.security.pricing_manager","description":"Prcing
+        Manager"}]},{"roleId":34,"roleName":"O42 Sales Admin","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.582-05:00","modificationDate":"2014-07-08T10:58:40.582-05:00","permissions":[{"permission":"admin.security.sales_admin","description":"Sales
+        Admin"},{"permission":"admin.security","description":"Access to all security
+        permissions"}]},{"roleId":35,"roleName":"COMMERCE_DISCOUNT_040","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.588-05:00","modificationDate":"2014-07-08T10:58:40.588-05:00","permissions":[{"permission":"admin.commerce.discount_40","description":"40%
+        Seat License Discount"}]},{"roleId":36,"roleName":"COMMERCE_DISCOUNT_010","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.592-05:00","modificationDate":"2014-07-08T10:58:40.592-05:00","permissions":[{"permission":"admin.commerce.discount_10","description":"10%
+        Seat License Discount"}]},{"roleId":45,"roleName":"COMMERCE_DISCOUNT_100","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.629-05:00","modificationDate":"2014-07-08T10:58:40.629-05:00","permissions":[{"permission":"admin.commerce.discount_100","description":"100%
+        Seat License Discount"}]},{"roleId":46,"roleName":"O42 Channel","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.637-05:00","modificationDate":"2014-07-08T10:58:40.637-05:00","permissions":[{"permission":"admin.system.send_email","description":"Ability
+        to send email through EmailResource"},{"permission":"admin.commerce.channel","description":"Ability
+        to make channel purchases"},{"permission":"admin.security.chanel","description":"Channel"}]},{"roleId":47,"roleName":"COMMERCE_DISCOUNT_005","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.641-05:00","modificationDate":"2014-07-08T10:58:40.641-05:00","permissions":[{"permission":"admin.commerce.discount_05","description":"5%
+        Seat License Discount"}]},{"roleId":48,"roleName":"O42 Partner Rep","locked":true,"numberOfUsers":7,"creationDate":"2014-07-08T10:58:40.645-05:00","modificationDate":"2014-07-08T10:58:40.645-05:00","permissions":[{"permission":"admin.security.partner_rep","description":"Partner
+        Rep"}]},{"roleId":41,"roleName":"COMMERCE_DISCOUNT_080","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.611-05:00","modificationDate":"2014-07-08T10:58:40.611-05:00","permissions":[{"permission":"admin.commerce.discount_80","description":"80%
+        Seat License Discount"}]},{"roleId":42,"roleName":"COMMERCE_DISCOUNT_025","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.617-05:00","modificationDate":"2014-07-08T10:58:40.617-05:00","permissions":[{"permission":"admin.commerce.discount_25","description":"25%
+        Seat License Discount"}]},{"roleId":43,"roleName":"COMMERCE_DISCOUNT_075","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.622-05:00","modificationDate":"2014-07-08T10:58:40.622-05:00","permissions":[{"permission":"admin.commerce.discount_75","description":"75%
+        Seat License Discount"}]},{"roleId":44,"roleName":"COMMERCE_DISCOUNT_030","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.626-05:00","modificationDate":"2014-07-08T10:58:40.626-05:00","permissions":[{"permission":"admin.commerce.discount_30","description":"30%
+        Seat License Discount"}]},{"roleId":54,"roleName":"COMMERCE_DISCOUNT_060","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.671-05:00","modificationDate":"2014-07-08T10:58:40.671-05:00","permissions":[{"permission":"admin.commerce.discount_60","description":"60%
+        Seat License Discount"}]},{"roleId":53,"roleName":"COMMERCE_DISCOUNT_085","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.667-05:00","modificationDate":"2014-07-08T10:58:40.667-05:00","permissions":[{"permission":"admin.commerce.discount_85","description":"85%
+        Seat License Discount"}]},{"roleId":56,"roleName":"COMMERCE_DISCOUNT_065","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.679-05:00","modificationDate":"2014-07-08T10:58:40.679-05:00","permissions":[{"permission":"admin.commerce.discount_65","description":"65%
+        Seat License Discount"}]},{"roleId":55,"roleName":"O42 Customer Champion","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.675-05:00","modificationDate":"2014-07-08T10:58:40.675-05:00","permissions":[{"permission":"admin.allorg","description":"Permission
+        to create, alter or delete information in any org"},{"permission":"admin.security.customer_champion","description":"Customer
+        Champion"}]},{"roleId":50,"roleName":"COMMERCE_DISCOUNT_070","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.655-05:00","modificationDate":"2014-07-08T10:58:40.655-05:00","permissions":[{"permission":"admin.commerce.discount_70","description":"70%
+        Seat License Discount"}]},{"roleId":49,"roleName":"COMMERCE_DISCOUNT_020","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.650-05:00","modificationDate":"2014-07-08T10:58:40.650-05:00","permissions":[{"permission":"admin.commerce.discount_20","description":"20%
+        Seat License Discount"}]},{"roleId":52,"roleName":"O42 Order Processor","locked":true,"numberOfUsers":1,"creationDate":"2014-07-08T10:58:40.663-05:00","modificationDate":"2014-07-08T10:58:40.663-05:00","permissions":[{"permission":"admin.security.order_processor","description":"Order
+        Processor"},{"permission":"admin.allorg","description":"Permission to create,
+        alter or delete information in any org"}]},{"roleId":51,"roleName":"O42 Sales
+        Person","locked":true,"numberOfUsers":113,"creationDate":"2014-07-08T10:58:40.659-05:00","modificationDate":"2014-07-08T10:58:40.659-05:00","permissions":[{"permission":"admin.security.sales_person","description":"Sales
+        Person"},{"permission":"admin.allorg","description":"Permission to create,
+        alter or delete information in any org"}]},{"roleId":57,"roleName":"COMMERCE_DISCOUNT_015","locked":true,"numberOfUsers":0,"creationDate":"2014-07-08T10:58:40.682-05:00","modificationDate":"2014-07-08T10:58:40.682-05:00","permissions":[{"permission":"admin.commerce.discount_15","description":"15%
+        Seat License Discount"}]}]}'
+    http_version: 
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
+recorded_with: VCR 2.5.0

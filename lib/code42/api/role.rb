@@ -18,6 +18,26 @@ module Code42
       def user_roles(id = 'my')
         collection_from_response(Code42::RoleCollection, Code42::Role, :get, "userRole/#{id}")
       end
+
+      def roles(attrs = {})
+        collection_from_response(Code42::RoleCollection, Code42::Role, :get, "role", attrs)
+      end
+
+      def role(id)
+        object_from_response(Code42::Role, :get, "role/#{id}")
+      end
+
+      def create_role(name, permissions)
+        object_from_response(Code42::Role, :post, "role", role_name: name, permissions: permissions)
+      end
+
+      def update_role(id, attrs = {})
+        object_from_response(Code42::Role, :put, "role/#{id}", attrs)
+      end
+
+      def delete_role(id)
+        delete("Role/#{id}")
+      end
     end
   end
 end

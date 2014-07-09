@@ -4,7 +4,7 @@ describe Code42::Client, :vcr do
   subject(:client) do
     Code42::Client.new(
       host: 'localhost',
-      port: 7280,
+      port: 4280,
       https: false,
       api_root: '/api',
       username: 'admin',
@@ -24,6 +24,33 @@ describe Code42::Client, :vcr do
     it "returns an enumerable" do
       roles = client.user_roles
       roles.should respond_to(:each)
+    end
+  end
+
+  describe "#roles" do
+    it "returns an enumerable" do
+      roles = client.roles
+      roles.should respond_to(:each)
+    end
+  end
+
+  describe "#create_role" do
+    it 'creates a role' do
+      role = client.create_role('My Role', ['admin.user.read'])
+      role.name.should == 'My Role'
+    end
+  end
+
+  describe "#delete_role" do
+    it "deletes a role" do
+      client.delete_role(62)
+    end
+  end
+
+  describe "#update_role" do
+    it "updates a role" do
+      role = client.update_role(63, name: 'New name')
+      role.name.should == 'New name'
     end
   end
 
@@ -74,7 +101,7 @@ describe Code42::Client, :vcr do
     it "returns created user" do
       user = client.create_user(user_attributes)
       user.username.should eq 'testuser'
-      user.id.should eq 3
+      user.id.should eq 38
     end
 
     context "when sending an invalid email" do

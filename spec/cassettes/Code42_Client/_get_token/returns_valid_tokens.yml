@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: http://admin:admin@localhost:7280/api/authToken
+    uri: http://admin:admin@localhost:4280/api/authToken
     body:
       encoding: UTF-8
       string: '{}'
     headers:
       User-Agent:
-      - Faraday v0.8.7
+      - Faraday v0.9.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -24,25 +24,17 @@ http_interactions:
       - no-store
       Pragma:
       - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/authToken
       Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '137'
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "metadata":   {
-            "timestamp": "2013-06-13T15:16:30.003-05:00",
-            "params": {}
-          },
-          "data":   [
-            "1abpbyu8u4ub00aatqoiiv4d6f",
-            "10d01ie6qbuxw0n4iudhoopjxa"
-          ]
-        }
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:43.941-05:00","params":{}},"data":["1x0c1cat5ecba0orq33ljgv1kp","1f3zmbyc5d0vh0szy4uvkrmvvp"]}'
     http_version: 
-  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:43 GMT
 recorded_with: VCR 2.5.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/permission
+    uri: http://admin:admin@localhost:4280/api/permission
     body:
       encoding: US-ASCII
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Location:
-      - http://localhost:7280/api/v1/permission
+      - http://localhost:4280/api/v1/permission
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -115,6 +115,6 @@ http_interactions:
         to update user information for all orgs"},{"name":"COMMAND","value":"admin.system.command","description":"View
         the CLI and run any command"},{"name":"INVITE","value":"admin.planuser.invite","description":"Member
         can invite others into the plan"}]}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 09 Jul 2014 20:23:52 GMT
 recorded_with: VCR 2.5.0

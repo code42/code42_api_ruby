@@ -31,5 +31,9 @@ module Code42
     def includes_name?(name)
       map(&:name).include? name
     end
+
+    def empty?
+      @roles.empty?
+    end
   end
 end

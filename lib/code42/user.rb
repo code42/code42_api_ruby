@@ -50,6 +50,11 @@ module Code42
       client.assign_role(attrs)
     end
 
+    # Delete a role from this user
+    def unassign_role(role_name)
+      client.unassign_role(id, role_name)
+    end
+
     def block
       client.block_user(id)
       client.user id
@@ -69,5 +74,10 @@ module Code42
       client.deactivate_user(id)
       client.user(id, active: false)
     end
+
+    def permissions
+      client.permissions
+    end
+
   end
 end

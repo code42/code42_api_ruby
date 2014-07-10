@@ -19,6 +19,16 @@ module Code42
         collection_from_response(Code42::RoleCollection, Code42::Role, :get, "userRole/#{id}")
       end
 
+      # Unassign a role from a user
+      # @return true if role was unassigned
+      # @param id [String, Integer] The id of the user to return roles for
+      # @param id [String] The role name to unassign
+      # @example
+      #   client.unassign_role(2, 'Admin')
+      def unassign_role(id, role_name)
+        delete('UserRole', { :userId => id, :roleName => role_name })
+      end
+
       def roles(attrs = {})
         collection_from_response(Code42::RoleCollection, Code42::Role, :get, "role", attrs)
       end

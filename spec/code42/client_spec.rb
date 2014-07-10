@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Code42::Client, :vcr do
+
   subject(:client) do
     Code42::Client.new(
       host: 'localhost',
@@ -24,6 +25,33 @@ describe Code42::Client, :vcr do
     it "returns an enumerable" do
       roles = client.user_roles
       roles.should respond_to(:each)
+    end
+  end
+
+  describe "#unassign_role" do
+
+    let(:user_id) { 4 }
+    let(:role_name) { 'PROe User' }
+
+    it "removes the role" do
+      current_roles = client.user_roles user_id
+      current_role_names = current_roles.map(&:name)
+
+      expect(current_role_names.include? role_name).to be_true
+
+      client.unassign_role(user_id, role_name)
+      expect(client.last_response.status).to eq 204
+
+      actual_roles = client.user_roles user_id
+      expect(actual_roles).to be_empty
+    end
+  end
+
+  describe "#permissions" do
+    it "returns an enumerable of permissions" do
+      permissions = client.permissions
+      permissions.should respond_to(:each)
+      expect(permissions.first).to be_a Code42::Permission
     end
   end
 

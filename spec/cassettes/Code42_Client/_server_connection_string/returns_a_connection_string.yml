@@ -2,39 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.10.46.137:4280/api/serverConnectionString/3
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.8.8
-      Authorization:
-      - Basic YWRtaW46YWRtaW4=
-  response:
-    status:
-      code: 500
-      message: ''
-    headers:
-      Pragma:
-      - no-cache
-      Content-Location:
-      - http://10.10.46.137:4280/api/v1/serverConnectionString/3
-      Content-Type:
-      - text/html;charset=ISO-8859-1
-      Cache-Control:
-      - must-revalidate,no-cache,no-store
-      Content-Length:
-      - '92'
-      Server:
-      - Jetty(7.6.3.v20120416)
-    body:
-      encoding: UTF-8
-      string: '[{"name":"SYSTEM","description":"com.code42.server.DatabaseNotEmptyException","objects":[]}]'
-    http_version: 
-  recorded_at: Wed, 11 Sep 2013 18:23:52 GMT
-- request:
-    method: get
     uri: http://10.10.47.82:4280/api/serverConnectionString/3
     body:
       encoding: US-ASCII

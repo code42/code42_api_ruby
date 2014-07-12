@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: http://admin:admin@localhost:7280/api/user
+    uri: http://admin:admin@localhost:4280/api/user
     body:
       encoding: UTF-8
       string: '{"orgId":2,"username":"testuser","email":"testuser"}'
     headers:
       User-Agent:
-      - Faraday v0.8.7
+      - Faraday v0.9.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -18,22 +18,23 @@ http_interactions:
   response:
     status:
       code: 500
-      message: '[{   "name": "EMAIL_INVALID",   "description": "Email is invalid",   "objects":
-        [] }]'
+      message: '[{"name":"EMAIL_INVALID","description":"com.code42.core.BuilderException","objects":[]}]'
     headers:
       Pragma:
       - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/user
       Content-Type:
       - text/html;charset=ISO-8859-1
       Cache-Control:
       - must-revalidate,no-cache,no-store
       Content-Length:
-      - '72'
+      - '88'
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: '[{"name":"EMAIL_INVALID","description":"Email is invalid","objects":[]}]'
+      string: '[{"name":"EMAIL_INVALID","description":"com.code42.core.BuilderException","objects":[]}]'
     http_version: 
-  recorded_at: Thu, 13 Jun 2013 20:16:29 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
 recorded_with: VCR 2.5.0

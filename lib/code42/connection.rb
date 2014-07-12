@@ -37,10 +37,13 @@ module Code42
     end
 
     def adapter
-      @adapter ||= begin
-        adapter = Faraday.new
-        adapter.response :json
-        adapter
+      @adapter ||= Faraday.new do |f|
+        f.request  :multipart
+        f.request  :json
+
+        f.adapter  :net_http
+
+        f.response :json
       end
     end
 
@@ -91,13 +94,11 @@ module Code42
     end
 
     def put(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
-      adapter.put path, data.to_json
+      adapter.put path, data
     end
 
     def post(path, data)
-      adapter.headers['Content-Type'] = 'application/json'
-      adapter.post path, data.to_json
+      adapter.post path, data
     end
 
     def delete(path, data)
@@ -116,13 +117,19 @@ module Code42
 
     def check_for_errors(response)
       if response.status == 401
-        raise Code42::Error::AuthenticationError.new(nil, response.status)
+        raise Code42::Error::AuthenticationError.new(description_from_response(response), response.status)
+      elsif response.status == 403
+        raise Code42::Error::AuthorizationError.new(description_from_response(response), response.status)
       elsif response.status == 404
-        raise Code42::Error::ResourceNotFound.new(nil, response.status)
+        raise Code42::Error::ResourceNotFound.new(description_from_response(response), response.status)
       elsif response.status >= 400 && response.status < 600
         body = response.body.is_a?(Array) ? response.body.first : response.body
         raise exception_from_body(body, response.status)
       end
+    end
+
+    def description_from_response(response)
+      response.try { |resp| resp.body.try { |body| body.first['description'] } }
     end
 
     def exception_from_body(body, status = nil)
@@ -131,7 +138,8 @@ module Code42
       if Code42::Error.const_defined?(exception_name)
         klass = Code42::Error.const_get(exception_name)
       else
-        klass = Code42::Error
+        # Generic server error if no specific error is caught.
+        klass = Code42::Error::ServerError
       end
       klass.new(body['description'], status)
     end

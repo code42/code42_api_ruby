@@ -12,7 +12,6 @@ module Code42
     # @!attribute [rw] updated_at
     #   @return [DateTime] The timestamp for the time the role was updated
 
-    attribute :user_id
     attribute :id, :from => :roleId
     attribute :name, :from => :roleName
     attribute :created_at, :from => :creationDate, :as => DateTime
@@ -21,6 +20,14 @@ module Code42
 
     def permissions=(permissions = [])
       @permissions = permissions.map { |p| p['permission'] }
+    end
+
+    def update(attrs = {})
+      client.update_role(id, attrs)
+    end
+
+    def delete
+      client.delete_role(id)
     end
   end
 end

@@ -77,6 +77,21 @@ module Code42
       def unblock_user(id)
         delete("UserBlock/#{id}")
       end
+
+      def deactivate_user(id)
+        put("UserDeactivation/#{id}")
+      end
+
+      def activate_user(id)
+        delete("UserDeactivation/#{id}")
+      end
+
+      # Returns a list of permissions for the session user
+      # @return [Array] An array of matching permissions
+      def permissions
+        objects_from_response(Code42::Permission, :get, 'permission')
+      end
+
     end
   end
 end

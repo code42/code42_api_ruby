@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Code42::Client, :vcr do
+
   subject(:client) do
     Code42::Client.new(
       host: '10.10.47.82',
@@ -122,6 +123,60 @@ describe Code42::Client, :vcr do
     end
   end
 
+  describe "#unassign_role" do
+
+    let(:user_id) { 4 }
+    let(:role_name) { 'PROe User' }
+
+    it "removes the role" do
+      current_roles = client.user_roles user_id
+      current_role_names = current_roles.map(&:name)
+
+      expect(current_role_names.include? role_name).to be_true
+
+      client.unassign_role(user_id, role_name)
+      expect(client.last_response.status).to eq 204
+
+      actual_roles = client.user_roles user_id
+      expect(actual_roles).to be_empty
+    end
+  end
+
+  describe "#permissions" do
+    it "returns an enumerable of permissions" do
+      permissions = client.permissions
+      permissions.should respond_to(:each)
+      expect(permissions.first).to be_a Code42::Permission
+    end
+  end
+
+  describe "#roles" do
+    it "returns an enumerable" do
+      roles = client.roles
+      roles.should respond_to(:each)
+    end
+  end
+
+  describe "#create_role" do
+    it 'creates a role' do
+      role = client.create_role('My Role', ['admin.user.read'])
+      role.name.should == 'My Role'
+    end
+  end
+
+  describe "#delete_role" do
+    it "deletes a role" do
+      client.delete_role(62)
+    end
+  end
+
+  describe "#update_role" do
+    it "updates a role" do
+      role = client.update_role(63, name: 'New name')
+      role.name.should == 'New name'
+    end
+  end
+
   describe "#get_token" do
     it "returns valid tokens" do
       auth = client.get_token
@@ -169,6 +224,7 @@ describe Code42::Client, :vcr do
     it "returns created user" do
       user = client.create_user(user_attributes)
       user.username.should eq 'testuser'
+      user.id.should eq 38
       user.org_id.should eq 2
     end
 

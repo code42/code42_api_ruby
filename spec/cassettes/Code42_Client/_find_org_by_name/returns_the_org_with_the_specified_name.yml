@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/org?q=PROServer%20Demo
+    uri: http://admin:admin@localhost:4280/api/org?q=PROServer%20Demo
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.8.7
+      - Faraday v0.9.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -22,54 +22,19 @@ http_interactions:
       - no-store
       Pragma:
       - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/org?q=PROServer+Demo
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "metadata":   {
-            "timestamp": "2013-06-13T15:16:30.378-05:00",
-            "params": {"q": "PROServer Demo"}
-          },
-          "data":   {
-            "totalCount": 1,
-            "orgs": [    {
-              "orgId": 2,
-              "orgUid": "proserverdemo",
-              "orgName": "PROServer Demo",
-              "status": "Active",
-              "active": true,
-              "blocked": false,
-              "parentOrgId": null,
-              "type": "ENTERPRISE",
-              "externalId": "proserverdemo",
-              "hierarchyCounts": {},
-              "configInheritanceCounts": {},
-              "creationDate": "2013-06-13T15:12:53.017-05:00",
-              "modificationDate": "2013-06-13T15:12:53.017-05:00",
-              "registrationKey": "2KKW-9TST-2HU2-UPT8",
-              "reporting": {},
-              "customConfig": false,
-              "settings":       {
-                "maxSeats": null,
-                "maxBytes": null
-              },
-              "settingsInherited":       {
-                "maxSeats": "",
-                "maxBytes": ""
-              },
-              "settingsSummary":       {
-                "maxSeats": "",
-                "maxBytes": ""
-              }
-            }]
-          }
-        }
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:43.698-05:00","params":{"q":"PROServer
+        Demo"}},"data":{"totalCount":1,"orgs":[{"orgId":2,"orgUid":"proserverdemo","orgName":"PROServer
+        Demo","status":"Active","active":true,"blocked":false,"parentOrgId":null,"type":"ENTERPRISE","classification":"BASIC","externalId":"proserverdemo","hierarchyCounts":{},"configInheritanceCounts":{},"creationDate":"2014-07-08T10:57:57.937-05:00","modificationDate":"2014-07-08T10:57:57.937-05:00","registrationKey":"2KKW-9TST-2HU2-UPT8","reporting":{},"customConfig":false,"settings":{"maxSeats":null,"maxBytes":null},"settingsInherited":{"maxSeats":"","maxBytes":""},"settingsSummary":{"maxSeats":"","maxBytes":""}}]}}'
     http_version: 
-  recorded_at: Thu, 13 Jun 2013 20:16:30 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:43 GMT
 recorded_with: VCR 2.5.0

@@ -104,7 +104,7 @@ module Code42
       klass = fetch_class(klass)
       options = klass.serialize(options)
       response = send(request_method.to_sym, path, options)
-      return nil unless response_has_data?(response['data'])
+      return nil unless response_has_data?(response)
       klass.from_response(response['data'], self)
     end
 
@@ -115,7 +115,7 @@ module Code42
       response = send(request_method.to_sym, path, options)
       return nil unless response_has_data?(response)
       response = response['data']
-      response = response[key] if key
+      response = response[key] if !response.empty? && key
       objects_from_array(klass, response)
     end
 
@@ -124,7 +124,7 @@ module Code42
     end
 
     def response_has_data?(response)
-      !response.nil?
+      response && response['data']
     end
 
     def collection_from_response(collection_klass, object_klass, request_method, path, options = {})

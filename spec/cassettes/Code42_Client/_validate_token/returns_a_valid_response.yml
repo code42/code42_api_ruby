@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: post
-    uri: http://admin:admin@localhost:7280/api/authToken
+    uri: http://admin:admin@localhost:4280/api/authToken
     body:
       encoding: UTF-8
       string: '{}'
     headers:
       User-Agent:
-      - Faraday v0.8.7
+      - Faraday v0.9.0
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -24,36 +24,28 @@ http_interactions:
       - no-store
       Pragma:
       - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/authToken
       Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '137'
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "metadata":   {
-            "timestamp": "2013-06-13T15:16:29.726-05:00",
-            "params": {}
-          },
-          "data":   [
-            "134jrkicsh5pv05bhldt7otnjn",
-            "1lmn47hi5a0wt065xjlz15cabl"
-          ]
-        }
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:44.894-05:00","params":{}},"data":["1f2qhb8wgaesg1ksavy8ozrz6y","19sno55kj34kn159pxfatjbhku"]}'
     http_version: 
-  recorded_at: Thu, 13 Jun 2013 20:16:29 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
 - request:
     method: get
-    uri: http://admin:admin@localhost:7280/api/authToken/134jrkicsh5pv05bhldt7otnjn-1lmn47hi5a0wt065xjlz15cabl
+    uri: http://admin:admin@localhost:4280/api/authToken/1f2qhb8wgaesg1ksavy8ozrz6y-19sno55kj34kn159pxfatjbhku
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.8.7
+      - Faraday v0.9.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -67,25 +59,17 @@ http_interactions:
       - no-store
       Pragma:
       - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/authToken/1f2qhb8wgaesg1ksavy8ozrz6y-19sno55kj34kn159pxfatjbhku
       Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '111'
       Server:
       - Jetty(7.6.3.v20120416)
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "metadata":   {
-            "timestamp": "2013-06-13T15:16:29.741-05:00",
-            "params": {}
-          },
-          "data":   {
-            "valid": true,
-            "username": "admin"
-          }
-        }
+      string: '{"metadata":{"timestamp":"2014-07-09T10:34:44.908-05:00","params":{}},"data":{"valid":true,"username":"admin"}}'
     http_version: 
-  recorded_at: Thu, 13 Jun 2013 20:16:29 GMT
+  recorded_at: Wed, 09 Jul 2014 15:34:44 GMT
 recorded_with: VCR 2.5.0

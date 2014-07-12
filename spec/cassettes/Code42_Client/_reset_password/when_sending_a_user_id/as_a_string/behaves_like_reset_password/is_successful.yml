@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://admin:admin@localhost:7280/api/UserPasswordReset
+    uri: http://admin:admin@localhost:4280/api/UserPasswordReset
     body:
       encoding: UTF-8
       string: '{"userId":"42"}'
@@ -25,7 +25,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Location:
-      - http://localhost:7280/api/v1/UserPasswordReset
+      - http://localhost:4280/api/v1/UserPasswordReset
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,5 +35,43 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"metadata":{"timestamp":"2014-04-02T12:33:37.965-05:00","params":{}},"data":{"success":true}}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Apr 2014 17:33:37 GMT
+- request:
+    method: post
+    uri: http://admin:admin@localhost:4280/api/UserPasswordReset
+    body:
+      encoding: UTF-8
+      string: '{"userId":"42"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 500
+      message: '[{"name":"USER_NOT_FOUND","description":"com.code42.core.CommandException","objects":[]}]'
+    headers:
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://localhost:4280/api/v1/UserPasswordReset
+      Content-Type:
+      - text/html;charset=ISO-8859-1
+      Cache-Control:
+      - must-revalidate,no-cache,no-store
+      Content-Length:
+      - '89'
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '[{"name":"USER_NOT_FOUND","description":"com.code42.core.CommandException","objects":[]}]'
+    http_version:
+  recorded_at: Wed, 09 Jul 2014 15:59:48 GMT
+recorded_with: VCR 2.5.0

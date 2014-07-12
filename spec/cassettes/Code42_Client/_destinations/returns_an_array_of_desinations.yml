@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.10.46.137:4280/api/destinations
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.46.137:4280/api/v1/destinations
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-10T15:07:11.856-05:00","params":{}},"data":{"totalCount":1,"destinations":[{"destinationId":2,"computerId":2,"guid":"600782252019810561","destinationName":"CrashPlan
+        PROe Server","type":"CLUSTER","acceptingInboundBackup":"ALL","acceptingNewComputers":"ALL","serverOnlineStatus":"ALL","clusterServerId":1,"orgCount":0,"userCount":0,"computerCount":0,"onlineComputerCount":0,"usedBytes":3746668544,"archiveBytes":0,"backupSessionCount":0,"inboundBandwidth":0,"outboundBandwidth":0,"selectedBytes":0,"remainingBytes":0,"balancingData":"NONE","serverCount":1,"offlineServerCount":0,"storePointCount":1,"totalBytes":19674116096,"usedPercentage":19.0,"freeBytes":15927447552,"freePercentage":81.0,"coldBytes":0,"coldPercentageOfUsed":0.0,"coldPercentageOfTotal":0.0,"settings":{"balancerEnabled":true,"allowedDiskVariance":20,"localPriority":100,"remotePriority":100}}]}}'
+    http_version: 
+  recorded_at: Tue, 10 Sep 2013 20:07:11 GMT
+recorded_with: VCR 2.5.0

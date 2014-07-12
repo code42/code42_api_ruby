@@ -51,3 +51,35 @@ module Code42
     end
   end
 end
+
+class RequestLogger < Faraday::Request
+  def call(env)
+    debug('request') { dump_body(env[:body]) }
+    super
+  end
+end
+
+class BodyLogger < Faraday::Response::Logger
+  def call(env)
+    debug('response') { dump_body(env[:body]) }
+    super
+  end
+
+  def on_complete(env)
+    debug('response') { dump_body(env[:body]) }
+    super
+  end
+
+  def dump_body(body)
+    if body.respond_to?(:to_str)
+      body.to_str
+    else
+      pretty_inspect(body)
+    end
+  end
+
+  def pretty_inspect(body)
+    require 'pp' unless body.respond_to?(:pretty_inspect)
+    body.pretty_inspect
+  end
+end

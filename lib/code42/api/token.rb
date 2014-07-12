@@ -8,6 +8,13 @@ module Code42
         object_from_response(Code42::Token, :post, "authToken")
       end
 
+      def apply_mlk(mlk, attrs)
+        settings.mlk = mlk
+        response = object_from_response(Code42::Token, :post, 'authToken', attrs)
+        settings.mlk = nil
+        response
+      end
+
       # Returns LoginToken and ServerUrl
       # @return [CrashPlan::Token] Token to pass to ServerUrl's AuthToken resource
       def get_login_token

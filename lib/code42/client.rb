@@ -8,6 +8,10 @@ module Code42
     include Code42::API::Org
     include Code42::API::Computer
     include Code42::API::Token
+    include Code42::API::ProductLicense
+    include Code42::API::ServerSettings
+    include Code42::API::Destination
+    include Code42::API::Server
     include Code42::API::PasswordReset
 
     attr_accessor :settings
@@ -47,6 +51,14 @@ module Code42
       object_from_response(Diagnostic, :get, 'diagnostic')
     end
 
+    def org_share_destinations(id)
+      get("orgShareDestinations/#{id}")['data']
+    end
+
+    def server_connection_string(id)
+      object_from_response(Code42::ServerConnectionString, :get, "serverConnectionString/#{id}")
+    end
+
     # Block a computer from backing up
     # @return [Code42::Computer] The blocked computer
     # @params id [Integer, String] The computer ID you want to block
@@ -79,6 +91,9 @@ module Code42
       end
       if settings.token
         @connection.token = settings.token
+      end
+      if settings.mlk
+        @connection.mlk = settings.mlk
       end
       @connection
     end

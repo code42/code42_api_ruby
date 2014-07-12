@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.10.46.137:4280/api/orgShareDestinations/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.46.137:4280/api/v1/orgShareDestinations/5
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-11T11:23:20.115-05:00","params":{}},"data":"rO0ABXQCnSI2MDA3ODIyNTE5MDIzNzAwNDkifHwiNjAwNzgyMTgzNjg2MjA5NzkzInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJ1cms4Mm1tMjRtdzc4amNjInx8IjEwLjEwLjQ2LjEzNzo0MjgyInx8Im51bGwifHwiMTAuMTAuNDYuMTM3OjQyODYifHwiMTAuMTAuNDYuMTM3OjQyODMifHwiaHR0cDovLzEwLjEwLjQ2LjEzNzo0MjgwInx8Ik1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBb2hoeXdmYUpTWDh2RzZmK2JvR3ZDeGJPUzJrdk8yRlRIQUdJUGJtb0kwUUphd2gxZ3ZPQVFUQk5WeHY2Y1k4R1hKckphelI4dUl0UGQ3ZFNHNFNTbFYyR2FsT09WVUJuRitpUGQ2T1E2cDBhaVgvR1JIcjNqaTU2ZVNNNW1yYlUvTmQybGVKMSttV1Z2UkhOQ2ErTXFWbWQ3K3dNYkJvZk5aeGRSbzhZRk1SSVVMVFJEZk1MRFJLbnZUWUgzRk5vMCt6STZkb1RUeHpueXdTWXlqN0hEbkRDbW4yZGs4WnJwbnNpRkZHU3NDRUxPWXUraDZEUVppTkhlVDdwNWMzYnhSSW1tU2VxOUtPRmxkSlhZYk9ZSXB4TVE0QUtnYXYyWk9RWlBKZkIxOTJNek8rK25TY1B4Z1R6SVR4Nmw1N0xIY3Fzc1RPaFV3Z29JSm9ncTJDZzl3SURBUUFCInx8IlBST1ZJREVSInx8Ijgya21yOGo5a3Bjdzk5cHMifHwiNjAwNzgyMjUyMDE5ODEwNTYxInx8IkNyYXNoUGxhbiBQUk9lIFNlcnZlciJ8fCJudWxsIg\u003d\u003d"}'
+    http_version: 
+  recorded_at: Wed, 11 Sep 2013 18:08:40 GMT
+recorded_with: VCR 2.5.0

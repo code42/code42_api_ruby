@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://stgw.crashplan.com:4285/api/productLicense
+    body:
+      encoding: UTF-8
+      string: '{"productLicense":"ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 500
+      message: ''
+    headers:
+      X-Ua-Compatible:
+      - IE=Edge
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://stgw.crashplan.com:4285/api/v1/productLicense
+      Content-Type:
+      - text/html;charset=ISO-8859-1
+      Cache-Control:
+      - must-revalidate,no-cache,no-store
+      Content-Length:
+      - '106'
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '[{"name":"SYSTEM","description":"com.code42.core.CommandException","objects":["ProductLicenseKeyAddCmd"]}]'
+    http_version: 
+  recorded_at: Tue, 10 Sep 2013 17:50:12 GMT
+- request:
+    method: put
+    uri: http://10.10.46.137:4280/api/productLicense
+    body:
+      encoding: UTF-8
+      string: '{"productLicense":"ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ=="}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.46.137:4280/api/v1/productLicense
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-10T12:53:54.604-05:00","params":{}},"data":{"products":[{"productLicenseId":1,"name":"PROe
+        Server Unlimited-Pack","quantity":2147483647,"creationDate":"2013-01-16T00:00:00.000-06:00","expirationDate":"2013-01-16T00:00:00.000-06:00","productType":"B42_PRO_LICENSE","licenseKey":"ZP5Pbz8wx1dBHKjhkkQjGDZ+tTtkvuD5e5d2TC9/uHoODR9NvyaHfbypRUHR15hbeHdf7ExfnVpmwPiIcgYxCQ\u003d\u003d"}]}}'
+    http_version: 
+  recorded_at: Tue, 10 Sep 2013 17:53:51 GMT
+recorded_with: VCR 2.5.0

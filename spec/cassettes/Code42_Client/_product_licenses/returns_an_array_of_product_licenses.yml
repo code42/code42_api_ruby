@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:7280/api/productLicense
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://localhost:7280/api/v1/productLicense
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-09T16:51:59.260-05:00","params":{}},"data":{"products":[{"productLicenseId":1,"name":"PROe
+        Client 1000-Pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2011-10-28T00:00:00.000-05:00","productType":"B42_PRO_LICENSE","licenseKey":"pAMJj3qqYdk7GPjlzj/Qz2KVjPo5+ce9fE/3zdR24SV6ayS/nTm8OZyDXAKmdjqyk6vmmqb5jxDjM+IU2udIug\u003d\u003d"},{"productLicenseId":2,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"KnL7NFI1CyLEwupMMEfxqIrTjoxcyzou0JQLMi0gE3U8vxghDSbJ1OXwfBrFHpcfaAjNTTH4Y7YdNDRhDQT5wA\u003d\u003d"},{"productLicenseId":3,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"O8oq6zgOIZWfThxZzY5YoNxJ+LvSGcXSP2YaOkua3FkHlAtvqEw1kFTWoWFcKmC9XH8DzB+SQsMx/Sj3HGriRw\u003d\u003d"},{"productLicenseId":4,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"C2ycPbvIQGzGbOcEq9flBg1LspsbeR1YRsoXsYUTvo6LOXi5dHCV3TcbvylwVefE6myHVP255+xnIIyUnoMdNg\u003d\u003d"},{"productLicenseId":5,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"oOFqGbhos/jtlBEmIJrvH0Zu4BkzjEtnoR8+sNB4m9ob2MoyclvjxHgMqIh7I1CLEo+qLBokPZ5urQxn+HlKcQ\u003d\u003d"},{"productLicenseId":6,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"JJ/9eOjHek8LSubMjx323pdlteexGZWcMc8GtQJcQ9yH7YvgD+TonmjDPebPC5TNOF7+8O1ZyPsWAirumLZZBQ\u003d\u003d"}]}}'
+    http_version: 
+  recorded_at: Mon, 09 Sep 2013 21:51:59 GMT
+- request:
+    method: get
+    uri: http://localhost:7280/api/productLicense
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Authorization:
+      - Basic YWRtaW46YWRtaW4=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://localhost:7280/api/v1/productLicense
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2013-09-09T16:51:59.293-05:00","params":{}},"data":{"products":[{"productLicenseId":1,"name":"PROe
+        Client 1000-Pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2011-10-28T00:00:00.000-05:00","productType":"B42_PRO_LICENSE","licenseKey":"pAMJj3qqYdk7GPjlzj/Qz2KVjPo5+ce9fE/3zdR24SV6ayS/nTm8OZyDXAKmdjqyk6vmmqb5jxDjM+IU2udIug\u003d\u003d"},{"productLicenseId":2,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"KnL7NFI1CyLEwupMMEfxqIrTjoxcyzou0JQLMi0gE3U8vxghDSbJ1OXwfBrFHpcfaAjNTTH4Y7YdNDRhDQT5wA\u003d\u003d"},{"productLicenseId":3,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"O8oq6zgOIZWfThxZzY5YoNxJ+LvSGcXSP2YaOkua3FkHlAtvqEw1kFTWoWFcKmC9XH8DzB+SQsMx/Sj3HGriRw\u003d\u003d"},{"productLicenseId":4,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"C2ycPbvIQGzGbOcEq9flBg1LspsbeR1YRsoXsYUTvo6LOXi5dHCV3TcbvylwVefE6myHVP255+xnIIyUnoMdNg\u003d\u003d"},{"productLicenseId":5,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"oOFqGbhos/jtlBEmIJrvH0Zu4BkzjEtnoR8+sNB4m9ob2MoyclvjxHgMqIh7I1CLEo+qLBokPZ5urQxn+HlKcQ\u003d\u003d"},{"productLicenseId":6,"name":"1YR
+        PROe Service 1000-pack","quantity":1000,"creationDate":"2011-10-28T00:00:00.000-05:00","expirationDate":"2012-10-27T00:00:00.000-05:00","productType":"B42_1YR_LICENSE","licenseKey":"JJ/9eOjHek8LSubMjx323pdlteexGZWcMc8GtQJcQ9yH7YvgD+TonmjDPebPC5TNOF7+8O1ZyPsWAirumLZZBQ\u003d\u003d"}]}}'
+    http_version: 
+  recorded_at: Mon, 09 Sep 2013 21:51:59 GMT
+recorded_with: VCR 2.5.0

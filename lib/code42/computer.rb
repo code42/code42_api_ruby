@@ -1,6 +1,5 @@
 module Code42
   class Computer < Resource
-
     attribute :id, :from => 'computerId'
 
     def unblock
@@ -10,6 +9,5 @@ module Code42
     def block
       client.block_computer(id)
     end
-
   end
 end

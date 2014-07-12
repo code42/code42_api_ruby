@@ -6,7 +6,7 @@ require 'code42/error'
 
 module Code42
   class Connection
-    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger, :last_response
+    attr_accessor :host, :port, :scheme, :path_prefix, :username, :password, :adapter, :token, :verify_https, :logger, :mlk, :last_response
 
     def initialize(options = {})
       self.host         = options[:host]
@@ -56,6 +56,12 @@ module Code42
       adapter.headers['Authorization-Challenge'] = "false"
       adapter.headers['Authorization'] = "TOKEN #{token}"
       @token
+    end
+
+    def mlk=(mlk)
+      @mlk = mlk
+      adapter.headers['C42-MasterLicenseKey'] = "BASIC #{mlk}"
+      @mlk
     end
 
     def username=(username)

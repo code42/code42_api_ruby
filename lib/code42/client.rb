@@ -10,7 +10,7 @@ module Code42
     include Code42::API::Token
     include Code42::API::PasswordReset
 
-    attr_accessor :settings
+    attr_reader :settings
 
     def initialize(options = {})
       self.settings = options

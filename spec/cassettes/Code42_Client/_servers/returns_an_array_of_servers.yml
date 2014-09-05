@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.10.47.201:4280/api/servers
+    uri: http://10.10.47.201:4280/api/server
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Pragma:
       - no-cache
       Content-Location:
-      - http://10.10.47.201:4280/api/v1/servers
+      - http://10.10.47.201:4280/api/v1/server
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:

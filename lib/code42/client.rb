@@ -13,6 +13,7 @@ module Code42
     include Code42::API::Destination
     include Code42::API::Server
     include Code42::API::PasswordReset
+    include Code42::API::StorePoint
 
     attr_reader :settings
 

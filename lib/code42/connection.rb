@@ -96,32 +96,31 @@ module Code42
     private
 
     def check_for_errors(response)
-      if response.status == 401
-        raise Code42::Error::AuthenticationError.new(description_from_response(response), response.status)
-      elsif response.status == 403
-        raise Code42::Error::AuthorizationError.new(description_from_response(response), response.status)
-      elsif response.status == 404
-        raise Code42::Error::ResourceNotFound.new(description_from_response(response), response.status)
-      elsif response.status >= 400 && response.status < 600
-        body = response.body.is_a?(Array) ? response.body.first : response.body
-        raise exception_from_body(body, response.status)
+      if response.status >= 400 && response.status < 600
+        raise exception_from_response(response)
       end
     end
 
-    def description_from_response(response)
-      response.try { |resp| resp.body.try { |body| body.first['description'] } }
-    end
-
-    def exception_from_body(body, status = nil)
-      return Code42::Error.new("Status: #{status}") if body.nil? || !body.has_key?('name')
-      exception_name = body['name'].downcase.camelize
-      if Code42::Error.const_defined?(exception_name)
-        klass = Code42::Error.const_get(exception_name)
-      else
-        # Generic server error if no specific error is caught.
-        klass = Code42::Error::ServerError
-      end
-      klass.new(body['description'], status)
+    def exception_from_response(response)
+      body = Array(response.body).first
+      klass =
+        case response.status
+        when 401
+          Code42::Error::AuthenticationError
+        when 403
+          Code42::Error::ResourceNotFound
+        when 404
+          Code42::Error::ResourceNotFound
+        else
+          if body.nil? || !body.has_key?('name')
+            Code42::Error
+          else
+            exception_name = body['name'].downcase.camelize
+            Code42::Error.const_defined?(exception_name) ? Code42::Error.const_get(exception_name) : Code42::Error::ServerError
+          end
+        end
+      message = body ? body['description'] : "Status: #{response.status}"
+      klass.new(message, response.status, response)
     end
 
     def method_missing(method_name, *args, &block)

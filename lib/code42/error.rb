@@ -1,9 +1,12 @@
 module Code42
   class Error < StandardError;
-    attr_reader :status
-    def initialize(message = nil, status = nil)
+    attr_reader :status, :response
+
+    def initialize(message = nil, status = nil, response = nil)
       super(message)
-      @status = status
+
+      @status   = status
+      @response = response
     end
   end
 

@@ -85,13 +85,9 @@ module Code42
       response.body
     end
 
-    def respond_to?(method_name, include_private = false)
-      adapter.respond_to?(method_name, include_private) || super
-    end if RUBY_VERSION < "1.9"
-
     def respond_to_missing?(method_name, include_private = false)
       adapter.respond_to?(method_name, include_private) || super
-    end if RUBY_VERSION >= "1.9"
+    end
 
     private
 

@@ -12,6 +12,10 @@ module Code42
 
     attr_reader :settings
 
+    extend Forwardable
+
+    delegate make_request: :connection
+
     def initialize(options = {})
       self.settings = options
     end
@@ -120,24 +124,20 @@ module Code42
       array.map { |element| klass.deserialize_and_initialize(element, self) }
     end
 
-    def get(path, data = {})
-      make_request(:get, path, data)
+    def get(path, data = {}, &block)
+      make_request(:get, path, data, &block)
     end
 
-    def post(path, data = {})
-      make_request(:post, path, data)
+    def post(path, data = {}, &block)
+      make_request(:post, path, data, &block)
     end
 
-    def put(path, data = {})
-      make_request(:put, path, data)
+    def put(path, data = {}, &block)
+      make_request(:put, path, data, &block)
     end
 
-    def delete(path, data = {})
-      make_request(:delete, path, data)
-    end
-
-    def make_request(method, *args)
-      connection.make_request(method, *args)
+    def delete(path, data = {}, &block)
+      make_request(:delete, path, data, &block)
     end
   end
 end

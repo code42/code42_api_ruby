@@ -35,7 +35,7 @@ module Code42
       # @param params [Hash] Additional params used by the server for filtering, output, etc.
       # FIXME: This needs to change when the API implements a better way.
       def find_org_by_name(name, params = {})
-        search_orgs(name, params).select { |o| o.name == name }.first
+        search_orgs(name, params).find { |o| o.name == name }
       end
 
       # Returns the first org that starts with a given name.

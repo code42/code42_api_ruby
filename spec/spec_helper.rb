@@ -24,11 +24,13 @@ VCR.configure do |config|
 end
 
 Code42.configure do |config|
-  config.host     = "localhost"
-  config.port     = 7280
-  config.username = "admin"
-  config.password = "admin"
-  config.api_root = "/api"
+  config.host         = "localhost"
+  config.port         = 4285
+  config.username     = "admin"
+  config.password     = "admin"
+  config.api_root     = "/api"
+  config.https        = true
+  config.verify_https = false
 end
 
 def a_get(path)

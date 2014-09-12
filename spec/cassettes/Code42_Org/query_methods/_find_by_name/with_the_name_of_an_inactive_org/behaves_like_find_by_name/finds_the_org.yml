@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://admin:admin@localhost:4285/api/org?active=true&q=Medhurst-Goyette%20deactivated%202014-09-12%2014:13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://localhost:4285/api/v1/org?active=true&q=Medhurst-Goyette+deactivated+2014-09-12+14%3A13
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '171'
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-12T14:34:30.593-05:00","params":{"active":"true","q":"Medhurst-Goyette
+        deactivated 2014-09-12 14:13"}},"data":{"totalCount":0,"orgs":[]}}'
+    http_version: 
+  recorded_at: Fri, 12 Sep 2014 19:34:30 GMT
+- request:
+    method: get
+    uri: https://admin:admin@localhost:4285/api/org?active=false&q=Medhurst-Goyette%20deactivated%202014-09-12%2014:13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://localhost:4285/api/v1/org?active=false&q=Medhurst-Goyette+deactivated+2014-09-12+14%3A13
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-12T14:34:30.672-05:00","params":{"active":"false","q":"Medhurst-Goyette
+        deactivated 2014-09-12 14:13"}},"data":{"totalCount":1,"orgs":[{"orgId":190,"orgUid":"648896601762966193","orgName":"Medhurst-Goyette
+        deactivated 2014-09-12 14:13","status":"Deactivated","active":false,"blocked":false,"parentOrgId":null,"type":"ENTERPRISE","classification":"BASIC","externalId":"648896601762966193","hierarchyCounts":{},"configInheritanceCounts":{},"creationDate":"2014-08-08T12:48:34.588-05:00","modificationDate":"2014-09-12T14:13:33.293-05:00","registrationKey":"xxxxxxxxxxxxxxxx","reporting":{},"customConfig":false,"settings":{"maxSeats":null,"maxBytes":null},"settingsInherited":{"maxSeats":"","maxBytes":""},"settingsSummary":{"maxSeats":"","maxBytes":""}}]}}'
+    http_version: 
+  recorded_at: Fri, 12 Sep 2014 19:34:30 GMT
+recorded_with: VCR 2.5.0

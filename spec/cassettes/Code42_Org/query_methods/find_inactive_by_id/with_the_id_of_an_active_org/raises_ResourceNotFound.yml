@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://admin:admin@localhost:4285/api/org/2?active=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://localhost:4285/api/v1/org/2?active=true
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-12T14:26:11.718-05:00","params":{"active":"true"}},"data":{"orgId":2,"orgUid":"proserverdemo","orgName":"PROServer
+        Demo","status":"Active","active":true,"blocked":false,"parentOrgId":null,"type":"ENTERPRISE","classification":"BASIC","externalId":"proserverdemo","hierarchyCounts":{},"configInheritanceCounts":{},"creationDate":"2014-08-08T12:47:25.993-05:00","modificationDate":"2014-08-08T12:47:25.993-05:00","registrationKey":"xxxxxxxxxxxxxxxx","reporting":{},"customConfig":false,"settings":{"maxSeats":null,"maxBytes":null},"settingsInherited":{"maxSeats":"","maxBytes":""},"settingsSummary":{"maxSeats":"","maxBytes":""}}}'
+    http_version: 
+  recorded_at: Fri, 12 Sep 2014 19:26:11 GMT
+- request:
+    method: get
+    uri: https://admin:admin@localhost:4285/api/org/2?active=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: '[{"name":"SYSTEM","description":"Org not found, id: 2"}]'
+    headers:
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://localhost:4285/api/v1/org/2?active=false
+      Content-Type:
+      - text/html;charset=ISO-8859-1
+      Cache-Control:
+      - must-revalidate,no-cache,no-store
+      Content-Length:
+      - '56'
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '[{"name":"SYSTEM","description":"Org not found, id: 2"}]'
+    http_version: 
+  recorded_at: Fri, 12 Sep 2014 19:26:49 GMT
+recorded_with: VCR 2.5.0

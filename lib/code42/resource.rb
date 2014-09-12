@@ -33,6 +33,10 @@ module Code42
       def collection_from_response(array)
         (array || []).map { |element| self.deserialize_and_initialize(element, self) }
       end
+
+      def client
+        Code42.client
+      end
     end
 
     attr_accessor :client, :attributes

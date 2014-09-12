@@ -17,11 +17,13 @@ module Code42
     end
 
     def self.find_by_id(id, attrs = {})
-      find_active_by_id(id, attrs) || find_inactive_by_id(id, attrs)
+      find_active_by_id(id, attrs)
+    rescue Error::ResourceNotFound
+      find_inactive_by_id(id, attrs)
     end
 
     def self.find_active_by_id(id, attrs = {})
-      client.org(id, attrs)
+      client.org(id, attrs.merge(active: true))
     end
 
     def self.find_inactive_by_id(id, attrs = {})
@@ -41,11 +43,11 @@ module Code42
     end
 
     def self.find_all_orgs
-      find_all_active_orgs + find_all_inactive_orgs
+      client.orgs
     end
 
     def self.find_all_active_orgs
-      client.orgs
+      client.orgs(active: true)
     end
 
     def self.find_all_inactive_orgs

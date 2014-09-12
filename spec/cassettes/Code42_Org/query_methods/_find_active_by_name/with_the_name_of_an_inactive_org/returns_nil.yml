@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://admin:admin@localhost:4285/api/org?active=true&q=Medhurst-Goyette%20deactivated%202014-09-12%2014:13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - https://localhost:4285/api/v1/org?active=true&q=Medhurst-Goyette+deactivated+2014-09-12+14%3A13
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '171'
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-12T14:53:14.736-05:00","params":{"active":"true","q":"Medhurst-Goyette
+        deactivated 2014-09-12 14:13"}},"data":{"totalCount":0,"orgs":[]}}'
+    http_version: 
+  recorded_at: Fri, 12 Sep 2014 19:53:14 GMT
+recorded_with: VCR 2.5.0

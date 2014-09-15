@@ -108,7 +108,7 @@ module Code42
         when 401
           Code42::Error::AuthenticationError
         when 403
-          Code42::Error::ResourceNotFound
+          Code42::Error::AuthorizationError
         when 404
           Code42::Error::ResourceNotFound
         else

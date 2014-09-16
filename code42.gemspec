@@ -17,7 +17,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock', '~> 1.11.0'
   gem.add_development_dependency 'vcr',     '~> 2.5.0'
   gem.add_development_dependency 'rake'
-
   gem.add_dependency 'faraday',             '~> 0.9.0'
   gem.add_dependency 'activesupport',       '>= 3.2.0'
   gem.add_dependency 'faraday_middleware',  '~> 0.9.1'

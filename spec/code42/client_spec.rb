@@ -4,7 +4,7 @@ describe Code42::Client, :vcr do
 
   subject(:client) do
     Code42::Client.new(
-      host: '10.10.47.82',
+      host: 'localhost',
       port: 4280,
       https: false,
       api_root: '/api',

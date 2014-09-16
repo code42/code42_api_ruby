@@ -4,7 +4,7 @@ describe Code42::StorePoint, :vcr do
 
   subject(:client) do
     Code42::Client.new(
-        host: '10.10.40.57',
+        host: 'localhost',
         port: 4280,
         https: false,
         api_root: '/api',

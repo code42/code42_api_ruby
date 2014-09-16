@@ -21,8 +21,10 @@ module Code42
 
     extend Forwardable
 
-    instance_delegate %i(host port path_prefix scheme) => :adapter
+    instance_delegate %i(host  port  path_prefix  scheme)  => :adapter
     instance_delegate %i(host= port= path_prefix= scheme=) => :adapter
+
+    delegate %i(get post put delete) => :adapter
 
     def verify_https=(verify_https)
       adapter.ssl[:verify] = verify_https
@@ -74,9 +76,9 @@ module Code42
       adapter.basic_auth(username, password) if has_valid_credentials?
     end
 
-    def make_request(method, *args)
+    def make_request(method, *args, &block)
       begin
-        @last_response = response = self.send(method, *args)
+        @last_response = response = self.send(method, *args, &block)
         ActiveSupport::Notifications.instrument('code42.request', {
           method:   method,
           args:     args,
@@ -89,29 +91,9 @@ module Code42
       response.body
     end
 
-    def get(path, data)
-      adapter.get(path, data)
-    end
-
-    def put(path, data)
-      adapter.put path, data
-    end
-
-    def post(path, data)
-      adapter.post path, data
-    end
-
-    def delete(path, data)
-      adapter.delete(path, data)
-    end
-
-    def respond_to?(method_name, include_private = false)
-      adapter.respond_to?(method_name, include_private) || super
-    end if RUBY_VERSION < "1.9"
-
     def respond_to_missing?(method_name, include_private = false)
       adapter.respond_to?(method_name, include_private) || super
-    end if RUBY_VERSION >= "1.9"
+    end
 
     private
 

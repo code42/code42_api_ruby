@@ -4,9 +4,9 @@ module Code42
     alias_method :to, :name
 
     def initialize(name, options = {})
-      @name = name.to_sym
-      @from = (options[:from] || name.to_s.camelize(:lower)).to_s
-      @as   = options[:as]
+      @name       = name.to_sym
+      @from       = (options[:from] || name.to_s.camelize(:lower)).to_s
+      @as         = options[:as]
       @collection = options[:collection]
     end
   end

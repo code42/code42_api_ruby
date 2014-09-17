@@ -92,7 +92,11 @@ describe Code42::Client, :vcr do
     context "when providing invalid credentials" do
       it "should raise an exception" do
         client.settings.password = 'badpassword'
-        expect{client.get_token}.to raise_error Code42::Error::AuthenticationError
+        expect{client.get_token}.to raise_error { |error|
+          expect(error).to be_a Code42::Error::AuthenticationError
+          expect(error.status).to eq 401
+          expect(error.response.body.first['description']).to eq "Invalid or missing credentials"
+        }
       end
     end
   end

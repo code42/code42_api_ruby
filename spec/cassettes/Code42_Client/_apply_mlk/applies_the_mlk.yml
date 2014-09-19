@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@10.10.47.107:7280/api/ping
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.47.107:7280/api/v1/ping
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '94'
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-19T10:28:14.535-05:00","params":{}},"data":{"success":true}}'
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 15:28:14 GMT
+- request:
+    method: post
+    uri: http://admin:admin@10.10.47.107:7280/api/authToken
+    body:
+      encoding: UTF-8
+      string: '{}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      C42-Masterlicensekey:
+      - BASIC BdYS3i2U+1J/d/sU+IeZ/sTP0mac3k3FyXHxL69MPps3JOUIjb6PUc2UUw5jrD01CnLsJLhnanwJUTCRyjtwn+b7BkI/5kjosUo5RETbLKlc4PToufLu6cELvTUdwi/tMdLJFtx51jtoVdnZu4CfkBbcgcXR9yafkKas8XuOSd0=
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.47.107:7280/api/v1/authToken
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '137'
+      Server:
+      - Jetty(7.6.15.v20140411)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-09-19T10:28:17.328-05:00","params":{}},"data":["1ix3k2701jn5l0kixl1xa05giw","136jc2w1tym050fdkky855t7en"]}'
+    http_version: 
+  recorded_at: Fri, 19 Sep 2014 15:28:17 GMT
+recorded_with: VCR 2.5.0

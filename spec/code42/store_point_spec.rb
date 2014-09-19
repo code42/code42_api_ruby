@@ -1,5 +1,3 @@
-require 'spec_helper.rb'
-
 describe Code42::StorePoint, :vcr do
 
   subject(:client) do

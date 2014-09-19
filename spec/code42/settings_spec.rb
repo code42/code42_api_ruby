@@ -1,17 +1,15 @@
-require 'spec_helper'
-
 describe Code42::Settings do
   subject(:settings) { Code42::Settings.new }
 
-  describe "#host" do
-    it "should return configured host" do
-      settings.host = "example.com"
-      settings.host.should == "example.com"
+  describe '#host' do
+    it 'should return configured host' do
+      settings.host = 'example.com'
+      settings.host.should == 'example.com'
     end
   end
 
-  describe "#base_url" do
-    it "should build base_url properly" do
+  describe '#base_url' do
+    it 'should build base_url properly' do
       settings.https = true
       settings.host = 'example.com'
       settings.port = 123
@@ -19,14 +17,14 @@ describe Code42::Settings do
       settings.base_url.should eq 'https://example.com:123/api'
     end
 
-    it "should raise an exception if settings invalid" do
+    it 'should raise an exception if settings invalid' do
       settings.host = 'example.com'
       expect { settings.base_url }.to raise_error(Code42::Error)
     end
   end
 
-  describe "#valid?" do
-    it "should return true if required properties are defined" do
+  describe '#valid?' do
+    it 'should return true if required properties are defined' do
       settings.host = 'example.com'
       settings.port = 123
       settings.api_root = '/api'
@@ -42,61 +40,61 @@ describe Code42::Settings do
     end
   end
 
-  describe "#scheme" do
-    it "should be http if https is false" do
+  describe '#scheme' do
+    it 'should be http if https is false' do
       settings.https = false
       settings.scheme.should eq 'http'
     end
 
-    it "should be https if https is true" do
+    it 'should be https if https is true' do
       settings.https = true
       settings.scheme.should == 'https'
       settings.scheme.should eq 'https'
     end
   end
 
-  describe "#port" do
-    it "should return configured port" do
+  describe '#port' do
+    it 'should return configured port' do
       settings.port = 123
       settings.port.should eq 123
     end
   end
 
-  describe "#https" do
-    it "should return the https boolean" do
+  describe '#https' do
+    it 'should return the https boolean' do
       settings.https = true
       settings.https.should be_true
     end
 
-    it "should default to true" do
+    it 'should default to true' do
       settings = Code42::Settings.new
       settings.https.should be_true
     end
   end
 
-  describe "#api_root" do
-    it "should return the api root" do
+  describe '#api_root' do
+    it 'should return the api root' do
       settings.api_root = '/api/v3'
       settings.api_root.should eq '/api/v3'
     end
   end
 
-  describe "#username" do
-    it "should return the username" do
+  describe '#username' do
+    it 'should return the username' do
       settings.username = 'bob'
       settings.username.should eq 'bob'
     end
   end
 
-  describe "#password" do
-    it "should return the password" do
+  describe '#password' do
+    it 'should return the password' do
       settings.password = 'bob'
       settings.password.should eq 'bob'
     end
   end
 
-  describe "#all" do
-    it "should return a hash of all settings" do
+  describe '#all' do
+    it 'should return a hash of all settings' do
       settings = Code42::Settings.new(
         host: 'example.com',
         port: 123,

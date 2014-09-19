@@ -68,11 +68,11 @@ module Code42
       end
 
       def activate_org(id = 'my', attrs = {})
-        object_from_response(Code42::Org, :delete, "orgDeactivation/#{id}", attrs)
+        object_from_response(Code42::Org, :delete, "OrgDeactivation/#{id}", attrs)
       end
 
       def deactivate_org(id = 'my', attrs = {})
-        object_from_response(Code42::Org, :put, "orgDeactivation/#{id}", attrs)
+        object_from_response(Code42::Org, :put, "OrgDeactivation/#{id}", attrs)
       end
 
       def block_org(id = 'my', attrs = {})
@@ -83,6 +83,9 @@ module Code42
         object_from_response(Code42::Org, :delete, "orgBlock/#{id}", attrs)
       end
 
+      def org_share_destinations(id)
+        get("orgShareDestinations/#{id}")['data']
+      end
 
     end
   end

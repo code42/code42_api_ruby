@@ -15,6 +15,8 @@ module Code42
     include Code42::API::Server
     include Code42::API::PasswordReset
     include Code42::API::StorePoint
+    include Code42::API::Diagnostic
+    include Code42::API::ServerConnectionString
 
     attr_reader :settings
 
@@ -51,33 +53,6 @@ module Code42
     # @param token [Code42::Token, String] The token to authenticate with
     def use_token_auth(token)
       settings.token = token.to_s
-    end
-
-    def diagnostic
-      object_from_response(Diagnostic, :get, 'diagnostic')
-    end
-
-    def org_share_destinations(id)
-      get("orgShareDestinations/#{id}")['data']
-    end
-
-    def server_connection_string(id)
-      object_from_response(Code42::ServerConnectionString, :get, "serverConnectionString/#{id}")
-    end
-
-    # Block a computer from backing up
-    # @return [Code42::Computer] The blocked computer
-    # @params id [Integer, String] The computer ID you want to block
-    def block_computer(id)
-      put("computerblock/#{id}")
-    end
-
-    def unblock_computer(id)
-      delete("computerblock/#{id}")
-    end
-
-    def deactivate_org(id)
-      put("OrgDeactivation/#{id}")
     end
 
     def connection

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 module Code42
   describe Resource do
     describe '#serialize' do

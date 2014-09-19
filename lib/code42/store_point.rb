@@ -36,10 +36,6 @@ module Code42
     attribute :selected_bytes
     attribute :todo_bytes
 
-    def self.find_store_points_by_name(name)
-      client.find_store_points_by_name name
-    end
-
     def enable_balancing
       client.update_store_point id, balancing_data: true
     end

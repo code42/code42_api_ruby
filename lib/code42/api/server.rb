@@ -6,10 +6,10 @@ module Code42
       end
 
       def server(id, params = {})
-        if id.is_a? Numeric
+        if id.is_a? Fixnum
           object_from_response(Code42::Server, :get, "server/#{id}", params)
         elsif id.is_a? String
-          servers(params.merge(q: id))
+          servers(params.merge(q: id)).first
         end
       end
 

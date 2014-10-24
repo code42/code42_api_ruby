@@ -1,7 +1,5 @@
-require 'spec_helper'
-
 describe Code42::Role do
-  describe "#deserialize_and_initialize" do
+  describe '#deserialize_and_initialize' do
     let(:response_data) do
     data = <<-JSON
       {
@@ -20,7 +18,7 @@ describe Code42::Role do
     JSON.parse(data)
     end
 
-    it "should translate roleId to id" do
+    it 'should translate roleId to id' do
       role = Code42::Role.deserialize_and_initialize(response_data)
       role.id.should eq 3
     end

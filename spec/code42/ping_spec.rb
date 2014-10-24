@@ -1,8 +1,6 @@
-require 'spec_helper'
-
 describe Code42::Ping do
 	let(:valid_attributes) do
-    { "success" => true }
+    { 'success' => true }
   end
 
 	subject(:ping) do

@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://admin:admin@10.10.40.57:4280/api/storePoint/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.40.57:4280/api/v1/storePoint/2
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-08-30T18:27:30.187Z","params":{}},"data":{"storePointId":2,"storePointName":"651951667247317249_Default","note":null,"path":"/var/opt/proserver/backupArchives","directory":"CrashPlanArchive_Default","absolutePath":"/var/opt/proserver/backupArchives/CrashPlanArchive_Default","serverId":5,"serverName":"test_storage_node","destinationId":4,"destinationName":"local-storage","backupSessionCount":0,"computerCount":0,"backupComputerCount":0,"userCount":0,"licensedUserCount":0,"orgCount":0,"usedBytes":4658135040,"usedPercentage":22.0,"freeBytes":16478662656,"freeBytesAlert":"null","freePercentage":78.0,"coldBytes":0,"coldPercentageOfUsed":0.0,"coldPercentageOfTotal":0.0,"totalBytes":21136797696,"acceptingInboundBackup":true,"balancingData":true,"acceptingNewComputers":true,"writeSpeed":null,"online":true,"serverOnline":true,"archiveBytes":0,"selectedBytes":0,"todoBytes":0}}'
+    http_version: 
+  recorded_at: Sat, 30 Aug 2014 18:27:29 GMT
+- request:
+    method: put
+    uri: http://admin:admin@10.10.40.57:4280/api/storePoint/2
+    body:
+      encoding: UTF-8
+      string: '{"acceptingNewComputers":false}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
+      Content-Location:
+      - http://10.10.40.57:4280/api/v1/storePoint/2
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - Jetty(7.6.3.v20120416)
+    body:
+      encoding: UTF-8
+      string: '{"metadata":{"timestamp":"2014-08-30T18:27:30.818Z","params":{}},"data":{"storePointId":2,"storePointName":"651951667247317249_Default","note":null,"path":"/var/opt/proserver/backupArchives","directory":"CrashPlanArchive_Default","absolutePath":"/var/opt/proserver/backupArchives/CrashPlanArchive_Default","serverId":5,"serverName":"test_storage_node","destinationId":4,"destinationName":"local-storage","backupSessionCount":0,"computerCount":0,"backupComputerCount":0,"userCount":0,"licensedUserCount":0,"orgCount":0,"usedBytes":4658135040,"usedPercentage":22.0,"freeBytes":16478662656,"freeBytesAlert":"null","freePercentage":78.0,"coldBytes":0,"coldPercentageOfUsed":0.0,"coldPercentageOfTotal":0.0,"totalBytes":21136797696,"acceptingInboundBackup":true,"balancingData":true,"acceptingNewComputers":false,"writeSpeed":null,"online":true,"serverOnline":true,"archiveBytes":0,"selectedBytes":0,"todoBytes":0}}'
+    http_version: 
+  recorded_at: Sat, 30 Aug 2014 18:27:30 GMT
+recorded_with: VCR 2.5.0

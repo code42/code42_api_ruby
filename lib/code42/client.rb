@@ -1,3 +1,4 @@
+require 'forwardable'
 require 'json'
 Dir[File.dirname(__FILE__) + '/api/*.rb'].each { |file| require file }
 
@@ -8,7 +9,14 @@ module Code42
     include Code42::API::Org
     include Code42::API::Computer
     include Code42::API::Token
+    include Code42::API::ProductLicense
+    include Code42::API::ServerSettings
+    include Code42::API::Destination
+    include Code42::API::Server
     include Code42::API::PasswordReset
+    include Code42::API::StorePoint
+    include Code42::API::Diagnostic
+    include Code42::API::ServerConnectionString
 
     attr_reader :settings
 
@@ -47,25 +55,6 @@ module Code42
       settings.token = token.to_s
     end
 
-    def diagnostic
-      object_from_response(Diagnostic, :get, 'diagnostic')
-    end
-
-    # Block a computer from backing up
-    # @return [Code42::Computer] The blocked computer
-    # @params id [Integer, String] The computer ID you want to block
-    def block_computer(id)
-      put("computerblock/#{id}")
-    end
-
-    def unblock_computer(id)
-      delete("computerblock/#{id}")
-    end
-
-    def deactivate_org(id)
-      put("OrgDeactivation/#{id}")
-    end
-
     def connection
       @connection ||= begin
                         connection = Connection.new
@@ -83,6 +72,9 @@ module Code42
       end
       if settings.token
         @connection.token = settings.token
+      end
+      if settings.mlk
+        @connection.mlk = settings.mlk
       end
       @connection
     end

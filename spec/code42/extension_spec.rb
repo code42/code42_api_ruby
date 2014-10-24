@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 module Code42Extension
   module ClientMethods
     def some_method

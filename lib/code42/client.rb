@@ -22,7 +22,7 @@ module Code42
 
     extend Forwardable
 
-    delegate make_request: :connection
+    instance_delegate make_request: :connection
 
     def initialize(options = {})
       self.settings = options

@@ -24,7 +24,7 @@ module Code42
     instance_delegate %i(host  port  path_prefix  scheme)  => :adapter
     instance_delegate %i(host= port= path_prefix= scheme=) => :adapter
 
-    delegate %i(get post put delete) => :adapter
+    instance_delegate %i(get post put delete) => :adapter
 
     def verify_https=(verify_https)
       adapter.ssl[:verify] = verify_https

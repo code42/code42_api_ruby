@@ -102,7 +102,7 @@ describe Code42::FaradayMiddleware::ParseServerEnv do
       JSON
     end
 
-    it 'should parse valid javascript into a valid json' do
+    it 'should parse valid javascript into a valid json object' do
       json = Code42::FaradayMiddleware::ParseServerEnv.new.parse raw_javascript
       expect(json).to eql expected_json
     end

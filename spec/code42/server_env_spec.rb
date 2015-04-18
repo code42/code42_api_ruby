@@ -48,7 +48,7 @@ describe Code42::ServerEnv do
       JSON
     end
 
-    it 'should translate roleId to id' do
+    it 'should serialize json object into a valid ServerEnv object' do
       server_env = Code42::ServerEnv.deserialize_and_initialize(response_data)
       expect(server_env.product_version).to eql '4.3.0'
     end

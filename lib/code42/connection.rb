@@ -3,6 +3,7 @@ require 'faraday'
 require 'faraday_middleware'
 require 'logger'
 require 'code42/error'
+require 'code42/faraday_middleware/parse_server_env'
 
 module Code42
   class Connection
@@ -46,6 +47,9 @@ module Code42
         f.adapter  :net_http
 
         f.response :json
+
+        # Custom Faraday Middleware parser to parse the javascript returned from the /api/ServerEnv api.
+        f.use Code42::FaradayMiddleware::ParseServerEnv
       end
     end
 

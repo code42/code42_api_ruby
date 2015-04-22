@@ -1,3 +1,4 @@
+require 'faraday'
 require 'forwardable'
 require 'json'
 Dir[File.dirname(__FILE__) + '/api/*.rb'].each { |file| require file }
@@ -13,6 +14,7 @@ module Code42
     include Code42::API::ServerSettings
     include Code42::API::Destination
     include Code42::API::Server
+    include Code42::API::ServerEnv
     include Code42::API::PasswordReset
     include Code42::API::StorePoint
     include Code42::API::Diagnostic

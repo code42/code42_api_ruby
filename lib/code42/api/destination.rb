@@ -6,12 +6,16 @@ module Code42
       end
 
       def destination(id)
-        object_from_response(Code42::Destination, :get, "destination/#{id}")
+        if id.is_a? Numeric
+          object_from_response(Code42::Destination, :get, "destination/#{id}")
+        else
+          objects_from_response(Code42::Destination, :get, "destination?name=#{id}", key: 'destinations')
+        end
       end
 
       def create_destination(attrs)
         response = post('Destination', attrs)
-        response && response['data'].is_a?(Array)
+        response['data'].first if response && response['data'].is_a?(Array)
       end
     end
   end

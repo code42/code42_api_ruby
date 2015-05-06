@@ -1,8 +1,8 @@
 module Code42
   module API
     module Destination
-      def destinations
-        objects_from_response(Code42::Destination, :get, 'destinations', key: 'destinations')
+      def destinations(name = nil)
+        objects_from_response(Code42::Destination, :get, "destinations#{"?name=#{name}" if name}", key: 'destinations')
       end
 
       def destination(id)
@@ -11,7 +11,7 @@ module Code42
 
       def create_destination(attrs)
         response = post('Destination', attrs)
-        response && response['data'].is_a?(Array)
+        response['data'].first if response && response['data'].is_a?(Array)
       end
     end
   end

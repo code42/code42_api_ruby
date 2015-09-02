@@ -9,7 +9,11 @@ module Code42
         if id.is_a? Fixnum
           object_from_response(Code42::Server, :get, "server/#{id}", params)
         elsif id.is_a? String
-          servers(params.merge(q: id)).first
+          if id.eql? 'this'
+            object_from_response(Code42::Server, :get, 'server/this', params)
+          else
+            servers(params.merge(q: id)).first
+          end
         end
       end
 

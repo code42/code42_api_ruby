@@ -34,8 +34,13 @@ describe Code42::Client, :vcr do
   end
 
   describe '#server' do
-    it 'returns a server' do
+    it 'returns a server with id' do
       server = client.server(3)
+      server.should be_a(Code42::Server)
+      server.id.should == 3
+    end
+    it 'returns a server with this' do
+      server = client.server('this')
       server.should be_a(Code42::Server)
       server.id.should == 3
     end

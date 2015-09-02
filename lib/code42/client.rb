@@ -119,19 +119,20 @@ module Code42
     end
 
     def get(path, data = {}, &block)
-      make_request(:get, path, data, &block)
+      # Spaces need to be URI encoded to +.
+      make_request(:get, path.gsub(/ +/, '+'), data, &block)
     end
 
     def post(path, data = {}, &block)
-      make_request(:post, path, data, &block)
+      make_request(:post, path.gsub(/ +/, '+'), data, &block)
     end
 
     def put(path, data = {}, &block)
-      make_request(:put, path, data, &block)
+      make_request(:put, path.gsub(/ +/, '+'), data, &block)
     end
 
     def delete(path, data = {}, &block)
-      make_request(:delete, path, data, &block)
+      make_request(:delete, path.gsub(/ +/, '+'), data, &block)
     end
   end
 end

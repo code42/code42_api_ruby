@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Provides a Ruby interface to the Code42 API}
   gem.summary       = %q{...}
   gem.homepage      = "http://www.crashplan.com/apidocviewer/"
-  gem.license       = 'Apache'
+  gem.license       = 'MIT'
 
   gem.add_development_dependency 'rspec',   '~> 2.14.0'
   gem.add_development_dependency 'webmock', '~> 1.11.0'

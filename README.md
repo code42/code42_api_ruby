@@ -1,4 +1,4 @@
-= NOTICE: Project is no longer maintained
+# NOTICE: Project is no longer maintained
 As of November 7th, 2018, Code42 has chosen to no longer actively host this project.  The project was archive at this point.  All issues have been closed and pull requests rejected.  While archived, the source is still available, but this project may be permanantly removed from GitHub in the near future.
 
 # Code 42 API Ruby Gem [![Build Status](https://travis-ci.org/code42/code42_api_ruby.svg?branch=master)](https://travis-ci.org/code42/code42_api_ruby)
